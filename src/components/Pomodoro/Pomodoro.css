@@ -1,0 +1,40 @@
+.controlButtons {
+    background-color: #1ED760;
+    border: 2px solid #1ED760;
+    padding: 3px 12px;
+    margin: 0px 2px;
+    outline: none;
+}
+
+.controlButtons:hover {
+    opacity: 0.7;
+}
+
+.countdown {
+    color: black;
+    background-color: #1ED760;
+    padding: 0.5px 2px 3.5px 2px;
+    margin-left: 2px;
+}
+
+.pomodoroPanel {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.pomodoroHeader {
+    align-items: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.controlButtons-pizzaslice {
+    background-color: #1ED760;
+    border: 2px solid #1ED760;
+    padding: 3px 12px;
+    margin: 0px 2px;
+    outline: none;
+}

@@ -1,0 +1,17 @@
+.not-found-page-wrapper {
+    background-color: black;
+    height: 100vh;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.sketchy-spotify {
+    background-color: white;
+    border-radius: 190px;
+    margin-top: 20px;
+    width: 400px;
+}

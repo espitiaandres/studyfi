@@ -1,0 +1,104 @@
+.main-wrapper {
+    width: 10%;
+    /* height: 100vh; */
+    margin: 0 auto;
+    background-color: black;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.image_styles {
+    height: 0px;
+    width: 0px;
+}
+
+.swatches_styles {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: -60px;
+    display: flex;
+    justify-content: center;
+}
+
+.skipbuttons {
+    background-color: #1ED760;
+    border: 4px solid #1ED760;
+    margin: 0px 16px;
+    outline: none;
+}
+
+.skipbuttons:hover {
+    cursor: pointer;
+}
+
+/** Now Playing **/
+.now-playing__name {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.now-playing__artist {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.now-playing__album {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.now-playing__status {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.now-playing__img {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 360px;
+}
+
+.now-playing__img img {
+    max-width: 80vmin;
+    width: 100%;
+}
+
+.now-playing__side {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/** Progress **/
+.progress {
+    border: 1px solid #eee;
+    height: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.progress__bar {
+    background-color: #1ED760;
+    color: white;
+    height: 8px;
+}
+
+.duration-menu {
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.duration-menu__times {
+    padding: 0px 20px;
+}

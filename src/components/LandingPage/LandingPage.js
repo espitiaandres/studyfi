@@ -20,7 +20,7 @@ function LandingPage() {
     library.add(fab);
     return (
         <div className="main-wrapper-landing-page">
-            <div className="app-title">Softy Pi</div>
+            <div className="app-title">Studyfi</div>
             <TypistLoop interval={700} >
                 {[
                 'A place to listen to music and chat with friends.',

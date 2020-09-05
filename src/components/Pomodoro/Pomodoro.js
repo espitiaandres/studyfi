@@ -15,7 +15,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
 
 const secondsInAMinute = 60;
-const setTimeMinutes = 0.1;                                         // minutes
+const setTimeMinutes = 25;                                         // minutes
 const setTimeSeconds = setTimeMinutes * secondsInAMinute;           // seconds
 const cooldownSetTimeMinutes = 0.2;
 const cooldownSetTimeSeconds = cooldownSetTimeMinutes * secondsInAMinute;

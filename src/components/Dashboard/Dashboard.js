@@ -9,6 +9,7 @@
 import React from 'react';
 import Player from '../Player/Player';
 import Pomodoro from '../Pomodoro/Pomodoro';
+import ChatApp from '../ChatApp/ChatApp';
 import './Dashboard.css';
 
 function Dashboard(props) {
@@ -20,6 +21,7 @@ function Dashboard(props) {
                 is_playing={props.is_playing}
                 progress_ms={props.progress_ms}
             />
+            <ChatApp />
         </div>
     )
 }

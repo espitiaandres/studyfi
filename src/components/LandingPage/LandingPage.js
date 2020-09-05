@@ -23,9 +23,9 @@ function LandingPage() {
             <div className="app-title">Studyfi</div>
             <TypistLoop interval={700} >
                 {[
-                'A place to listen to music and chat with friends.',
+                'A place to study, listen to music, and chat with friends.',
                 ''
-                ].map(text => <Typist className="app-description" avgTypingDelay={60}  key={text} startDelay={0}>A place to listen to music and chat with friends.</Typist>)}
+                ].map(text => <Typist className="app-description" avgTypingDelay={60}  key={text} startDelay={0}>A place to study, listen to music, and chat with friends.</Typist>)}
             </TypistLoop>
             <a 
                 className="login-button" 
@@ -34,7 +34,7 @@ function LandingPage() {
             >                
                 <FontAwesomeIcon icon={['fab', 'spotify']} size="10x"/>
                 <p className="login-description">Login with spotify</p>
-            </a>            
+            </a>
             {/*Choose a different spotify logo?
             <div>
                 <img src={spotifyLogo} alt="spotify-logo"/>

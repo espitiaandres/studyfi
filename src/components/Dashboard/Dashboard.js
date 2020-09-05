@@ -22,6 +22,7 @@ function Dashboard(props) {
                 progress_ms={props.progress_ms}
             />
             <ChatApp />
+            <h1>this is a test</h1>
         </div>
     )
 }

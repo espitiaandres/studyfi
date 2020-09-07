@@ -33,7 +33,7 @@ function LandingPage() {
                 target=""
             >                
                 <FontAwesomeIcon icon={['fab', 'spotify']} size="10x"/>
-                <p className="login-description">Login with spotify</p>
+                <p className="login-description">Login with Spotify</p>
             </a>
             {/*Choose a different spotify logo?
             <div>

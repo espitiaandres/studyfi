@@ -11,10 +11,10 @@
 }
 
 .countdown {
-    color: black;
     background-color: #1ED760;
-    padding: 0.5px 2px 3.5px 2px;
+    color: black;
     margin-left: 2px;
+    padding: 0.5px 2px 3.5px 2px;
 }
 
 .pomodoroPanel {
@@ -32,10 +32,10 @@
 }
 
 .pomodoroHeaderTitle {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
 }
 
 .pomodoroHeaderTitleText {
@@ -45,7 +45,7 @@
 .controlButtons-pizzaslice {
     background-color: #1ED760;
     border: 2px solid #1ED760;
-    padding: 3px 12px;
     margin: 0px 2px;
     outline: none;
+    padding: 3px 12px;
 }

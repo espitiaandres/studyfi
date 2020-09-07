@@ -7,16 +7,16 @@
 //
 
 import React from 'react';
-import './Pomodoro.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import './Pomodoro.css';
 
 library.add(fas);
 
 const secondsInAMinute = 60;
 const setTimeMinutes = 25;                                         // minutes
-const setTimeSeconds = setTimeMinutes * secondsInAMinute;           // seconds
+const setTimeSeconds = setTimeMinutes * secondsInAMinute - 1;           // seconds
 const cooldownSetTimeMinutes = 0.2;
 const cooldownSetTimeSeconds = cooldownSetTimeMinutes * secondsInAMinute;
 
@@ -33,6 +33,9 @@ let pomodoroText = "RestRestRestRestRest";
 const countdown = () => {
     remainingTime = setTimeSeconds;
     pomodoroText = "WorkWorkWorkWorkWork";
+    remainingTime++;
+    updatedFormattedTimeString(remainingTime);
+    timerRunning = true;
     interval = setInterval(() => {
         if (remainingTime > 0) {
             remainingTime--;
@@ -49,6 +52,7 @@ const countdown = () => {
 const countdownCooldown = () => {
     remainingTime = cooldownSetTimeSeconds;
     pomodoroText = "RestRestRestRestRest";
+    remainingTime++;
     cooldownInterval = setInterval(() => {
         if (remainingTime > 0) {
             remainingTime--;
@@ -61,10 +65,11 @@ const countdownCooldown = () => {
     }, 1000)
 }
 
+// clearsCountDown clears the countdown once the working time has elapsed.
 const clearCountdown = () => {
     pomodoroText = "RestRestRestRestRest";
     clearInterval(interval);
-    remainingTime = setTimeSeconds;
+    remainingTime = setTimeSeconds + 1;
     timerRunning = false;
     updatedFormattedTimeString(remainingTime);
 }

@@ -1,12 +1,12 @@
 .not-found-page-wrapper {
-    background-color: black;
-    height: 100vh;
-    margin: 0 auto;
     align-items: center;
+    background-color: black;
+    color: white;
     display: flex;
     flex-direction: column;
+    height: 100vh;
     justify-content: center;
-    color: white;
+    margin: 0 auto;
 }
 
 .sketchy-spotify {

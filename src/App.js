@@ -12,7 +12,6 @@ import * as $ from "jquery";
 // install node-sass to optimize mobile display
 import hash from './utils/hash';
 import Dashboard from './components/Dashboard/Dashboard';
-import Player from './components/Player/Player';
 import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import './App.css';

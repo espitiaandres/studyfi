@@ -130,6 +130,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <body className="App">
           {!this.state.token && <div><LandingPage /></div>}
           {this.state.token && !this.state.no_data && (
             <Dashboard
@@ -138,7 +139,8 @@ class App extends Component {
               progress_ms={this.state.progress_ms}
             />
           )}
-          {this.state.no_data && <NotFoundPage />}
+          {this.state.no_data && <NotFoundPage />}  
+        </body>
       </div>
     );
   }

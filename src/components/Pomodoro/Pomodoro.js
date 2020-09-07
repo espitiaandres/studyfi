@@ -85,7 +85,11 @@ function Pomodoro() {
     return (
         <div>
             <div className="pomodoroHeader">
-                <h1>Pomodoro Technique</h1>
+                <div className="pomodoroHeaderTitle">
+                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
+                    <h1 className="pomodoroHeaderTitleText">pomodoro</h1>
+                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
+                </div>
                 <p>{pomodoroText}</p>
             </div>
 

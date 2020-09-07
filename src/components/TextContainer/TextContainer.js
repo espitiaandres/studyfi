@@ -1,13 +1,19 @@
+//
+//  Message.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
+
 import React from 'react';
-
 import onlineIcon from '../../icons/onlineIcon.png';
-
 import './TextContainer.css';
 
 const TextContainer = ({ users }) => (
   <div className="textContainer">
     {
-      users
+      users.length > 1
         ? (
           <div>
             <p>People currently chatting:</p>
@@ -22,8 +28,11 @@ const TextContainer = ({ users }) => (
               </p>
             </div>
           </div>
-        )
-        : null
+        ) : (
+          <div>
+            <p>Looks like you're alone in this chat room...</p>
+          </div>
+      )
     }
   </div>
 );

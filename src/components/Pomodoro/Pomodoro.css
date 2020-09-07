@@ -31,6 +31,17 @@
     justify-content: center;
 }
 
+.pomodoroHeaderTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pomodoroHeaderTitleText {
+    padding: 10px;
+}
+
 .controlButtons-pizzaslice {
     background-color: #1ED760;
     border: 2px solid #1ED760;

@@ -6,5 +6,10 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    /* justify-content: space-around; */
+    justify-content: center;
+}
+
+.dashboard-item {
+    padding: 0px 50px;
 }

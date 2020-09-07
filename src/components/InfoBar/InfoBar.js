@@ -1,8 +1,14 @@
-import React from 'react';
+//
+//  InfoBar.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
 
+import React from 'react';
 import closeIcon from '../../icons/closeIcon.png';
 import onlineIcon from '../../icons/onlineIcon.png';
-
 import './InfoBar.css';
 
 const InfoBar = ({ room }) => (

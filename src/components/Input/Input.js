@@ -1,5 +1,12 @@
-import React from 'react';
+//
+//  Input.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
 
+import React from 'react';
 import './Input.css';
 
 const Input = ({ message, setMessage, sendMessage }) => (
@@ -7,7 +14,7 @@ const Input = ({ message, setMessage, sendMessage }) => (
         <input
             className="input"
             type="text"
-            placeholder="Type a message..."
+            placeholder="Enter a message..."
             value={message} 
             onChange={(event) => setMessage(event.target.value)}
             onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}

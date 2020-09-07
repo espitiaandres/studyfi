@@ -1,8 +1,14 @@
+//
+//  Message.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
+
 import React from 'react';
-
-import './Message.css';
-
 import ReactEmoji from 'react-emoji';
+import './Message.css';
 
 const Message = ({ message: { user, text }, name }) => {
     let isSentByCurrentUser = false;

@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ef55cc68ddbec8f98a471b293cf42616",
+    "revision": "a23a663dcc303b1524ead46132da1a05",
     "url": "/studyfi/index.html"
   },
   {
-    "revision": "882c0418b123d0aecae6",
-    "url": "/studyfi/static/css/main.39bc9e8e.chunk.css"
+    "revision": "208d59a5c8affe223055",
+    "url": "/studyfi/static/css/main.be6021c0.chunk.css"
   },
   {
     "revision": "f7dba287e8f2fe50e7b0",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/studyfi/static/js/2.15d248d7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "882c0418b123d0aecae6",
-    "url": "/studyfi/static/js/main.31de81a0.chunk.js"
+    "revision": "208d59a5c8affe223055",
+    "url": "/studyfi/static/js/main.559da1ff.chunk.js"
   },
   {
     "revision": "af8270e35460579a4ac4",

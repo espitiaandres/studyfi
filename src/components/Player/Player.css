@@ -59,8 +59,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    height: 320px;
     justify-content: center;
-    width: 360px;
+    width: 320px;
 }
 
 .now-playing__img img {

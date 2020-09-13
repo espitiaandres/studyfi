@@ -1,9 +1,6 @@
-#root {
-  height: 100vh;
-}
-  
 * {
   box-sizing: border-box;
+  font-family: 'Segoe UI';
 }
   
 .joinOuterContainer {
@@ -20,7 +17,8 @@
 }
 
 .joinInput {
-  border-radius: 0;
+  border: black;
+  border-radius: 5px;
   padding: 15px 20px;
   width: 300px;
 }

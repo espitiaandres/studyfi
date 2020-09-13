@@ -35,6 +35,10 @@ function LandingPage() {
                 <FontAwesomeIcon icon={['fab', 'spotify']} size="10x"/>
                 <p className="login-description">Login with Spotify</p>
             </a>
+            <div className="footer">
+                <div>© Studyfi 2020</div>
+                <div>Created by Andres Espitia</div>
+            </div>
             {/*Choose a different spotify logo?
             <div>
                 <img src={spotifyLogo} alt="spotify-logo"/>

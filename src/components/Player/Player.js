@@ -97,7 +97,7 @@ const Player = (props) => {
     songDuration = props.item.duration_ms;
     releaseDateDMY = props.item.album.release_date;
     releaseDateYear =  typeof releaseDateDMY === "string" ?  releaseDateDMY.split("-")[0] : "";
-    albumImageURL = props.item.album.images[0].url;  
+    albumImageURL = props.item.album.images[0].url;
     songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
     songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
     props.item.artists.map((artist) => {
@@ -118,8 +118,8 @@ const Player = (props) => {
         <div className="swatches_styles">
           {renderSwatches()}
         </div>
-        <div className="now-playing__img">
-          <img src={albumImageURL} />
+        <div >
+          <img src={albumImageURL} className="now-playing__img"/>
         </div>
         <div className="swatches_styles">
           {renderSwatches()}

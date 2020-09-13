@@ -8,15 +8,15 @@
 
 import React from 'react';
 import onlineIcon from '../../icons/onlineIcon.png';
-import './TextContainer.css';
+import './Userslist.css';
 
-const TextContainer = ({ users }) => (
-  <div className="textContainer">
+const Userslist = ({ users }) => (
+  <div className="userslist">
     {
       users.length > 1
         ? (
           <div>
-            <p>People currently chatting:</p>
+            <p>Online:</p>
             <div className="activeContainer">
               <p>
                 {users.map(({name}) => (
@@ -37,4 +37,4 @@ const TextContainer = ({ users }) => (
   </div>
 );
 
-export default TextContainer;
+export default Userslist;

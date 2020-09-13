@@ -14,19 +14,21 @@ import './Dashboard.css';
 
 function Dashboard(props) {
     return (
-        <div className="main-wrapper">
-            <div className="dashboard-item">
-                <Pomodoro />
-            </div>
-            <div className="dashboard-item">
-                <Player 
-                    item={props.item}
-                    is_playing={props.is_playing}
-                    progress_ms={props.progress_ms}
-                />
-            </div>
-            <div className="dashboard-item">
-                <ChatApp />
+        <div>
+            <div className="main-wrapper">
+                <div className="dashboard-item">
+                    <Pomodoro />
+                </div>
+                <div className="dashboard-item">
+                    <Player 
+                        item={props.item}
+                        is_playing={props.is_playing}
+                        progress_ms={props.progress_ms}
+                    />
+                </div>
+                <div className="dashboard-item">
+                    <ChatApp />
+                </div>
             </div>
         </div>
     )

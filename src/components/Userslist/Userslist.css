@@ -1,10 +1,10 @@
-.textContainer {
+.userslist {
   color: white;
   display: flex;
   flex-direction: column;
   height: 60%;
   justify-content: space-between;
-  margin-left: 10px;
+  margin-left: 15px;
   width: 20%;
 }
 

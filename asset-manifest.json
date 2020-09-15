@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/studyfi/static/css/main.7cd0b81a.chunk.css",
-    "main.js": "/studyfi/static/js/main.723aab46.chunk.js",
-    "main.js.map": "/studyfi/static/js/main.723aab46.chunk.js.map",
+    "main.js": "/studyfi/static/js/main.d63e0a58.chunk.js",
+    "main.js.map": "/studyfi/static/js/main.d63e0a58.chunk.js.map",
     "runtime-main.js": "/studyfi/static/js/runtime-main.5f7e87f6.js",
     "runtime-main.js.map": "/studyfi/static/js/runtime-main.5f7e87f6.js.map",
     "static/js/2.f3ccbe49.chunk.js": "/studyfi/static/js/2.f3ccbe49.chunk.js",
     "static/js/2.f3ccbe49.chunk.js.map": "/studyfi/static/js/2.f3ccbe49.chunk.js.map",
     "index.html": "/studyfi/index.html",
-    "precache-manifest.541165dce0cd19e3c52cc89314bf80f0.js": "/studyfi/precache-manifest.541165dce0cd19e3c52cc89314bf80f0.js",
+    "precache-manifest.5c081d043bd028678df080c340c0f2a7.js": "/studyfi/precache-manifest.5c081d043bd028678df080c340c0f2a7.js",
     "service-worker.js": "/studyfi/service-worker.js",
     "static/css/main.7cd0b81a.chunk.css.map": "/studyfi/static/css/main.7cd0b81a.chunk.css.map",
     "static/js/2.f3ccbe49.chunk.js.LICENSE.txt": "/studyfi/static/js/2.f3ccbe49.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.5f7e87f6.js",
     "static/js/2.f3ccbe49.chunk.js",
     "static/css/main.7cd0b81a.chunk.css",
-    "static/js/main.723aab46.chunk.js"
+    "static/js/main.d63e0a58.chunk.js"
   ]
 }

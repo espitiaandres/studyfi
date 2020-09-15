@@ -9,7 +9,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { ColorExtractor } from 'react-color-extractor';
-import * as $ from "jquery";
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -22,38 +22,33 @@ library.add(fas);
 
 const Player = (props) => {
   const [colors, setColors] = useState([]);
-  const token = "BQB6mJwegBC8MLXJPM_mqehkY_0fnqQsyZJjxsKjIF4rzXEMDUZ0Enf8LszwK0IkmM4O5AIohKvUgmPBEo-klfjadkgdmWbdKbImLZrj4soA7mN7njx4rA7Wh394eXLiCPUKzSqpOrDHeY9gK7U6P00";
-
-  useEffect(() => {
-    // how to generate oauthtoken repeatedly?
-  })
+  // const token = "BQD4J62La0Wtvog9Xy22h96o1eCNgnao9J8dszuoTNcoJlZgRnvywx4UfxYL3xAgP1vhxnputuqzGOKwLDjcyIIRoG1j1s_7c6eIf2sI55CNH7sCZbsEySh9GeOo4HhBoJV0hfoDqlg4LsgJQgpRFp4";
+  const token = hash.access_token
 
   // Skips to the next song.
   const nextSong = () => {
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player/next",
-      type: "POST",
-      beforeSend: xhr => {
-        xhr.setRequestHeader("Authorization", `Bearer ${token}`);
-      },
-      success: () => {
-        console.log("skipped song");
+    axios({
+      method: 'post',
+      url: 'https://api.spotify.com/v1/me/player/next',
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
-    });
+    }).then(() => {
+      console.log("skipped song");
+    })
   }
 
   // Skips to the previous song.
   const previousSong = () => {
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player/previous",
-      type: "POST",
-      beforeSend: xhr => {
-        xhr.setRequestHeader("Authorization", `Bearer ${token}`);
-      },
-      success: () => {
-        console.log("replayedSong");
+    axios({
+      method: 'post',
+      url: 'https://api.spotify.com/v1/me/player/previous',
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
-    });
+    }).then(() => {
+      console.log("replayed song");
+    })
   }
    
   const renderSwatches = () => {

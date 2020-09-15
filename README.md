@@ -9,6 +9,4 @@ Once logged in with your Spotify account, you can view which song you are curren
 
 ### TODO:
 - improve README.md documentation (add screenshots, more detail)
-- improve stylings on each component
-- add avatars to chat?
 - what to do if multiple users with the same name in the same room

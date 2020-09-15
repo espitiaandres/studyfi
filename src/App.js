@@ -7,9 +7,7 @@
 //
 
 import React, { Component } from "react";
-import * as $ from "jquery";
-// install axios?
-// install node-sass to optimize mobile display
+import axios from 'axios';
 import hash from './utils/hash';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from './components/LandingPage/LandingPage';
@@ -39,23 +37,22 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Set token
     let _token = hash.access_token;
 
     if (_token) {
-      // Set token
       this.setState({
         token: _token
       });
       this.getCurrentlyPlaying(_token);
     }
 
-    // set interval for polling every 5 seconds
-    this.interval = setInterval(() => this.tick(), 1000);
+    this.interval = setInterval(() => {
+      this.tick();
+      console.log(_token);
+    }, 1000);
   }
 
   componentWillUnmount() {
-    // clear the interval to save resources
     clearInterval(this.interval);
   }
 
@@ -66,65 +63,33 @@ class App extends Component {
   }
 
   getCurrentlyPlaying(token) {
-    // Make a call using the token
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: xhr => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: data => {
-        // Checks if the data is not empty
-        if(!data) {
-          this.setState({
-            no_data: true,
-          });
-          return;
-        }
-
-        this.setState({
-          item: data.item,
-          is_playing: data.is_playing,
-          progress_ms: data.progress_ms,
-          no_data: false 
-        });
+    axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/player',
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
+    }).then(({ data }) => {
+      if(!data) {
+        this.setState({
+          no_data: true,
+        });
+        return;
+      }
+
+      this.setState({
+        item: data.item,
+        is_playing: data.is_playing,
+        progress_ms: data.progress_ms,
+        no_data: false 
+      });
     });
-
-
-
-    // axios.get('https://api.spotify.com/v1/me/player', {
-    //   params: {
-    //     Authorization: "Bearer " + token
-    //   }
-    // })
-    // .then((data) => {
-    //   // Checks if the data is not empty
-    //   if(!data) {
-    //     this.setState({
-    //       no_data: true,
-    //     });
-    //     return;
-    //   }
-    //   this.setState({
-    //     item: data.item,
-    //     is_playing: data.is_playing,
-    //     progress_ms: data.progress_ms,
-    //     no_data: false /* We need to "reset" the boolean, in case the
-    //                       user does not give F5 and has opened his Spotify. */
-    //   });
-    // })
   }
 
 
   // BQCpRL-_b1aZ7j4jPYqamOV_U4FTOpHHZ9FYRcVFJccMl--IXAqASzMFCRuCf8Z2I6ybHOZv2T76M_e6_ttiOU-MIa9_B7-u-gWjSjTQMcJyyQ4YPnzBZPPKrpi-K0UQk53munoJnuoaReZXj6J1IlQ
 
 
-//   <Player
-//   item={this.state.item}
-//   is_playing={this.state.is_playing}
-//   progress_ms={this.state.progress_ms}
-// />
 
   render() {
     return (

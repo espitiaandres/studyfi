@@ -19,6 +19,8 @@ const Message = ({ message: { user, text }, name }) => {
         isSentByCurrentUser = true;
     }
 
+    console.log(user, text);
+
     return (
         isSentByCurrentUser ? (
             <div className="messageContainer justifyEnd">

@@ -13,6 +13,7 @@ import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 import Userslist from '../Userslist/Userslist';
+import Join from '../Join/Join';
 import './Chat.css';
 
 let socket;
@@ -23,14 +24,21 @@ const Chat = ({ location }) => {
     const [users, setUsers] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [duplicate, setDuplicate] = useState(false);
     const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
 
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
-        socket = io(ENDPOINT);
+        socket = io(ENDPOINT, {transports: ['websocket']});
         setName(name);
         setRoom(room);
-        socket.emit('join', { name, room }, () => {});
+        socket.emit('join', { name, room }, () => {
+            console.log({name, room})
+        });
+
+        socket.on('reconnect_attempt', () => {
+            socket.io.opts.transports = ['websocket', 'polling'];
+        });
 
         return () => {
             socket.emit('disconnect');
@@ -39,14 +47,30 @@ const Chat = ({ location }) => {
     }, [ENDPOINT, location.search]);
 
     useEffect(() => {
-        socket.on('message', message => {
-          setMessages(messages => [ ...messages, message ]);
-        });
+        // socket.on('message', (message) => {
+        //   setMessages(messages => [ ...messages, message ]);
+        // });
         
         socket.on("roomData", ({ users }) => {
           setUsers(users);
         });
-    }, []);
+    });
+
+    useEffect(() => {
+        socket.on('message', (message) => {
+          setMessages(messages => [ ...messages, message ]);
+        });
+        
+        // socket.on("roomData", ({ users }) => {
+        //   setUsers(users);
+        // });
+    }, [name]);
+
+    useEffect(() => {
+        socket.on('duplicate', (duplicate) => {
+            setDuplicate(duplicate.duplicate);
+        })
+    });
 
     const sendMessage = (event) => {
         event.preventDefault();
@@ -54,18 +78,23 @@ const Chat = ({ location }) => {
             socket.emit('sendMessage', message, () => setMessage(''));
         }
     }
-
     return (
-        <div className="outerContainer">
-            <div className="container">
-                <InfoBar room={room}/>
-                <Messages messages={messages} name={name}/>
-                <Input 
-                    message={message} setMessage={setMessage} sendMessage={sendMessage}
-                />
-            </div>
-        <Userslist users={users}/>
+        <div>
+            {duplicate ? 
+                <Join duplicate={duplicate}/> : 
+                
+                <div className="outerContainer">
+                    <div className="container">
+                        <InfoBar room={room}/>
+                        <Messages messages={messages} name={name}/>
+                        <Input 
+                            message={message} setMessage={setMessage} sendMessage={sendMessage}
+                        />
+                    </div>
+                <Userslist users={users}/>
+            </div>}
         </div>
+
     )
 }
 

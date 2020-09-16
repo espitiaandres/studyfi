@@ -48,7 +48,6 @@ class App extends Component {
 
     this.interval = setInterval(() => {
       this.tick();
-      console.log(_token);
     }, 1000);
   }
 
@@ -85,11 +84,6 @@ class App extends Component {
       });
     });
   }
-
-
-  // BQCpRL-_b1aZ7j4jPYqamOV_U4FTOpHHZ9FYRcVFJccMl--IXAqASzMFCRuCf8Z2I6ybHOZv2T76M_e6_ttiOU-MIa9_B7-u-gWjSjTQMcJyyQ4YPnzBZPPKrpi-K0UQk53munoJnuoaReZXj6J1IlQ
-
-
 
   render() {
     return (

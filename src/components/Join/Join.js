@@ -13,10 +13,7 @@ import './Join.css';
 const Join = (props) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    // if (props.duplicate === undefined) {
-    //     props.duplicate = false;
-    // }
-    // console.log(props.duplicate);
+    
     return (
         <div>
         { props.duplicate ? 

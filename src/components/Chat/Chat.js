@@ -47,10 +47,6 @@ const Chat = ({ location }) => {
     }, [ENDPOINT, location.search]);
 
     useEffect(() => {
-        // socket.on('message', (message) => {
-        //   setMessages(messages => [ ...messages, message ]);
-        // });
-        
         socket.on("roomData", ({ users }) => {
           setUsers(users);
         });
@@ -60,10 +56,6 @@ const Chat = ({ location }) => {
         socket.on('message', (message) => {
           setMessages(messages => [ ...messages, message ]);
         });
-        
-        // socket.on("roomData", ({ users }) => {
-        //   setUsers(users);
-        // });
     }, [name]);
 
     useEffect(() => {
@@ -81,8 +73,7 @@ const Chat = ({ location }) => {
     return (
         <div>
             {duplicate ? 
-                <Join duplicate={duplicate}/> : 
-                
+                <Join duplicate={duplicate}/> :                 
                 <div className="outerContainer">
                     <div className="container">
                         <InfoBar room={room}/>

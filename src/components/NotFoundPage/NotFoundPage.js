@@ -62,7 +62,7 @@ function NotFoundPage() {
                     onMouseEnter={onMouseEnter}
                 >
                     <div>
-                        <a href="http://localhost:3000">
+                        <a href="https://www.andres-espitia.com/studyfi/">
                             <img className="sketchy-spotify" src={sketchyFavicon} alt="spotify-logo"/>
                         </a>
                     </div>

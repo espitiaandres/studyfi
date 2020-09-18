@@ -16,8 +16,9 @@ import TypistLoop from 'react-typist-loop';
 import spotifyLogo from '../../images/spotify-logo-cropped.png';
 import './LandingPage.css';
 
+library.add(fab);
+
 function LandingPage() {
-    library.add(fab);
     return (
         <div className="main-wrapper-landing-page">
             <div className="app-title">Studyfi</div>

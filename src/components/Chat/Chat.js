@@ -33,7 +33,10 @@ const Chat = ({ location }) => {
         setName(name);
         setRoom(room);
         socket.emit('join', { name, room }, () => {
-            console.log({name, room})
+            console.log({name, room});
+
+            // might not need this console.log() call;
+
         });
 
         socket.on('reconnect_attempt', () => {
@@ -50,6 +53,10 @@ const Chat = ({ location }) => {
         socket.on("roomData", ({ users }) => {
           setUsers(users);
         });
+
+        socket.on('duplicate', (duplicate) => {
+            setDuplicate(duplicate.duplicate);
+        })
     });
 
     useEffect(() => {
@@ -57,12 +64,6 @@ const Chat = ({ location }) => {
           setMessages(messages => [ ...messages, message ]);
         });
     }, [name]);
-
-    useEffect(() => {
-        socket.on('duplicate', (duplicate) => {
-            setDuplicate(duplicate.duplicate);
-        })
-    });
 
     const sendMessage = (event) => {
         event.preventDefault();
@@ -72,7 +73,8 @@ const Chat = ({ location }) => {
     }
     return (
         <div>
-            {duplicate ? 
+            {
+                duplicate ? 
                 <Join duplicate={duplicate}/> :                 
                 <div className="outerContainer">
                     <div className="container">
@@ -82,10 +84,10 @@ const Chat = ({ location }) => {
                             message={message} setMessage={setMessage} sendMessage={sendMessage}
                         />
                     </div>
-                <Userslist users={users}/>
-            </div>}
+                    <Userslist users={users}/>
+                </div>
+            }
         </div>
-
     )
 }
 

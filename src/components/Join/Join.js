@@ -6,48 +6,28 @@
 //  Copyright © 2020 Andres Espitia. All rights reserved.
 //
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import './Join.css';
+import JoinForm from '../JoinForm/JoinForm';
 
-const Join = (props) => {
-    const [name, setName] = useState('');
-    const [room, setRoom] = useState('');
+const Join = ({ duplicate }) => {
     
     return (
         <div>
-        { props.duplicate ? 
+        { duplicate ? 
             <div>
                 <div className="joinOuterContainer">
                     <div className="joinInnerContainer">
                         <p className="duplicatemessage">That username is already taken.</p> 
-                        <p className="duplicatemessage">Please use another one!</p> 
-                        <h1 className="heading">chat</h1>
-                        <div>
-                            <input placeholder="Name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} />
-                        </div>
-                        <div>
-                            <input placeholder="Room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} />
-                        </div>
-                        <Link onClick={event => (!name || !room) ?  event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
-                            <button className="button mt-20" type="submit">Sign In</button>
-                        </Link>
+                        <p className="duplicatemessage">Please use another one!</p>
+                        <JoinForm />
                     </div>
                 </div>
             </div>
             : 
             <div className="joinOuterContainer">
                 <div className="joinInnerContainer">
-                    <h1 className="heading">chat</h1>
-                    <div>
-                        <input placeholder="Name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} />
-                    </div>
-                    <div>
-                        <input placeholder="Room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} />
-                    </div>
-                    <Link onClick={event => (!name || !room) ?  event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
-                        <button className="button mt-20" type="submit">Sign In</button>
-                    </Link>
+                    <JoinForm />
                 </div>
             </div>
         }

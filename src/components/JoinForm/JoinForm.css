@@ -1,0 +1,46 @@
+
+.heading {
+    border-bottom: 4px groove white;
+    color: white;
+    padding-bottom: 10px;
+}
+  
+.duplicatemessage {
+    color: white;
+}
+  
+.button {
+    background: #1ED760;
+    border: none;
+    border-radius: 5px;
+    color: black !important;
+    display: inline-block;
+    padding: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    width: 300px;
+}
+  
+.button:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+button:focus {
+    outline: 0;
+  }
+  
+.mt-20 {
+    margin-top: 20px;
+}
+  
+@media (min-width: 320px) and (max-width: 480px) {
+    .joinOuterContainer {
+      height: 100%;
+    }
+  
+    .joinInnerContainer {
+      width: 90%;
+    }
+}
+  

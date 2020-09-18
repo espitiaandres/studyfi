@@ -12,17 +12,17 @@ import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
 import './Dashboard.css';
 
-function Dashboard(props) {
+function Dashboard({ item, is_playing, progress_ms }) {
     return (
         <div className="main-wrapper">
             <div className="dashboard-item">
                 <Pomodoro />
             </div>
             <div className="dashboard-item">
-                <Player 
-                    item={props.item}
-                    is_playing={props.is_playing}
-                    progress_ms={props.progress_ms}
+                <Player
+                    item={item}
+                    is_playing={is_playing}
+                    progress_ms={progress_ms}
                 />
             </div>
             <div className="dashboard-item">

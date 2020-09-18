@@ -20,9 +20,8 @@ import hash from '../../utils/hash';
 
 library.add(fas);
 
-const Player = (props) => {
+const Player = ({ item, is_playing, progress_ms }) => {
   const [colors, setColors] = useState([]);
-  // const token = "BQD4J62La0Wtvog9Xy22h96o1eCNgnao9J8dszuoTNcoJlZgRnvywx4UfxYL3xAgP1vhxnputuqzGOKwLDjcyIIRoG1j1s_7c6eIf2sI55CNH7sCZbsEySh9GeOo4HhBoJV0hfoDqlg4LsgJQgpRFp4";
   const token = hash.access_token
 
   // Skips to the next song.
@@ -79,7 +78,7 @@ const Player = (props) => {
     
   const getColors = (colorsadded) => setColors(() => ({ colors: [colors, ...colorsadded] }));
 
-  let songCurrentTime = props.progress_ms;
+  let songCurrentTime = progress_ms;
   let songDuration = 0;
   let releaseDateDMY = "0000-00-00";
   let releaseDateYear =  typeof releaseDateDMY === "string" ?  releaseDateDMY.split("-")[0] : "";
@@ -88,14 +87,14 @@ const Player = (props) => {
   let songCurrentTimeMinutesSeconds = "";
   let songDurationMinutesSeconds = "";
 
-  if (props.item) {
-    songDuration = props.item.duration_ms;
-    releaseDateDMY = props.item.album.release_date;
+  if (item) {
+    songDuration = item.duration_ms;
+    releaseDateDMY = item.album.release_date;
     releaseDateYear =  typeof releaseDateDMY === "string" ?  releaseDateDMY.split("-")[0] : "";
-    albumImageURL = props.item.album.images[0].url;
+    albumImageURL = item.album.images[0].url;
     songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
     songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
-    props.item.artists.map((artist) => {
+    item.artists.map((artist) => {
       return allArtists += `| ${artist.name} |`
     })
   }
@@ -132,7 +131,7 @@ const Player = (props) => {
               hideWhenDone: false,
               hideWhenDoneDelay: 1000,
               }}>
-                {props.item.name}
+                {item.name}
               </Typist>
             )}
           </TypistLoop>
@@ -143,7 +142,7 @@ const Player = (props) => {
         </div>
 
         <div className="now-playing__album">
-          {props.item.album.name} - {releaseDateYear}
+          {item.album.name} - {releaseDateYear}
         </div>
 
         <div className="now-playing__status">
@@ -152,7 +151,7 @@ const Player = (props) => {
               <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} />
             </button>
           </div>
-          {props.is_playing ? "Playing" : "Paused"}
+          {is_playing ? "Playing" : "Paused"}
           <div >
             <button className="skipbuttons" onClick={nextSong}>
               <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} />

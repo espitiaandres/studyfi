@@ -19,7 +19,7 @@ const InfoBar = ({ room }) => {
                 <h3>{room}</h3>
             </div>
             <div className="rightInnerContainer">
-                <a href="/#">
+                <a href="www.andres-espitia.com/studyfi/#">
                     <img src={closeIcon} alt="close" />
                 </a>
             </div>

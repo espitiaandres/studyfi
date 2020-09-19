@@ -32,9 +32,7 @@ const Player = ({ item, is_playing, progress_ms }) => {
       headers: {
         'Authorization': `Bearer ${token}`
       }
-    }).then(() => {
-      console.log("skipped song");
-    })
+    }).then(() => { console.log("skipped song") });
   }
 
   // Skips to the previous song.
@@ -45,9 +43,7 @@ const Player = ({ item, is_playing, progress_ms }) => {
       headers: {
         'Authorization': `Bearer ${token}`
       }
-    }).then(() => {
-      console.log("replayed song");
-    })
+    }).then(() => { console.log("replayed song") });
   }
    
   const renderSwatches = () => {

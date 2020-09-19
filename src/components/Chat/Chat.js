@@ -32,12 +32,7 @@ const Chat = ({ location }) => {
         socket = io(ENDPOINT, {transports: ['websocket']});
         setName(name);
         setRoom(room);
-        socket.emit('join', { name, room }, () => {
-            console.log({name, room});
-
-            // might not need this console.log() call;
-
-        });
+        socket.emit('join', { name, room }, () => {});
 
         socket.on('reconnect_attempt', () => {
             socket.io.opts.transports = ['websocket', 'polling'];

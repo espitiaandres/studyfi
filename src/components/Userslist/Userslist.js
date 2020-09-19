@@ -13,25 +13,28 @@ import './Userslist.css';
 const Userslist = ({ users }) => (
   <div className="userslist">
     {
-      users.length > 1
-        ? (
-          <div>
-            <p>Online:</p>
-            <div className="activeContainer">
-              <p>
-                {users.map(({name}) => (
+      users.length > 1 ? 
+      (
+        <div>
+          <p>Online:</p>
+          <div className="activeContainer">
+            <p>
+              {
+                users.map(( {name }) => (
                   <div key={name} className="activeItem">
                     {name}
                     <img alt="Online Icon" src={onlineIcon}/>
                   </div>
-                ))}
-              </p>
-            </div>
+                  )
+                )
+              }
+            </p>
           </div>
-        ) : (
-          <div>
-            <p>Looks like you're alone in this chat room...</p>
-          </div>
+        </div>
+      ) : (
+        <div>
+          <p>Looks like you're alone in this chat room...</p>
+        </div>
       )
     }
   </div>

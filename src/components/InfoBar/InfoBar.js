@@ -19,7 +19,8 @@ const InfoBar = ({ room }) => {
                 <h3>{room}</h3>
             </div>
             <div className="rightInnerContainer">
-                <a href="www.andres-espitia.com/studyfi/#">
+                {/* this is temporary -> maybe use redux to show dashboard when this is clicked? */}
+                <a href="https://www.andres-espitia.com/studyfi/#">
                     <img src={closeIcon} alt="close" />
                 </a>
             </div>

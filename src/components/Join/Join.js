@@ -14,7 +14,8 @@ const Join = ({ duplicate }) => {
     
     return (
         <div>
-        { duplicate ? 
+        { 
+            duplicate ? 
             <div>
                 <div className="joinOuterContainer">
                     <div className="joinInnerContainer">

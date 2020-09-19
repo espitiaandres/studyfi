@@ -16,10 +16,11 @@ const Messages = ({ messages, name }) => (
         {messages
             .filter((a, b, c) => c.indexOf(a) === b)
             .map((message, i) => 
-            <div key={i}>
-                <Message message={message} name={name}/>
-            </div>
-        )}
+                <div key={i}>
+                    <Message message={message} name={name}/>
+                </div>
+            )
+        }
     </ScrollToBottom>
 )
 

@@ -33,7 +33,6 @@ const Join = ({ duplicate }) => {
             </div>
         }
         </div>
-
     )
 }
 

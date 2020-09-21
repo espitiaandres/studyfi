@@ -26,7 +26,7 @@ function Dashboard({ item, is_playing, progress_ms }) {
                 />
             </div>
             <div className="dashboard-item">
-                <ChatApp />
+                <ChatApp item={item}/>
             </div>
         </div>
     )

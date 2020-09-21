@@ -18,17 +18,17 @@ import './Chat.css';
 
 let socket;
 
-const Chat = ({ location }) => {
+const Chat = (props) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [users, setUsers] = useState('');
+    const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [duplicate, setDuplicate] = useState(false);
     const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
 
     useEffect(() => {
-        const { name, room } = queryString.parse(location.search);
+        const { name, room } = queryString.parse(props.location.search);
         socket = io(ENDPOINT, {transports: ['websocket']});
         setName(name);
         setRoom(room);
@@ -42,11 +42,11 @@ const Chat = ({ location }) => {
             socket.emit('disconnect');
             socket.off();
         };
-    }, [ENDPOINT, location.search]);
+    }, [ENDPOINT, props.location.search]);
 
     useEffect(() => {
         socket.on("roomData", ({ users }) => {
-          setUsers(users);
+            setUsers(users);
         });
 
         socket.on('duplicate', (duplicate) => {
@@ -56,7 +56,7 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', (message) => {
-          setMessages(messages => [ ...messages, message ]);
+            setMessages(messages => [ ...messages, message ]);
         });
     }, [name]);
 
@@ -76,7 +76,7 @@ const Chat = ({ location }) => {
                         <InfoBar room={room}/>
                         <Messages messages={messages} name={name}/>
                         <Input 
-                            message={message} setMessage={setMessage} sendMessage={sendMessage}
+                            message={message} setMessage={setMessage} sendMessage={sendMessage} item={props.item}
                         />
                     </div>
                     <Userslist users={users}/>

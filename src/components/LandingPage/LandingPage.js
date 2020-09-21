@@ -26,11 +26,20 @@ function LandingPage() {
                 {[
                 'A place to study, listen to music, and chat with friends.',
                 ''
-                ].map(text => <Typist className="app-description" avgTypingDelay={60}  key={text} startDelay={0}>A place to study, listen to music, and chat with friends.</Typist>)}
+                ].map((text) => 
+                    <Typist 
+                    className="app-description" 
+                    avgTypingDelay={60}  
+                    key={text} 
+                    startDelay={0}
+                    >
+                        A place to study, listen to music, and chat with friends.
+                    </Typist>
+                )}
             </TypistLoop>
             <a 
                 className="login-button" 
-                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`} 
+                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
                 target=""
             >                
                 <FontAwesomeIcon icon={['fab', 'spotify']} size="10x"/>

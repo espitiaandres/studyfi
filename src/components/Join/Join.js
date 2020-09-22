@@ -10,8 +10,8 @@ import React from 'react';
 import './Join.css';
 import JoinForm from '../JoinForm/JoinForm';
 
-const Join = ({ duplicate }) => {
-    
+const Join = ({ duplicate, season }) => {
+    // console.log(season);
     return (
         <div>
         { 
@@ -21,14 +21,14 @@ const Join = ({ duplicate }) => {
                     <div className="joinInnerContainer">
                         <p className="duplicatemessage">That username is already taken.</p> 
                         <p className="duplicatemessage">Please use another one!</p>
-                        <JoinForm />
+                        <JoinForm season={season}/>
                     </div>
                 </div>
             </div>
             : 
             <div className="joinOuterContainer">
                 <div className="joinInnerContainer">
-                    <JoinForm />
+                    <JoinForm season={season}/>
                 </div>
             </div>
         }

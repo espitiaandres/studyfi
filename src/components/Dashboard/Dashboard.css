@@ -12,3 +12,9 @@
 .dashboard-item {
     width: 480px;
 }
+
+.seasonSelect {
+    background-color: #F37D0F;
+    border: 4px solid #F37D0F;
+    margin-bottom: 2px;
+}

@@ -20,7 +20,9 @@ import hash from '../../utils/hash';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms }) => {
+const Player = ({ item, isPlaying, progressms, season }) => {
+  let seasonStyling = season ? "seasonStyling" : "";
+  let seasonStylingAlt = season ? "seasonStylingAlt" : "";
   const [colors, setColors] = useState([]);
   const token = hash.access_token
 
@@ -141,13 +143,13 @@ const Player = ({ item, isPlaying, progressms }) => {
 
         <div className="now-playing__status">
           <div >
-            <button className="skipbuttons" onClick={previousSong}>
+            <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
               <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} />
             </button>
           </div>
           {isPlaying ? "Playing" : "Paused"}
           <div >
-            <button className="skipbuttons" onClick={nextSong}>
+            <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
               <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} />
             </button>
           </div>
@@ -156,7 +158,7 @@ const Player = ({ item, isPlaying, progressms }) => {
         <div className="duration-menu">
           <p className="duration-menu__times">{songCurrentTimeMinutesSeconds}</p>
           <div className="progress">
-            <div className="progress__bar" style={progressBarStyles} />
+            <div className={`progress__bar ${seasonStylingAlt}`} style={progressBarStyles} />
           </div>    
           <p className="duration-menu__times">{songDurationMinutesSeconds}</p>
         </div>

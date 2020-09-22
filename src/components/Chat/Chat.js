@@ -18,7 +18,10 @@ import './Chat.css';
 
 let socket;
 
-const Chat = ({ location, item }) => {
+const Chat = ({ location, item, season }) => {
+    console.log(location, item, season);
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [users, setUsers] = useState([]);
@@ -70,7 +73,7 @@ const Chat = ({ location, item }) => {
         <div>
             {
                 duplicate ? 
-                <Join duplicate={duplicate}/> :                 
+                <Join duplicate={duplicate} season={season}/> :                 
                 <div className="outerContainer">
                     <div className="container">
                         <InfoBar room={room}/>

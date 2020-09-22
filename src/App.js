@@ -75,7 +75,7 @@ const App = () =>  {
 
   return (
     <div>
-      <body className="App">
+      <div className="App">
         {!token && <div><LandingPage /></div>}
         {token && data && (
           <Dashboard
@@ -85,7 +85,7 @@ const App = () =>  {
           />
         )}
         {!data && <NotFoundPage />}  
-      </body>
+      </div>
     </div>
   );
 }

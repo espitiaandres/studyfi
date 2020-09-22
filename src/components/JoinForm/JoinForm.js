@@ -10,13 +10,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './JoinForm.css';
 
-function JoinForm() {    
+const JoinForm = ({ season }) => {    
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     const onJoinFormSubmit = (e) => {
         e.preventDefault();
     }
+
+    // console.log(season);
 
     return (
         <form onSubmit={onJoinFormSubmit}>
@@ -31,7 +36,7 @@ function JoinForm() {
                 onClick={e => (!name || !room) ?  e.preventDefault() : null} 
                 to={`/chat?name=${name}&room=${room}`}
             >
-                <button className="button mt-20" type="submit">Sign In</button>
+                <button className={`button mt-20 ${seasonStyling}`} type="submit">Sign In</button>
             </Link>
         </form>
     )

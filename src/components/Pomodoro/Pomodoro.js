@@ -24,11 +24,14 @@ let timerRunning = false;
 let cooldownTimerRunning = false;
 let interval;
 let cooldownInterval;
-let pomodoroText = "RestRestRestRestRest";
+let pomodoroText = "press on the play button below to begin";
 
 library.add(fas);
 
-function Pomodoro() {    
+const Pomodoro = ({ season }) => {
+    
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
     const [playButton, setPlayButton] = useState(false);
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
@@ -40,7 +43,7 @@ function Pomodoro() {
             return;
         }
         remainingTime = setTimeSeconds;
-        pomodoroText = "WorkWorkWorkWorkWork";
+        pomodoroText = season ? "spookspookspookspookspook" : "WorkWorkWorkWorkWork";
         remainingTime++;
         updatedFormattedTimeString(remainingTime);
         timerRunning = true;
@@ -61,7 +64,7 @@ function Pomodoro() {
     // countdownCooldown changes the text to Work and is responsible for the resting countdown
     const countdownCooldown = () => {
         remainingTime = cooldownSetTimeSeconds;
-        pomodoroText = "RestRestRestRestRest";
+        pomodoroText = season ? "2sp00ky4me" : "RestRestRestRestRest";
         remainingTime++;
         cooldownInterval = setInterval(() => {
             if (remainingTime > 0) {
@@ -82,7 +85,7 @@ function Pomodoro() {
         if (restartButton) {
             return;
         }
-        pomodoroText = "RestRestRestRestRest";
+        pomodoroText = season ? "2sp00ky4me" : "RestRestRestRestRest";
         clearInterval(interval);
         remainingTime = setTimeSeconds + 1;
         timerRunning = false;
@@ -107,23 +110,33 @@ function Pomodoro() {
         <div>
             <div className="pomodoroHeader">
                 <div className="pomodoroHeaderTitle">
-                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
-                    <h1 className="pomodoroHeaderTitleText">pomodoro</h1>
-                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
+                    <div className="iconsSpacing">
+                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                    </div>
+                    <div className="iconsSpacing">
+                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                    </div>
+                    <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
+                    <div className="iconsSpacing">
+                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                    </div>
+                    <div className="iconsSpacing">
+                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                    </div>
                 </div>
                 <p>{pomodoroText}</p>
             </div>
             <div className="pomodoroPanel">
-                <button className="controlButtons-pizzaslice" onClick={countdown} disabled={pizzaButton}>
-                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
+                <button className={`controlButtons-pizzaslice ${seasonStyling}`} onClick={countdown} disabled={pizzaButton}>
+                    <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
                 </button>
-                <button className="controlButtons" onClick={clearCountdown} disabled={restartButton}>
+                <button className={`controlButtons ${seasonStylingAlt}`} onClick={clearCountdown} disabled={restartButton}>
                     <FontAwesomeIcon icon={["fas", "undo"]} />
                 </button>
-                <button className="controlButtons" onClick={countdown} disabled={playButton}>
+                <button className={`controlButtons ${seasonStylingAlt}`} onClick={countdown} disabled={playButton}>
                     { !timerRunning ? <FontAwesomeIcon icon={["fas", "play"]} /> : <FontAwesomeIcon icon={["fas", "pause"]} /> }
                 </button>
-                <p className="countdown">
+                <p className={`countdown ${seasonStyling}`}>
                     {minutesRemaining}:{secondsRemaining}
                 </p>
             </div>

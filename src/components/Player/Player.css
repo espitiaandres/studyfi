@@ -59,9 +59,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 360px;
+    height: 340px;
     justify-content: center;
-    width: 360px;
+    width: 340px;
 }
 
 .now-playing__img img {
@@ -78,7 +78,7 @@
 
 .progress {
     border: 1px solid #eee;
-    height: 10px;
+    height: 5px;
     border-radius: 3px;
     overflow: hidden;
     width: 300px;
@@ -99,4 +99,14 @@
 
 .duration-menu__times {
     padding: 0px 20px;
+}
+
+.seasonStyling {
+    background-color: #F37D0F;
+    border-color: #F37D0F;
+}
+
+.seasonStylingAlt {
+    background-color: #FFE01B;
+    border-color: #FFE01B;
 }

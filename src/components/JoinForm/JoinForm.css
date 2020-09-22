@@ -20,6 +20,12 @@
     text-decoration: none;
     width: 300px;
 }
+
+.seasonStyling {
+    color: #F37D0F;
+}
+
+    
   
 .button:hover {
     cursor: pointer;

@@ -18,7 +18,7 @@ import './Chat.css';
 
 let socket;
 
-const Chat = (props) => {
+const Chat = ({ location, item }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [users, setUsers] = useState([]);
@@ -28,7 +28,7 @@ const Chat = (props) => {
     const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
 
     useEffect(() => {
-        const { name, room } = queryString.parse(props.location.search);
+        const { name, room } = queryString.parse(location.search);
         socket = io(ENDPOINT, {transports: ['websocket']});
         setName(name);
         setRoom(room);
@@ -42,7 +42,7 @@ const Chat = (props) => {
             socket.emit('disconnect');
             socket.off();
         };
-    }, [ENDPOINT, props.location.search]);
+    }, [ENDPOINT, location.search]);
 
     useEffect(() => {
         socket.on("roomData", ({ users }) => {
@@ -76,7 +76,7 @@ const Chat = (props) => {
                         <InfoBar room={room}/>
                         <Messages messages={messages} name={name}/>
                         <Input 
-                            message={message} setMessage={setMessage} sendMessage={sendMessage} item={props.item}
+                            message={message} setMessage={setMessage} sendMessage={sendMessage} item={item}
                         />
                     </div>
                     <Userslist users={users}/>

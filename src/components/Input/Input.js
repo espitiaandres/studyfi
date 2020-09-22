@@ -10,8 +10,6 @@ import React from 'react';
 import './Input.css';
 
 const Input = ({ message, setMessage, sendMessage, item }) => {
-    console.log(item);
-
     const shareSong = (event) => {
         let songDescription = `I'm listening to: ${item.name} `;
         let allArtists = "";
@@ -22,7 +20,6 @@ const Input = ({ message, setMessage, sendMessage, item }) => {
 
         allArtists = allArtists.substring(0, allArtists.length - 1);
         songDescription += allArtists;
-        console.log(songDescription);
         setMessage(songDescription);
         sendMessage(event);
     }

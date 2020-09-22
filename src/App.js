@@ -29,7 +29,7 @@ class App extends Component {
       },
       is_playing: "Paused",
       progress_ms: 0,
-      no_data: false,
+      data: true,
     };
 
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
@@ -37,13 +37,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let _token = hash.access_token;
+    let token = hash.access_token;
 
-    if (_token) {
+    if (token) {
       this.setState({
-        token: _token
+        token
       });
-      this.getCurrentlyPlaying(_token);
+      this.getCurrentlyPlaying(token);
     }
 
     this.interval = setInterval(() => {
@@ -71,7 +71,7 @@ class App extends Component {
     }).then(({ data }) => {
       if(!data) {
         this.setState({
-          no_data: true,
+          data: false,
         });
         return;
       }
@@ -80,7 +80,7 @@ class App extends Component {
         item: data.item,
         is_playing: data.is_playing,
         progress_ms: data.progress_ms,
-        no_data: false 
+        data: true
       });
     });
   }
@@ -90,14 +90,14 @@ class App extends Component {
       <div>
         <body className="App">
           {!this.state.token && <div><LandingPage /></div>}
-          {this.state.token && !this.state.no_data && (
+          {this.state.token && this.state.data && (
             <Dashboard
               item={this.state.item}
               is_playing={this.state.is_playing}
               progress_ms={this.state.progress_ms}
             />
           )}
-          {this.state.no_data && <NotFoundPage />}  
+          {!this.state.data && <NotFoundPage />}  
         </body>
       </div>
     );

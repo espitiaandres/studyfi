@@ -15,7 +15,6 @@ const ChatApp = (props) => {
     return (
         <Router basename="/studyfi">
             <Route path="/" exact component={Join} />
-            {/*<Route path="/chat" exact component={Chat} />*/}
             <Route path="/chat" render={(nativeProps) => (
                 <Chat {...nativeProps} {...props}/>
             )}/>

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Andres Espitia. All rights reserved.
 //
 
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import hash from './utils/hash';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -14,54 +14,46 @@ import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      item: {
-        album: {
-          images: [{ url: "" }]
-        },
-        name: "",
-        artists: [{ name: "" }],
-        duration_ms: 0
-      },
-      is_playing: "Paused",
-      progress_ms: 0,
-      data: true,
-    };
+const App = () =>  {
+  let interval;
+  const itemDefault = {
+    album: { 
+      images: [{ url: "" }]
+    },
+    name: "",
+    artists: [{ name: "" }],
+    duration_ms: 0
+  };
+  const [token, setToken] = useState(null);
+  const [item, setItem] = useState(itemDefault);
+  const [isPlaying, setIsPlaying] = useState("Paused");
+  const [progressms, setProgressms] = useState(0)
+  const [data, setData] =  useState(true);
 
-    this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
-    this.tick = this.tick.bind(this);
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     let token = hash.access_token;
 
     if (token) {
-      this.setState({
-        token
-      });
-      this.getCurrentlyPlaying(token);
+      setToken(token);
+      getCurrentlyPlaying(token);
     }
 
-    this.interval = setInterval(() => {
-      this.tick();
+    interval = setInterval(() => {
+      tick(token);
     }, 1000);
-  }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+    return () => {
+      clearInterval(interval);
+    }
+  }, [])
 
-  tick() {
-    if(this.state.token) {
-      this.getCurrentlyPlaying(this.state.token);
+  const tick = (token) => {
+    if(token) {
+      getCurrentlyPlaying(token);
     }
   }
 
-  getCurrentlyPlaying(token) {
+  const getCurrentlyPlaying = (token) => {
     axios({
       method: 'get',
       url: 'https://api.spotify.com/v1/me/player',
@@ -70,38 +62,32 @@ class App extends Component {
       }
     }).then(({ data }) => {
       if(!data) {
-        this.setState({
-          data: false,
-        });
+        setData(data);
         return;
       }
 
-      this.setState({
-        item: data.item,
-        is_playing: data.is_playing,
-        progress_ms: data.progress_ms,
-        data: true
-      });
+      setItem(data.item);
+      setIsPlaying(data.is_playing);
+      setProgressms(data.progress_ms);
+      setData(true);
     });
   }
 
-  render() {
-    return (
-      <div>
-        <body className="App">
-          {!this.state.token && <div><LandingPage /></div>}
-          {this.state.token && this.state.data && (
-            <Dashboard
-              item={this.state.item}
-              is_playing={this.state.is_playing}
-              progress_ms={this.state.progress_ms}
-            />
-          )}
-          {!this.state.data && <NotFoundPage />}  
-        </body>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <body className="App">
+        {!token && <div><LandingPage /></div>}
+        {token && data && (
+          <Dashboard
+            item={item}
+            isPlaying={isPlaying}
+            progressms={progressms}
+          />
+        )}
+        {!data && <NotFoundPage />}  
+      </body>
+    </div>
+  );
 }
 
 export default App;

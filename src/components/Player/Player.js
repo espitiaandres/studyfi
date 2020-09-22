@@ -6,7 +6,7 @@
 //  Copyright © 2020 Andres Espitia. All rights reserved.
 //
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import { ColorExtractor } from 'react-color-extractor';
 import axios from 'axios';
@@ -20,11 +20,10 @@ import hash from '../../utils/hash';
 
 library.add(fas);
 
-const Player = ({ item, is_playing, progress_ms }) => {
+const Player = ({ item, isPlaying, progressms }) => {
   const [colors, setColors] = useState([]);
   const token = hash.access_token
 
-  // Skips to the next song.
   const nextSong = () => {
     axios({
       method: 'post',
@@ -35,7 +34,6 @@ const Player = ({ item, is_playing, progress_ms }) => {
     }).then(() => { console.log("skipped song") });
   }
 
-  // Skips to the previous song.
   const previousSong = () => {
     axios({
       method: 'post',
@@ -74,7 +72,7 @@ const Player = ({ item, is_playing, progress_ms }) => {
     
   const getColors = (colorsadded) => setColors(() => ({ colors: [colors, ...colorsadded] }));
 
-  let songCurrentTime = progress_ms;
+  let songCurrentTime = progressms;
   let songDuration = 0;
   let releaseDateDMY = "0000-00-00";
   let releaseDateYear =  typeof releaseDateDMY === "string" ?  releaseDateDMY.split("-")[0] : "";
@@ -147,7 +145,7 @@ const Player = ({ item, is_playing, progress_ms }) => {
               <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} />
             </button>
           </div>
-          {is_playing ? "Playing" : "Paused"}
+          {isPlaying ? "Playing" : "Paused"}
           <div >
             <button className="skipbuttons" onClick={nextSong}>
               <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} />

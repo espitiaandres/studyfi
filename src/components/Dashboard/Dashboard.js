@@ -12,7 +12,7 @@ import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
 import './Dashboard.css';
 
-function Dashboard({ item, is_playing, progress_ms }) {
+function Dashboard({ item, isPlaying, progressms }) {
     return (
         <div className="main-wrapper">
             <div className="dashboard-item">
@@ -21,8 +21,8 @@ function Dashboard({ item, is_playing, progress_ms }) {
             <div className="dashboard-item">
                 <Player
                     item={item}
-                    is_playing={is_playing}
-                    progress_ms={progress_ms}
+                    isPlaying={isPlaying}
+                    progressms={progressms}
                 />
             </div>
             <div className="dashboard-item">

@@ -52,9 +52,11 @@ Source code: (Source code link)
 # Studyfi
 
 Created by Andres Espitia
+
 https://github.com/esepitiaandres
 
 Source code: https://github.com/espitiaandres/studyfi
+
 Live on: www.andres-espitia.com/studyfi
 
 ## Summary

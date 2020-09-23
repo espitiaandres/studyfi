@@ -11,9 +11,12 @@ import closeIcon from '../../icons/closeIcon.png';
 import onlineIcon from '../../icons/onlineIcon.png';
 import './InfoBar.css';
 
-const InfoBar = ({ room }) => {    
+const InfoBar = ({ room, season }) => {
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     return (
-        <div className="infoBar">
+        <div className={`infoBar ${seasonStyling}`}>
             <div className="leftInnerContainer">
                 <img className="onlineIcon" src={onlineIcon} alt="online"/>
                 <h3>{room}</h3>

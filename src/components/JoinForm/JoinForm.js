@@ -21,11 +21,9 @@ const JoinForm = ({ season }) => {
         e.preventDefault();
     }
 
-    // console.log(season);
-
     return (
         <form onSubmit={onJoinFormSubmit}>
-            <h1 className="heading">chat</h1>
+            <h1 className={`heading ${seasonStylingAlt}Header`}>chat</h1>
             <div>
                 <input placeholder="Name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} />
             </div>

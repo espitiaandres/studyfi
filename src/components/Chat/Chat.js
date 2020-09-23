@@ -19,9 +19,9 @@ import './Chat.css';
 let socket;
 
 const Chat = ({ location, item, season }) => {
-    console.log(location, item, season);
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [users, setUsers] = useState([]);
@@ -73,13 +73,13 @@ const Chat = ({ location, item, season }) => {
         <div>
             {
                 duplicate ? 
-                <Join duplicate={duplicate} season={season}/> :                 
+                <Join duplicate={duplicate} season={season} /> :                 
                 <div className="outerContainer">
                     <div className="container">
-                        <InfoBar room={room}/>
-                        <Messages messages={messages} name={name}/>
+                        <InfoBar room={room} season={season}/>
+                        <Messages messages={messages} name={name} season={season}/>
                         <Input 
-                            message={message} setMessage={setMessage} sendMessage={sendMessage} item={item}
+                            message={message} setMessage={setMessage} sendMessage={sendMessage} item={item} season={season}
                         />
                     </div>
                     <Userslist users={users}/>

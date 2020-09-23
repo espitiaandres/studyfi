@@ -12,9 +12,9 @@
 
 .countdown {
     background-color: #1ED760;
-    /* color: black; */
+    color: black;
     margin-left: 2px;
-    padding: 0.5px 2px 3.5px 2px;
+    padding: 2px 2px 4px 2px;
 }
 
 .pomodoroPanel {
@@ -66,5 +66,17 @@
 .seasonStylingAlt {
     background-color: #FFE01B;
     border-color: #FFE01B;
+}
+
+.seasonStylingIcons {
+    color: #F37D0F;
+}
+
+.seasonStylingAltIcons {
+    color: #FFE01B;
+}
+
+.controlButtonsColouring {
+    color: black;
 }
 

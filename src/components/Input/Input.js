@@ -9,7 +9,10 @@
 import React from 'react';
 import './Input.css';
 
-const Input = ({ message, setMessage, sendMessage, item }) => {
+const Input = ({ message, setMessage, sendMessage, item, season }) => {
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     const shareSong = (event) => {
         let songDescription = `I'm listening to: ${item.name} `;
         let allArtists = "";
@@ -34,8 +37,8 @@ const Input = ({ message, setMessage, sendMessage, item }) => {
             onChange={(event) => setMessage(event.target.value)}
             onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
         />
-        <button className="sendButton" onClick={(event) => sendMessage(event)}>Send</button>
-        <button className="sendButton" onClick={(event) => shareSong(event)}>Share song!</button>
+        <button className={`sendButton ${seasonStyling}`} onClick={(event) => sendMessage(event)}>Send</button>
+        <button className={`sendButton ${seasonStyling}`} onClick={(event) => shareSong(event)}>Share song!</button>
     </form>
     )
 }

@@ -144,13 +144,13 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         <div className="now-playing__status">
           <div >
             <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
-              <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} />
+              <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
             </button>
           </div>
           {isPlaying ? "Playing" : "Paused"}
           <div >
             <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
-              <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} />
+              <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
             </button>
           </div>
         </div>
@@ -158,7 +158,7 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         <div className="duration-menu">
           <p className="duration-menu__times">{songCurrentTimeMinutesSeconds}</p>
           <div className="progress">
-            <div className={`progress__bar ${seasonStylingAlt}`} style={progressBarStyles} />
+            <div className={`progress__bar ${seasonStylingAlt} `} style={progressBarStyles} />
           </div>    
           <p className="duration-menu__times">{songDurationMinutesSeconds}</p>
         </div>

@@ -11,7 +11,6 @@ import './Join.css';
 import JoinForm from '../JoinForm/JoinForm';
 
 const Join = ({ duplicate, season }) => {
-    // console.log(season);
     return (
         <div>
         { 

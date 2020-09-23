@@ -59,10 +59,18 @@
   color: #353535;
 }
 
-.backgroundBlue {
+.backgroundMain {
   background: #1ED760;
 }
 
 .backgroundLight {
   background: #F3F3F3;
+}
+
+.seasonStyling {
+  background: #F37D0F;
+}
+
+.seasonStylingAlt {
+  background: #FFE01B;
 }

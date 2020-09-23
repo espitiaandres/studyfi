@@ -49,13 +49,13 @@ Source code: (Source code link)
 
 
 
-# MukosList, An iOS Shopping List App with SwiftUI
+# Studyfi
 
-Created by Mayuko Inoue
-https://github.com/hellomayuko
-https://youtube.com/hellomayuko
+Created by Andres Espitia
+https://github.com/esepitiaandres
 
-Source code: https://github.com/hellomayuko/MukosList
+Source code: https://github.com/espitiaandres/studyfi
+Live on: www.andres-espitia.com/studyfi
 
 ## Summary
 
@@ -66,9 +66,38 @@ During CWF Spring 2020, I decided to make a Shopping List app. I wasn't particul
 | ![1](png)                                      | ![3](png)                             |
 | ![2](png)                                      | ![4](png)                             |
 
+
+
+
+
+
+I decided to make a full stack web app using node.js and react.js to help me when studying. I've noticed that most apps that I use when studying are on different platforms (ex: Spotify, Messenger, my iPhone's stopwatch), and that constant switching between platforms and devices would distract me. I decided to make my own web app which would contain all these services in one place, and also to learn more about react.js and node.js.
+
+
+
+
+
+
 ## Inspiration
 
 There weren't any existing Shopping List apps I was fond of. I don't need recipes, and I also want to be able to input custom foods (aka foods that most apps wouldn't know, aka ethnic foods).
+
+
+
+
+
+
+For CWF Fall 2020, I decided to make an app that could help me when I study when on a study term in University. I've noticed that when I'm studying or working on assignments, I usually need 3 things:
+
+- Spotify (or YouTube, any music playing software)
+- Facebook Messenger
+- and a Stopwatch (to help me keep track of time)
+
+I didn't find any existing apps that had that I liked, and I also wanted to learn more about full stack web development.
+
+
+
+
 
 ## Challenges
 

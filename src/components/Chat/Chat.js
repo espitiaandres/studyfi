@@ -7,6 +7,7 @@
 //
 
 import React, { useState, useEffect } from 'react';
+import moment from 'moment-timezone';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import InfoBar from '../InfoBar/InfoBar';
@@ -24,6 +25,7 @@ const Chat = ({ location, item, season }) => {
 
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [tz, setTZ] = useState('');
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
@@ -31,11 +33,12 @@ const Chat = ({ location, item, season }) => {
     const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
 
     useEffect(() => {
-        const { name, room } = queryString.parse(location.search);
+        const { name, room, tz } = queryString.parse(location.search);
         socket = io(ENDPOINT, {transports: ['websocket']});
         setName(name);
         setRoom(room);
-        socket.emit('join', { name, room }, () => {});
+        setTZ(tz);
+        socket.emit('join', { name, room, tz }, () => {});
 
         socket.on('reconnect_attempt', () => {
             socket.io.opts.transports = ['websocket', 'polling'];
@@ -59,6 +62,9 @@ const Chat = ({ location, item, season }) => {
 
     useEffect(() => {
         socket.on('message', (message) => {
+            let tzpass = tz;
+            tzpass = tzpass.includes("minus") ? tzpass.replace("minus", "+") : tzpass.replace("plus", "-");
+            message.currentTime = moment().tz(`Etc/${tzpass}`).format("MMM DD h:mm a");
             setMessages(messages => [ ...messages, message ]);
         });
     }, [name]);
@@ -69,6 +75,7 @@ const Chat = ({ location, item, season }) => {
             socket.emit('sendMessage', message, () => setMessage(''));
         }
     }
+    
     return (
         <div>
             {

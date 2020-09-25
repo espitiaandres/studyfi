@@ -14,7 +14,6 @@ import './JoinForm.css';
 const JoinForm = ({ season }) => {    
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [city, setCity] = useState('');
     const [tz, setTZ] = useState('');
 
     let seasonStyling = season ? "seasonStyling" : "";
@@ -27,13 +26,13 @@ const JoinForm = ({ season }) => {
     let timezones = [];
 
     for (let i = 12; i >= 1; i--) {
-        timezones.push("GMT+" + i.toString());
+        timezones.push("GMTplus" + i.toString());
     }
 
     timezones.push("GMT");
 
     for (let i = 1; i <= 11; i++) {
-        timezones.push("GMT-" + i.toString());
+        timezones.push("GMTminus" + i.toString());
     }
 
     return (
@@ -46,16 +45,19 @@ const JoinForm = ({ season }) => {
                 <input placeholder="room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} />
             </div>
             <div>
-                <input placeholder="city name" className="joinInput mt-20" type="text" onChange={(event) => setCity(event.target.value)} />
-            </div>
-            <div>
-                <select onChange={(event) => setTZ(event.target.value)}>
-                    {timezones.map(tz => <option>{tz}</option>)}
+                <select className="joinInput mt-20" defaultValue={'default'} onChange={(event) => setTZ(event.target.value)}>
+                    <option value='default'>choose your timezone</option>
+                    {timezones.map(
+                        (tzs) => <option value={tzs}>
+                                    {tzs.includes("plus") ? tzs.replace("plus", "+") : tzs.replace("minus", "-")}
+                                </option>
+                        )
+                    }
                 </select>
             </div>
             <Link 
-                onClick={e => (!name || !room || !city || !tz) ?  e.preventDefault() : null} 
-                to={`/chat?name=${name}&room=${room}`}
+                onClick={e => (!name || !room || !tz) ?  e.preventDefault() : null} 
+                to={`/chat?name=${name}&room=${room}&tz=${tz}`}
             >
                 <button className={`button mt-20 ${seasonStyling}`} type="submit">Sign In</button>
             </Link>

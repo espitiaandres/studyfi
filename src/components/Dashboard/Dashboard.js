@@ -17,7 +17,6 @@ function Dashboard({ item, isPlaying, progressms }) {
 
     return (
         <div>
-            
             <div className="main-wrapper">
                 <div className="dashboard-item">
                     <Pomodoro 

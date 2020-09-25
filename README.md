@@ -57,7 +57,7 @@ https://github.com/esepitiaandres
 
 Source code: https://github.com/espitiaandres/studyfi
 
-Live on: www.andres-espitia.com/studyfi
+Live on: https://www.andres-espitia.com/studyfi
 
 ## Summary
 

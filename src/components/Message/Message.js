@@ -10,10 +10,11 @@ import React from 'react';
 import ReactEmoji from 'react-emoji';
 import './Message.css';
 
-const Message = ({ message: { user, text }, name, season }) => {
+const Message = ({ message: { user, text, currentTime }, name, season }) => {
     let isSentByCurrentUser = false;
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+    // let currentTime = moment().format("MMM DD h:mm a");
 
     const trimmedName = name.trim().toLowerCase();
 
@@ -23,19 +24,26 @@ const Message = ({ message: { user, text }, name, season }) => {
 
     return (
         isSentByCurrentUser ? (
-            <div className="messageContainer justifyEnd">
-                <p className="sentText pr-10">{trimmedName}</p>
-                <div className={`messageBox backgroundMain ${seasonStyling}`}>
-                    <p className={`messageText colorWhite `}>{ReactEmoji.emojify(text)}</p>
+            <div>
+                <p className="timestamp">{currentTime}</p>
+                <div className="messageContainer justifyEnd">
+                    <p className="sentText pr-10">{trimmedName}</p>
+                    <div className={`messageBox backgroundMain ${seasonStyling}`}>
+                        <p className={`messageText colorWhite `}>{ReactEmoji.emojify(text)}</p>
+                    </div>
                 </div>
             </div>
         ) : (
-            <div className="messageContainer justifyStart">
-                <div className={`messageBox backgroundLight ${seasonStylingAlt}`}>
-                    <p className={"messageText colorDark"}>{ReactEmoji.emojify(text)}</p>
+            <div>
+                <p className="timestampotherusers">{currentTime}</p>
+                <div className="messageContainer justifyStart">
+                    <div className={`messageBox backgroundLight ${seasonStylingAlt}`}>
+                        <p className={"messageText colorDark"}>{ReactEmoji.emojify(text)}</p>
+                    </div>
+                    <p className="sentText pl-10">{user}</p>
                 </div>
-                <p className="sentText pl-10">{user}</p>
             </div>
+
         )
     )
 }

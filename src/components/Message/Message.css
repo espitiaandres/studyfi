@@ -1,10 +1,13 @@
 .messageBox {
+  align-items: center;
   background: #F3F3F3;
   border-radius: 20px;
   color: white;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 80%;
-  padding: 5px 20px;
+  padding: 0px 12px;
 }
 
 .messageText {
@@ -33,6 +36,18 @@
   display: flex;
   font-family: Helvetica;
   letter-spacing: 0.3px;
+}
+
+.timestampotherusers {
+  font-size: 12px;
+  padding: 0px 20px 0px 20px;
+  text-align: left;
+}
+
+.timestamp {
+  font-size: 12px;
+  padding: 0px 20px 0px 20px;
+  text-align: right;
 }
 
 .pl-10 {

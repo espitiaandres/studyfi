@@ -77,22 +77,18 @@ const Chat = ({ location, item, season }) => {
     }
     
     return (
-        <div>
-            {
-                duplicate ? 
-                <Join duplicate={duplicate} season={season} /> :                 
-                <div className="outerContainer">
-                    <div className="container">
-                        <InfoBar room={room} season={season}/>
-                        <Messages messages={messages} name={name} season={season}/>
-                        <Input 
-                            message={message} setMessage={setMessage} sendMessage={sendMessage} item={item} season={season}
-                        />
-                    </div>
-                    <Userslist users={users}/>
-                </div>
-            }
-        </div>
+        duplicate ? 
+        <Join duplicate={duplicate} season={season} /> :                 
+        <div className="outerContainer">
+            <div className="container">
+                <InfoBar room={room} season={season}/>
+                <Messages messages={messages} name={name} season={season}/>
+                <Input 
+                    message={message} setMessage={setMessage} sendMessage={sendMessage} item={item} season={season}
+                />
+            </div>
+            <Userslist users={users}/>
+        </div>        
     )
 }
 

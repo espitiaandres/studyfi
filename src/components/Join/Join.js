@@ -12,8 +12,6 @@ import JoinForm from '../JoinForm/JoinForm';
 
 const Join = ({ duplicate, season }) => {
     return (
-        <div>
-        { 
             duplicate ? 
             <div>
                 <div className="joinOuterContainer">
@@ -30,8 +28,6 @@ const Join = ({ duplicate, season }) => {
                     <JoinForm season={season}/>
                 </div>
             </div>
-        }
-        </div>
     )
 }
 

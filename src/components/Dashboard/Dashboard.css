@@ -1,6 +1,8 @@
 .main-wrapper {
     align-items: center;
     background-color: black;
+    background-image: url("../../images/vaporwaveDashboardBackground.jpg");
+    background-size: cover;
     display: flex;
     flex-direction: row;
     /* height: 100vh; */

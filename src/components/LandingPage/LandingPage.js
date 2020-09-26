@@ -13,7 +13,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
-import spotifyLogo from '../../images/spotify-logo-cropped.png';
 import './LandingPage.css';
 
 library.add(fab);
@@ -24,7 +23,7 @@ function LandingPage() {
             <div className="app-title">Studyfi</div>
             <TypistLoop interval={700} >
                 {[
-                'A place to study, listen to music, and chat with friends.',
+                'dummytext',
                 ''
                 ].map((text) => 
                     <Typist 
@@ -45,17 +44,10 @@ function LandingPage() {
                 <FontAwesomeIcon icon={['fab', 'spotify']} size="10x"/>
                 <p className="login-description">Login with Spotify</p>
             </a>
-            {/*
             <div className="footer">
                 <div>© Studyfi 2020</div>
                 <div>Created by Andres Espitia</div>
             </div>
-            */}
-            {/*Choose a different spotify logo?
-            <div>
-                <img src={spotifyLogo} alt="spotify-logo"/>
-            </div>
-            */}
         </div>
     )
 }

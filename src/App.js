@@ -74,18 +74,16 @@ const App = () =>  {
   }
 
   return (
-    <div>
-      <div className="App">
-        {!token && <div><LandingPage /></div>}
-        {token && data && (
-          <Dashboard
-            item={item}
-            isPlaying={isPlaying}
-            progressms={progressms}
-          />
-        )}
-        {!data && <NotFoundPage />}  
-      </div>
+    <div className="App">
+      {!token && <div><LandingPage /></div>}
+      {token && data && (
+        <Dashboard
+          item={item}
+          isPlaying={isPlaying}
+          progressms={progressms}
+        />
+      )}
+      {!data && <NotFoundPage />}  
     </div>
   );
 }

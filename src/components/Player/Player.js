@@ -7,12 +7,12 @@
 //
 
 import React, { useState } from 'react';
-import moment from 'moment';
 import { ColorExtractor } from 'react-color-extractor';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
+import axios from 'axios';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import './Player.css';
@@ -100,68 +100,66 @@ const Player = ({ item, isPlaying, progressms, season }) => {
   };
   
   return (
-    <div>
-      <div className="now-playing__side">
-        <ColorExtractor getColors={getColors}>
-          <img src={albumImageURL} className="image_styles" />
-        </ColorExtractor>
-        <div className="swatches_styles">
-          {renderSwatches()}
-        </div>
+    <div className="now-playing__side">
+      <ColorExtractor getColors={getColors}>
+        <img src={albumImageURL} className="image_styles" />
+      </ColorExtractor>
+      <div className="swatches_styles">
+        {renderSwatches()}
+      </div>
+      <div >
+        <img src={albumImageURL} className="now-playing__img"/>
+      </div>
+      <div className="swatches_styles">
+        {renderSwatches()}
+      </div>
+
+      <div className="now-playing__name">
+        <TypistLoop interval={2000} >
+          {['a',''].map(text => 
+            <Typist 
+            className="pomodoroTitle" avgTypingDelay={90} key={text} startDelay={0}
+            cursor={{
+            show: true,
+            blink: true,
+            element: '',
+            hideWhenDone: false,
+            hideWhenDoneDelay: 1000,
+            }}>
+              {item.name}
+            </Typist>
+          )}
+        </TypistLoop>
+      </div>
+
+      <div className="now-playing__artist">
+        {allArtists}
+      </div>
+
+      <div className="now-playing__album">
+        {item.album.name} - {releaseDateYear}
+      </div>
+
+      <div className="now-playing__status">
         <div >
-          <img src={albumImageURL} className="now-playing__img"/>
+          <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
+            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
+          </button>
         </div>
-        <div className="swatches_styles">
-          {renderSwatches()}
+        {isPlaying ? "playing" : "paused"}
+        <div >
+          <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
+            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
+          </button>
         </div>
+      </div>
 
-        <div className="now-playing__name">
-          <TypistLoop interval={2000} >
-            {['a',''].map(text => 
-              <Typist 
-              className="pomodoroTitle" avgTypingDelay={90} key={text} startDelay={0}
-              cursor={{
-              show: true,
-              blink: true,
-              element: '',
-              hideWhenDone: false,
-              hideWhenDoneDelay: 1000,
-              }}>
-                {item.name}
-              </Typist>
-            )}
-          </TypistLoop>
-        </div>
-
-        <div className="now-playing__artist">
-          {allArtists}
-        </div>
-
-        <div className="now-playing__album">
-          {item.album.name} - {releaseDateYear}
-        </div>
-
-        <div className="now-playing__status">
-          <div >
-            <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
-              <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
-            </button>
-          </div>
-          {isPlaying ? "Playing" : "Paused"}
-          <div >
-            <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
-              <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
-            </button>
-          </div>
-        </div>
-
-        <div className="duration-menu">
-          <p className="duration-menu__times">{songCurrentTimeMinutesSeconds}</p>
-          <div className="progress">
-            <div className={`progress__bar ${seasonStylingAlt} `} style={progressBarStyles} />
-          </div>    
-          <p className="duration-menu__times">{songDurationMinutesSeconds}</p>
-        </div>
+      <div className="duration-menu">
+        <p className="duration-menu__times">{songCurrentTimeMinutesSeconds}</p>
+        <div className="progress">
+          <div className={`progress__bar ${seasonStylingAlt} `} style={progressBarStyles} />
+        </div>    
+        <p className="duration-menu__times">{songDurationMinutesSeconds}</p>
       </div>
     </div>
   )

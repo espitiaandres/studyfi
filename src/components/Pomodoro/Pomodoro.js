@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { useSpring, animated } from 'react-spring';
 import './Pomodoro.css';
 
 const secondsInAMinute = 60;
@@ -31,9 +32,11 @@ library.add(fas);
 const Pomodoro = ({ season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     const [playButton, setPlayButton] = useState(false);
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
+    const [hoveredOn, setHoveredOn] = useState(false);
 
     // countdown changes the text to Work and is responsible for the working countdown
     const countdown = () => {
@@ -108,19 +111,21 @@ const Pomodoro = ({ season }) => {
     return (
         <div>
             <div className="pomodoroHeader">
-                <div className="pomodoroHeaderTitle">
-                    <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
-                    </div>
-                    <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
-                    </div>
-                    <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
-                    <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
-                    </div>
-                    <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                <div>
+                    <div className="pomodoroHeaderTitle">
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                        </div>
+                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                            <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                        </div>
+                        <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
+                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                            <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                        </div>
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                        </div>
                     </div>
                 </div>
                 <p>{pomodoroText}</p>

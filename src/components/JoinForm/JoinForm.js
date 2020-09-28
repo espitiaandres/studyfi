@@ -58,7 +58,7 @@ const JoinForm = ({ season }) => {
                 onClick={e => (!name || !room || !tz) ?  e.preventDefault() : null} 
                 to={`/chat?name=${name}&room=${room}&tz=${tz}`}
             >
-                <button className={`button mt-20 ${seasonStyling}`} type="submit">sign in</button>
+                <button className={`button mt-20 ${seasonStyling}`} type="submit">sign in with google</button>
             </Link>
         </form>
     )

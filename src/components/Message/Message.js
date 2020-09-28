@@ -14,7 +14,6 @@ const Message = ({ message: { user, text, currentTime }, name, season }) => {
     let isSentByCurrentUser = false;
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
-    // let currentTime = moment().format("MMM DD h:mm a");
 
     const trimmedName = name.trim().toLowerCase();
 

@@ -11,20 +11,23 @@ import { ColorExtractor } from 'react-color-extractor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { useSpring, animated } from 'react-spring';
 import moment from 'moment';
 import axios from 'axios';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import './Player.css';
 import hash from '../../utils/hash';
+import { calculateCenter, trans } from '../../utils/springFunctions';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, season }) => {
+const Player = ({ item, isPlaying, progressms, season }) => {  
+  const [colors, setColors] = useState([]);
+  const [hoveredOn, setHoveredOn] = useState(false);
+  const token = hash.access_token
   let seasonStyling = season ? "seasonStyling" : "";
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
-  const [colors, setColors] = useState([]);
-  const token = hash.access_token
 
   const nextSong = () => {
     axios({
@@ -74,6 +77,20 @@ const Player = ({ item, isPlaying, progressms, season }) => {
     
   const getColors = (colorsadded) => setColors(() => ({ colors: [colors, ...colorsadded] }));
 
+  const [prop, setProp] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 1, tension: 180, friction: 10 },
+  }));
+
+  const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
+
+  const onMouseLeave = () => {
+      setProp({ xys: [0, 0, 1] });
+      setHoveredOn(false);
+  }
+
+  const onMouseEnter = () => setHoveredOn(true);
+
   let songCurrentTime = progressms;
   let songDuration = 0;
   let releaseDateDMY = "0000-00-00";
@@ -81,7 +98,9 @@ const Player = ({ item, isPlaying, progressms, season }) => {
   let albumImageURL = "";
   let allArtists = "";
   let songCurrentTimeMinutesSeconds = "";
-  let songDurationMinutesSeconds = "";
+  let songDurationMinutesSeconds = "";  
+  let googleSearchString = item.artists[0].name + "+" + item.album.name ;
+  googleSearchString = googleSearchString.replace(" ", "+");
 
   if (item) {
     songDuration = item.duration_ms;
@@ -91,7 +110,7 @@ const Player = ({ item, isPlaying, progressms, season }) => {
     songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
     songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
     item.artists.map((artist) => {
-      return allArtists += `| ${artist.name} |`
+      allArtists += `| ${artist.name} |`
     })
   }
     
@@ -100,21 +119,31 @@ const Player = ({ item, isPlaying, progressms, season }) => {
   };
   
   return (
-    <div className="now-playing__side">
+    <div className="nowPlayingSide">
       <ColorExtractor getColors={getColors}>
-        <img src={albumImageURL} className="image_styles" />
+        <img src={albumImageURL} className="imageStyles" />
       </ColorExtractor>
-      <div className="swatches_styles">
+      <div className="swatchesStyles">
         {renderSwatches()}
       </div>
-      <div >
-        <img src={albumImageURL} className="now-playing__img"/>
+      <div>
+        <animated.div
+            onMouseMove={onMouseMove}
+            onMouseLeave={onMouseLeave}
+            style={{ transform: prop.xys.interpolate(trans) }}
+            onMouseEnter={onMouseEnter}
+        >
+          <div>
+            <a href={`https://www.google.com/search?q=${googleSearchString}`} target="_blank">
+              <img src={albumImageURL} className="nowPlayingAlbumCover"/>
+            </a>
+          </div>
+        </animated.div>
       </div>
-      <div className="swatches_styles">
+      <div className="swatchesStyles">
         {renderSwatches()}
       </div>
-
-      <div className="now-playing__name">
+      <div className="nowPlayingName">
         <TypistLoop interval={2000} >
           {['a',''].map(text => 
             <Typist 
@@ -132,15 +161,15 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         </TypistLoop>
       </div>
 
-      <div className="now-playing__artist">
+      <div className="nowPlayingArtists">
         {allArtists}
       </div>
 
-      <div className="now-playing__album">
+      <div className="nowPlayingAlbum">
         {item.album.name} - {releaseDateYear}
       </div>
 
-      <div className="now-playing__status">
+      <div className="nowPlayingStatus">
         <div >
           <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
             <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
@@ -154,12 +183,12 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         </div>
       </div>
 
-      <div className="duration-menu">
-        <p className="duration-menu__times">{songCurrentTimeMinutesSeconds}</p>
+      <div className="durationMenu">
+        <p className="durationMenuTimes">{songCurrentTimeMinutesSeconds}</p>
         <div className="progress">
-          <div className={`progress__bar ${seasonStylingAlt} `} style={progressBarStyles} />
+          <div className={`progressBar ${seasonStylingAlt} `} style={progressBarStyles} />
         </div>    
-        <p className="duration-menu__times">{songDurationMinutesSeconds}</p>
+        <p className="durationMenuTimes">{songDurationMinutesSeconds}</p>
       </div>
     </div>
   )

@@ -11,27 +11,20 @@ import Typist from 'react-typist';
 import { useSpring, animated } from 'react-spring';
 import './NotFoundPage.css';
 import sketchyFavicon from '../../images/sketchyFavicon.png';
+import { calculateCenter, trans } from '../../utils/springFunctions';
 
 function NotFoundPage() {
     const [hoveredOn, setHoveredOn] = useState(false);
-
-    const calculate = (x, y) => [
-        -(y - window.innerHeight / 2) / 25,
-        (x - window.innerWidth / 2) / 25,
-        1.01,
-    ]
-
-    const trans = (x, y, s) => `perspective(800px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
     
-    const [prop, set] = useSpring(() => ({
+    const [prop, setProp] = useSpring(() => ({
         xys: [0, 0, 1],
         config: { mass: 1, tension: 180, friction: 10 },
     }));
 
-    const onMouseMove = ({ clientX: x, clientY: y }) => set({ xys: calculate(x, y) });
+    const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
 
     const onMouseLeave = () => {
-        set({ xys: [0, 0, 1] });
+        setProp({ xys: [0, 0, 1] });
         setHoveredOn(false);
     }
 

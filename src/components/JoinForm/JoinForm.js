@@ -8,7 +8,6 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment-timezone/builds/moment-timezone-with-data';
 import './JoinForm.css';
 
 const JoinForm = ({ season }) => {    
@@ -59,7 +58,7 @@ const JoinForm = ({ season }) => {
                 onClick={e => (!name || !room || !tz) ?  e.preventDefault() : null} 
                 to={`/chat?name=${name}&room=${room}&tz=${tz}`}
             >
-                <button className={`button mt-20 ${seasonStyling}`} type="submit">Sign In</button>
+                <button className={`button mt-20 ${seasonStyling}`} type="submit">sign in</button>
             </Link>
         </form>
     )

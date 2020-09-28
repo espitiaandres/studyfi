@@ -8,12 +8,12 @@
     width: 10%;
 }
 
-.image_styles {
+.imageStyles {
     height: 0px;
     width: 0px;
 }
 
-.swatches_styles {
+.swatchesStyles {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -32,44 +32,44 @@
     cursor: pointer;
 }
 
-.now-playing__name {
+.nowPlayingName {
     font-size: 20px;
     margin-bottom: 8px;
     color: white;
 }
 
-.now-playing__artist {
+.nowPlayingArtists {
     margin-bottom: 8px;
     color: white;
 }
 
-.now-playing__album {
+.nowPlayingAlbum {
     margin-bottom: 8px;
     color: white;
 }
 
-.now-playing__status {
+.nowPlayingStatus {
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.now-playing__img {
+.nowPlayingAlbumCover {
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 340px;
+    height: 360px;
     justify-content: center;
-    width: 340px;
+    width: 360px;
 }
 
-.now-playing__img img {
+.nowPlayingAlbumCover img {
     max-width: 80vmin;
     width: 100%;
 }
 
-.now-playing__side {
+.nowPlayingSide {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -84,20 +84,20 @@
     width: 300px;
 }
 
-.progress__bar {
+.progressBar {
     background-color: #1ED760;
     color: white;
     height: 8px;
 }
 
-.duration-menu {
+.durationMenu {
     align-items: center;
     color: white;
     display: flex;
     justify-content: space-evenly;
 }
 
-.duration-menu__times {
+.durationMenuTimes {
     padding: 0px 20px;
 }
 

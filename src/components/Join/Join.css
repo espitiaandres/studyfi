@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
-  font-family: 'Segoe UI';
+  /* font-family: 'Segoe UI'; */
+  font-family: 'Segoe UI', sans-serif;
 }
   
 .joinOuterContainer {

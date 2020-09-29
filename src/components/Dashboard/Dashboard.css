@@ -1,8 +1,12 @@
-.main-wrapper {
-    align-items: center;
+.overallDashboardWrapper {
     background-color: black;
     background-image: url("../../images/vaporwaveDashboardBackground.jpg");
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.maindDashboardWrapper {
+    align-items: center;
     display: flex;
     flex-direction: row;
     /* height: 100vh; */
@@ -12,7 +16,7 @@
 }
 
 .dashboard-item {
-    width: 480px;
+    width: 420px;
 }
 
 .seasonSelect {
@@ -23,4 +27,15 @@
 
 .seasonSelect:hover {
     cursor: pointer;
+}
+
+.carouselButtons {
+    /* padding-top: 10px; */
+    bottom: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    /* position: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

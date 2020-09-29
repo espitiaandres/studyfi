@@ -10,14 +10,15 @@ import React, { useState } from 'react';
 import Player from '../Player/Player';
 import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
+import TopSongs from '../TopSongs/TopSongs';
 import './Dashboard.css';
 
 function Dashboard({ item, isPlaying, progressms }) {
-    const [season, setSeason] = useState(false);
+    const [season, setSeason] = useState(false); 
 
     return (
-        <div>
-            <div className="main-wrapper">
+        <div className="overallDashboardWrapper">
+            <div className="maindDashboardWrapper">
                 <div className="dashboard-item">
                     <Pomodoro 
                         season={season}
@@ -41,8 +42,10 @@ function Dashboard({ item, isPlaying, progressms }) {
                     />
                 </div>
             </div>
+            <div className="maindDashboardWrapper">
+                <TopSongs />
+            </div>            
         </div>
-
     )
 }
 

@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { useSpring, animated } from 'react-spring';
 import './Pomodoro.css';
 
 const secondsInAMinute = 60;
@@ -36,7 +35,6 @@ const Pomodoro = ({ season }) => {
     const [playButton, setPlayButton] = useState(false);
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
-    const [hoveredOn, setHoveredOn] = useState(false);
 
     // countdown changes the text to Work and is responsible for the working countdown
     const countdown = () => {

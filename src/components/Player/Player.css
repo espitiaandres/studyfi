@@ -59,14 +59,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 360px;
+    height: 330px;
     justify-content: center;
-    width: 360px;
-}
-
-.nowPlayingAlbumCover img {
-    max-width: 80vmin;
-    width: 100%;
+    width: 330px;
 }
 
 .nowPlayingSide {

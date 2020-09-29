@@ -133,11 +133,9 @@ const Player = ({ item, isPlaying, progressms, season }) => {
             style={{ transform: prop.xys.interpolate(trans) }}
             onMouseEnter={onMouseEnter}
         >
-          <div>
             <a href={`https://www.google.com/search?q=${googleSearchString}`} target="_blank">
               <img src={albumImageURL} className="nowPlayingAlbumCover"/>
             </a>
-          </div>
         </animated.div>
       </div>
       <div className="swatchesStyles">

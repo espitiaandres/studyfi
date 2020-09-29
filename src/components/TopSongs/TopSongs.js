@@ -29,8 +29,6 @@ function TopSongs() {
                 time_range: 'long_term'
             }
         }).then(({ data }) => {
-            // console.log(data.items);    
-            
             data.items.map(song => {
                 let allArtists = "";
                 const topTrackFiltered = {};        

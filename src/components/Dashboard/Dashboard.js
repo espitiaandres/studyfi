@@ -43,7 +43,9 @@ function Dashboard({ item, isPlaying, progressms }) {
                 </div>
             </div>
             <div className="maindDashboardWrapper">
-                <TopSongs />
+                <TopSongs 
+                    season={season}
+                />
             </div>            
         </div>
     )

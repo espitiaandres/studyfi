@@ -9,15 +9,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import ReactTooltip from "react-tooltip";
 import hash from '../../utils/hash';
+import { topSongColumns, 
+    acousticnessDesc,
+    danceabilityDesc,
+    energyDesc,
+    keySignatureDesc,
+    instrumentalnessDesc,
+    valenceDesc } from '../../utils/tableFormat';
 import './TopSongs.css';
 
-const TopSongs = () => {
+const TopSongs = ({ season }) => {
     const token = hash.access_token;
     let filteredTopTracksData = [];
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
     const [filteredData, setFilteredData] = useState([]);
-
-
+    const [timerange, setTimerange] = useState('long_term');
+    
     useEffect(() => {
         let audioFeaturesTracksIDs = "";
 
@@ -29,7 +40,7 @@ const TopSongs = () => {
             },
             params: {
                 limit: 50,
-                time_range: 'long_term'
+                time_range: timerange
             }
         }).then(({ data }) => {
             data.items.map((song) => {
@@ -49,9 +60,6 @@ const TopSongs = () => {
             });
 
             audioFeaturesTracksIDs = audioFeaturesTracksIDs.slice(0, -1);
-
-            // following link explains what each category indicates.
-            // https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/
 
             axios({
                 method: 'get',
@@ -76,84 +84,101 @@ const TopSongs = () => {
                 setFilteredData(filteredTopTracksData);
             })
         })
-    }, []);
+    }, [timerange]);
 
-    function formatter(cell, row) {     
-        return cell.toString().includes("http") ? 
-        <span>
-            <img src={cell}/>
-        </span> : 
-        <span>
-            {cell}
-        </span>;
-    }
-
-    const columns = [
-        {
-            text: 'Name',
-            dataField: 'name',
-            formatter
-        },
-        {
-            text: 'Album',
-            dataField: 'album',
-            formatter
-        },
-        {
-            text: 'Album Cover',
-            dataField: 'albumCover',
-            formatter
-        },
-        {
-            text: 'Release Date',
-            dataField: 'releaseDate',
-            formatter
-        },
-        {
-            text: 'Artists',
-            dataField: 'artists',
-            formatter
-        },
-        {
-            text: 'Acousticness',
-            dataField: 'acousticness',
-            formatter
-        },
-        {
-            text: 'Danceability',
-            dataField: 'danceability',
-            formatter
-        },
-        {
-            text: 'Energy',
-            dataField: 'energy',
-            formatter
-        },
-        {
-            text: 'KeySignature',
-            dataField: 'keySignature',
-            formatter
-        },
-        {
-            text: 'Instrumentalness',
-            dataField: 'instrumentalness',
-            formatter
-        },
-        {
-            text: 'Valence',
-            dataField: 'valence',
-            formatter
-        }
-    ]
-
+    const pageListRenderer = ({
+        pages,
+        onPageChange
+      }) => {
+        const pageWithoutIndication = pages.filter(p => typeof p.page !== 'string');
+        console.log(pageWithoutIndication);
+        return (
+          <div>
+            {
+              pageWithoutIndication.map(p => (
+                <button 
+                    className={p.page % 2 === 1 ? 
+                                `songsTablePagination ${seasonStyling}` : 
+                                `songsTablePagination ${seasonStylingAlt}`} 
+                    onClick={() => onPageChange(p.page)}
+                >
+                    {p.page}
+                </button>
+              ))
+            }
+          </div>
+        );
+      };
+      
+    const options = {
+        pageListRenderer,
+        paginationSize: 10,
+        pageStartIndex: 1,
+        sizePerPageList: [{
+            text: '5', value: 5
+        }]
+    };
+            
     return (
-        <div>
-            <h1>your most listened to artists and tracks</h1>
-            <div>
+        <div id="topsongs">
+            <h1 className="songsTableTitle">your most listened to artists and tracks</h1>
+            <div className="songsTableTimeRanges">
+                <button 
+                    className={`songsTableTimeRangeButton ${seasonStyling}`} 
+                    onClick={() => setTimerange('short_term')}
+                >
+                    ... of the last 4 weeks
+                </button>
+                <button 
+                    className={`songsTableTimeRangeButton ${seasonStylingAlt}`} 
+                    onClick={() => setTimerange('medium_term')}
+                >
+                    ... of the Last 6 months
+                </button>
+                <button 
+                    className={`songsTableTimeRangeButton ${seasonStyling}`} 
+                    onClick={() => setTimerange('long_term')}
+                >
+                    ... of all time
+                </button>
+            </div>
+            <div className="columnDescriptions">
+                <ReactTooltip className="tooltips" id="acousticness" type="light" effect="solid" place="top">
+                    <span>{acousticnessDesc}</span>
+                </ReactTooltip>
+                <button className="tooltip" data-tip data-for="acousticness">acousticness</button>
+
+                <ReactTooltip className="tooltips" id="danceability" type="light" effect="solid" place="top">
+                    <span>{danceabilityDesc}</span>
+                </ReactTooltip>
+                <button className="tooltip"data-tip data-for="danceability">danceability</button>
+
+                <ReactTooltip className="tooltips" id="energy" type="light" effect="solid" place="top">
+                    <span>{energyDesc}</span>
+                </ReactTooltip>
+                <button className="tooltip" data-tip data-for="energy">energy</button>
+
+                <ReactTooltip className="tooltips" id="keysignature" type="light" effect="solid" place="top">
+                    <span>{keySignatureDesc}</span>
+                </ReactTooltip>
+                <button className="tooltip" data-tip data-for="keysignature">key signature</button>
+
+                <ReactTooltip className="tooltips" id="instrumentalness" type="light" effect="solid" place="top">
+                    <span>{instrumentalnessDesc}</span>
+                </ReactTooltip>
+                <button className="tooltip" data-tip data-for="instrumentalness">instrumentalness</button>
+
+                <ReactTooltip className="tooltips" id="valence" type="light" effect="solid" place="top">
+                    <span>{valenceDesc}</span>
+                </ReactTooltip>
+                <button className="tooltip" data-tip data-for="acousticness">valence</button>
+            </div>
+            <div className="songsTable">
                 <BootstrapTable
                     keyField="id"
                     data={filteredData}
-                    columns={columns}
+                    columns={topSongColumns}
+                    pagination={paginationFactory(options)}
                 />
             </div>
         </div>

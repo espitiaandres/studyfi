@@ -1,0 +1,75 @@
+.songsTableTitle {
+    color: white;
+    font-size: 36px;
+}
+
+.songsTableTimeRanges {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 28px;
+}
+
+.songsTableTimeRangeButton {
+    background: #1ED760;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0px 20px;    
+    padding: 10px;
+    text-decoration: none;
+    min-width: 160px;
+}
+
+.songsTableTimeRangeButton:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+.songsTable {
+    color: white;
+    padding: 0px 120px;
+}
+
+.songsTablePagination {
+    background: #1ED760;
+    border: none;
+    border-radius: 1px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 4px;    
+    text-decoration: none;
+    width: 30px;
+}
+
+.songsTablePagination:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+.seasonStyling {
+    background: #F37D0F;
+}
+
+.seasonStylingAlt {
+    background: #FFE01B;
+}
+  
+.columnDescriptions {
+    padding-bottom: 20px;
+}
+
+.tooltips {
+    max-width: 400px;
+}
+
+.tooltip {
+    background: #1ED760;
+    border: none;
+    border-radius: 1px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 4px;  
+    padding: 2px 10px;  
+    text-decoration: none;
+}

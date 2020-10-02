@@ -10,6 +10,9 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-scroll';
+import { useSpring, animated } from 'react-spring';
+import { calculateCenter, trans } from '../../utils/springFunctions';
 import './Pomodoro.css';
 
 const secondsInAMinute = 60;
@@ -35,6 +38,7 @@ const Pomodoro = ({ season }) => {
     const [playButton, setPlayButton] = useState(false);
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
+    const [hoveredOn, setHoveredOn] = useState(false);
 
     // countdown changes the text to Work and is responsible for the working countdown
     const countdown = () => {
@@ -106,28 +110,41 @@ const Pomodoro = ({ season }) => {
         }
     }
 
+    const [prop, setProp] = useSpring(() => ({
+        xys: [0, 0, 1],
+        config: { mass: 1, tension: 180, friction: 10 },
+    }));
+
+    const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
+
+    const onMouseLeave = () => {
+        setProp({ xys: [0, 0, 1] });
+        setHoveredOn(false);
+    }
+
+    const onMouseEnter = () => setHoveredOn(true);
+
     return (
-        <div>
-            <div className="pomodoroHeader">
-                <div>
-                    <div className="pomodoroHeaderTitle">
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
-                        </div>
-                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                            <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
-                        </div>
-                        <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
-                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                            <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
-                        </div>
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
-                        </div>
+        <div className="pomodoroHeader">
+            <div>
+                <div className="pomodoroHeaderTitle">
+                    <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                    </div>
+                    <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                    </div>
+                    <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
+                    <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                    </div>
+                    <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
                     </div>
                 </div>
-                <p>{pomodoroText}</p>
             </div>
+            <p>{pomodoroText}</p>
+
             <div className="pomodoroPanel">
                 <button className={`controlButtons-pizzaslice ${seasonStyling}`} onClick={countdown} disabled={pizzaButton}>
                     {season ? <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "spider"]} /> : <FontAwesomeIcon icon={["fas", "pizza-slice"]} />}
@@ -143,6 +160,18 @@ const Pomodoro = ({ season }) => {
                         {minutesRemaining}:{secondsRemaining}
                     </div>    
                 </p>
+            </div>
+            <div className="icon-scroll">
+                <animated.div
+                    onMouseMove={onMouseMove}
+                    onMouseLeave={onMouseLeave}
+                    style={{ transform: prop.xys.interpolate(trans) }}
+                    onMouseEnter={onMouseEnter}
+                >
+                    <Link to="topsongs" spy={true} smooth={true} duration={400}>
+                        <FontAwesomeIcon icon={"chevron-down"} size="2x" />
+                    </Link>
+                </animated.div>
             </div>
         </div>
     )

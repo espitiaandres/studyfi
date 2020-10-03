@@ -11,14 +11,14 @@ import './Input.css';
 
 const Input = ({ message, setMessage, sendMessage, item, season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+    // let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     const shareSong = (event) => {
         let songDescription = `I'm listening to: ${item.name} `;
         let allArtists = "";
 
         item.artists.map((artist) => {
-            allArtists += `- ${artist.name} `
+            return allArtists += `- ${artist.name} `;
         })
 
         allArtists = allArtists.substring(0, allArtists.length - 1);

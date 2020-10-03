@@ -23,7 +23,7 @@ function LandingPage() {
             <div className="app-title">Studyfi</div>
             <TypistLoop interval={700} >
                 {[
-                'dummytext',
+                'A place to study, listen to music, and chat with friends.',
                 ''
                 ].map((text) => 
                     <Typist 

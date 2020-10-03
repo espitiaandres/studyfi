@@ -8,6 +8,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import io from 'socket.io-client';
 import hash from './utils/hash';
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from './components/LandingPage/LandingPage';
@@ -32,6 +33,20 @@ const App = () =>  {
 
   useEffect(() => {
     let token = hash.access_token;
+
+
+
+    // test this to see if heroku app wakes up on app start up
+    const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
+    const socket = io(ENDPOINT, {transports: ['websocket']});
+    socket.emit('join', { name: '', room: '', tz: '' }, () => {});
+    socket.emit('disconnect');
+
+
+
+
+
+
 
     if (token) {
       setToken(token);

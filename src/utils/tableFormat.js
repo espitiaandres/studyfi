@@ -15,11 +15,10 @@ const keySignatureDesc = "The key the track is in. Integers map to pitches using
 const instrumentalnessDesc = "Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.";
 const valenceDesc = "A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).";
 
-// move formatter() and columns to a file in ./utils
 const formatter = (cell, row) => {     
     return cell.toString().includes("http") ? 
     <span>
-        <img src={cell}/>
+        <img src={cell} alt="cell"/>
     </span> : 
     <span>
         {cell}
@@ -124,7 +123,7 @@ const topSongColumns = [
         }
     },
     {
-        text: 'KeySignature',
+        text: 'Key Signature',
         dataField: 'keySignature',
         formatter,
         headerData: keySignatureDesc,
@@ -159,6 +158,21 @@ const topSongColumns = [
             width: '10%'
         }
     }
+];
+
+const keySignaturesLetters = [
+    'C',
+    'C♯/D♭',
+    'D',
+    'D♯/E♭',
+    'E',
+    'F',
+    'F♯/G♭',
+    'G',
+    'G♯/A♭',
+    'A',
+    'A♯/B♭',
+    'B'
 ]
 
 export { topSongColumns,
@@ -167,5 +181,6 @@ export { topSongColumns,
     energyDesc,
     keySignatureDesc,
     instrumentalnessDesc,
-    valenceDesc
+    valenceDesc,
+    keySignaturesLetters
 };

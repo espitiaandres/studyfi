@@ -9,10 +9,24 @@ body {
   height: 100vh;
 }
 
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
 }
 
 @media (prefers-reduced-motion: no-preference) {

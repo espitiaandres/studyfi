@@ -110,7 +110,7 @@ const Player = ({ item, isPlaying, progressms, season }) => {
     songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
     songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
     item.artists.map((artist) => {
-      allArtists += `| ${artist.name} |`
+      return allArtists += `| ${artist.name} |`;
     })
   }
     
@@ -121,7 +121,7 @@ const Player = ({ item, isPlaying, progressms, season }) => {
   return (
     <div className="nowPlayingSide">
       <ColorExtractor getColors={getColors}>
-        <img src={albumImageURL} className="imageStyles" />
+        <img src={albumImageURL} className="imageStyles" alt="albumimage" />
       </ColorExtractor>
       <div className="swatchesStyles">
         {renderSwatches()}
@@ -133,8 +133,8 @@ const Player = ({ item, isPlaying, progressms, season }) => {
             style={{ transform: prop.xys.interpolate(trans) }}
             onMouseEnter={onMouseEnter}
         >
-            <a href={`https://www.google.com/search?q=${googleSearchString}`} target="_blank">
-              <img src={albumImageURL} className="nowPlayingAlbumCover"/>
+            <a href={`https://www.google.com/search?q=${googleSearchString}`} rel="noopener noreferrer" target="_blank">
+              <img src={albumImageURL} className="nowPlayingAlbumCover" alt="albumimage"/>
             </a>
         </animated.div>
       </div>

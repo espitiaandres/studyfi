@@ -20,9 +20,6 @@ import './Chat.css';
 let socket;
 
 const Chat = ({ location, item, season }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
-
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [tz, setTZ] = useState('');

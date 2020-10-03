@@ -18,16 +18,19 @@ import { topSongColumns,
     energyDesc,
     keySignatureDesc,
     instrumentalnessDesc,
-    valenceDesc } from '../../utils/tableFormat';
+    valenceDesc,
+    keySignaturesLetters } from '../../utils/tableFormat';
 import './TopSongs.css';
 
 const TopSongs = ({ season }) => {
-    const token = hash.access_token;
-    let filteredTopTracksData = [];
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     const [filteredData, setFilteredData] = useState([]);
     const [timerange, setTimerange] = useState('long_term');
+    
+    const token = hash.access_token;
+    let filteredTopTracksData = [];
     
     useEffect(() => {
         let audioFeaturesTracksIDs = "";
@@ -53,7 +56,7 @@ const TopSongs = ({ season }) => {
                 topTrackFiltered.id = song.id;
                 audioFeaturesTracksIDs += song.id + ",";
                 song.artists.map((artist) => {
-                    allArtists += `${artist.name}, `;
+                    return allArtists += `${artist.name}, `;
                 })
                 topTrackFiltered.artists = allArtists.slice(0, -2);
                 filteredTopTracksData.push(topTrackFiltered);
@@ -75,7 +78,7 @@ const TopSongs = ({ season }) => {
                     filteredTopTracksData[i].acousticness = audio_features[i].acousticness;
                     filteredTopTracksData[i].danceability = audio_features[i].danceability;
                     filteredTopTracksData[i].energy = audio_features[i].energy;
-                    filteredTopTracksData[i].keySignature = audio_features[i].key;
+                    filteredTopTracksData[i].keySignature = keySignaturesLetters[audio_features[i].key];
                     filteredTopTracksData[i].instrumentalness = audio_features[i].instrumentalness;
                     filteredTopTracksData[i].valence = audio_features[i].valence;
                     filteredTopTracksData[i].key = i + 1;
@@ -86,12 +89,8 @@ const TopSongs = ({ season }) => {
         })
     }, [timerange]);
 
-    const pageListRenderer = ({
-        pages,
-        onPageChange
-      }) => {
+    const pageListRenderer = ({ pages, onPageChange }) => {
         const pageWithoutIndication = pages.filter(p => typeof p.page !== 'string');
-        console.log(pageWithoutIndication);
         return (
           <div>
             {
@@ -146,32 +145,32 @@ const TopSongs = ({ season }) => {
                 <ReactTooltip className="tooltips" id="acousticness" type="light" effect="solid" place="top">
                     <span>{acousticnessDesc}</span>
                 </ReactTooltip>
-                <button className="tooltip" data-tip data-for="acousticness">acousticness</button>
+                <button className={`tooltip ${seasonStyling}`} data-tip data-for="acousticness">acousticness</button>
 
                 <ReactTooltip className="tooltips" id="danceability" type="light" effect="solid" place="top">
                     <span>{danceabilityDesc}</span>
                 </ReactTooltip>
-                <button className="tooltip"data-tip data-for="danceability">danceability</button>
+                <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="danceability">danceability</button>
 
                 <ReactTooltip className="tooltips" id="energy" type="light" effect="solid" place="top">
                     <span>{energyDesc}</span>
                 </ReactTooltip>
-                <button className="tooltip" data-tip data-for="energy">energy</button>
+                <button className={`tooltip ${seasonStyling}`} data-tip data-for="energy">energy</button>
 
                 <ReactTooltip className="tooltips" id="keysignature" type="light" effect="solid" place="top">
                     <span>{keySignatureDesc}</span>
                 </ReactTooltip>
-                <button className="tooltip" data-tip data-for="keysignature">key signature</button>
+                <button className={`tooltip ${seasonStyling}`} data-tip data-for="keysignature">key signature</button>
 
                 <ReactTooltip className="tooltips" id="instrumentalness" type="light" effect="solid" place="top">
                     <span>{instrumentalnessDesc}</span>
                 </ReactTooltip>
-                <button className="tooltip" data-tip data-for="instrumentalness">instrumentalness</button>
+                <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="instrumentalness">instrumentalness</button>
 
                 <ReactTooltip className="tooltips" id="valence" type="light" effect="solid" place="top">
                     <span>{valenceDesc}</span>
                 </ReactTooltip>
-                <button className="tooltip" data-tip data-for="acousticness">valence</button>
+                <button className={`tooltip ${seasonStyling}`} data-tip data-for="acousticness">valence</button>
             </div>
             <div className="songsTable">
                 <BootstrapTable

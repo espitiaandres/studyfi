@@ -13,7 +13,7 @@ import './InfoBar.css';
 
 const InfoBar = ({ room, season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+    // let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     return (
         <div className={`infoBar ${seasonStyling}`}>
@@ -22,7 +22,6 @@ const InfoBar = ({ room, season }) => {
                 <h3>{room}</h3>
             </div>
             <div className="rightInnerContainer">
-                {/* this is temporary -> maybe use redux to show dashboard when this is clicked? */}
                 <a href="https://www.andres-espitia.com/studyfi/#">
                     <img src={closeIcon} alt="close" />
                 </a>

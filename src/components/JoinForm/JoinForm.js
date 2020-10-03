@@ -10,18 +10,16 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
-import { useSpring, animated } from 'react-spring';
-import { calculateCenter, trans } from '../../utils/springFunctions';
+import 'animate.css';
 import './JoinForm.css';
 
-const JoinForm = ({ season }) => {    
+const JoinForm = ({ season }) => {
+    let seasonStyling = season ? "seasonStyling" : "";
+    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [tz, setTZ] = useState('');
-    const [hoveredOn, setHoveredOn] = useState(false);
-
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     const onJoinFormSubmit = (e) => {
         e.preventDefault();
@@ -38,20 +36,6 @@ const JoinForm = ({ season }) => {
     for (let i = 1; i <= 11; i++) {
         timezones.push("GMTminus" + i.toString());
     }
-
-    const [prop, setProp] = useSpring(() => ({
-        xys: [0, 0, 1],
-        config: { mass: 1, tension: 180, friction: 10 },
-    }));
-
-    const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
-
-    const onMouseLeave = () => {
-        setProp({ xys: [0, 0, 1] });
-        setHoveredOn(false);
-    }
-
-    const onMouseEnter = () => setHoveredOn(true);
 
     return (
         <form onSubmit={onJoinFormSubmit}>
@@ -82,17 +66,10 @@ const JoinForm = ({ season }) => {
                         <button className={`button mt-20 ${seasonStyling}`} type="submit">sign in</button>
                     </Link>
                 </div>
-                <div className="icon-scroll-chat">
-                    <animated.div
-                        onMouseMove={onMouseMove}
-                        onMouseLeave={onMouseLeave}
-                        style={{ transform: prop.xys.interpolate(trans) }}
-                        onMouseEnter={onMouseEnter}
-                    >
-                        <LinkScroll to="topsongs" spy={true} smooth={true} duration={400}>
-                            <FontAwesomeIcon icon={"chevron-down"} size="2x" />
-                        </LinkScroll>
-                    </animated.div>
+                <div className="icon-scroll-chat animate__animated animate__bounce animate__infinite animate__slow">
+                    <LinkScroll to="topsongs" spy={true} smooth={true} duration={400}>
+                        <FontAwesomeIcon icon={"chevron-down"} size="2x" />
+                    </LinkScroll>
                 </div>
             </div>            
         </form>

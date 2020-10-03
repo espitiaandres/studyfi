@@ -13,7 +13,6 @@
 
 .app-title {
     color: white;
-    /* font: 'Segoe UI'; */
     font-family: 'Segoe UI', sans-serif;
     font-size: 120px;
 }
@@ -21,7 +20,7 @@
 .app-description {
     color: black;
     font-size: 24px;
-    font-weight: 900;
+    font-weight: 700;
     padding-bottom: 30px;
 }
 
@@ -53,7 +52,7 @@
 .footer {
     bottom: 10px;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     position: fixed;
 }
 

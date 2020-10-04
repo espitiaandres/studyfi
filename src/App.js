@@ -33,20 +33,16 @@ const App = () =>  {
 
   useEffect(() => {
     let token = hash.access_token;
-
-
-
-    // test this to see if heroku app wakes up on app start up
+    
+    // socket.emit('join') and socket.emit('disconnect') calls are done to wake up the back end before the user joins a chat room.
     const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
     const socket = io(ENDPOINT, {transports: ['websocket']});
-    socket.emit('join', { name: '', room: '', tz: '' }, () => {});
+    socket.emit('join', { 
+      name: '', 
+      room: '', 
+      tz: '' 
+    }, () => {});
     socket.emit('disconnect');
-
-
-
-
-
-
 
     if (token) {
       setToken(token);

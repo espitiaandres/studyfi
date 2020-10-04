@@ -18,15 +18,15 @@ function Dashboard({ item, isPlaying, progressms }) {
 
     return (
         <div className="overallDashboardWrapper">
-            <div className="maindDashboardWrapper">
-                <div className="dashboard-item">
+            <div className="mainDashboardWrapper">
+                <div className="dashboardItem">
                     <Pomodoro 
                         season={season}
                     />
                 </div>
-                <div className="dashboard-item">
+                <div className="dashboardItem">
                     <button className="seasonSelect" onClick={() => {setSeason(!season)}}>
-                        Halloween mode!
+                        Halloween mode!2s
                     </button>
                     <Player
                         item={item}
@@ -35,14 +35,14 @@ function Dashboard({ item, isPlaying, progressms }) {
                         season={season}
                     />
                 </div>
-                <div className="dashboard-item">
+                <div className="dashboardItem">
                     <ChatApp 
                         item={item}
                         season={season}
                     />
                 </div>
             </div>
-            <div className="maindDashboardWrapper">
+            <div className="mainDashboardWrapper">
                 <TopSongs 
                     season={season}
                 />

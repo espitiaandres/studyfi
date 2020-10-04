@@ -5,7 +5,7 @@
     background-attachment: fixed;
 }
 
-.maindDashboardWrapper {
+.mainDashboardWrapper {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -15,7 +15,7 @@
     width: 100%;
 }
 
-.dashboard-item {
+.dashboardItem {
     width: 420px;
 }
 
@@ -29,13 +29,12 @@
     cursor: pointer;
 }
 
-.carouselButtons {
-    /* padding-top: 10px; */
-    bottom: 10px;
-    font-size: 16px;
-    font-weight: 400;
-    /* position: fixed; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media (min-width: 320px) and (max-width: 480px) {
+    .maindDashboardWrapper {
+        width: 100vw;
+    }
+
+    .dashboard-item {
+        width: 100px;
+    }
 }

@@ -60,6 +60,7 @@ const TopSongs = ({ season }) => {
                 })
                 topTrackFiltered.artists = allArtists.slice(0, -2);
                 filteredTopTracksData.push(topTrackFiltered);
+                return data.items;
             });
 
             audioFeaturesTracksIDs = audioFeaturesTracksIDs.slice(0, -1);
@@ -90,7 +91,7 @@ const TopSongs = ({ season }) => {
     }, [timerange]);
 
     const pageListRenderer = ({ pages, onPageChange }) => {
-        const pageWithoutIndication = pages.filter(p => typeof p.page !== 'string');
+        const pageWithoutIndication = pages.filter((p) => typeof p.page !== 'string');
         return (
           <div>
             {

@@ -23,10 +23,9 @@ let remainingTime = setTimeSeconds;
 let minutesRemaining = setTimeMinutes < 10 ? "0" + setTimeMinutes.toString() : setTimeMinutes.toString();
 let secondsRemaining = "00";
 let timerRunning = false;
-let cooldownTimerRunning = false;
+let pomodoroText = "press on the play button below to begin";
 let interval;
 let cooldownInterval;
-let pomodoroText = "press on the play button below to begin";
 
 library.add(fas);
 
@@ -72,7 +71,6 @@ const Pomodoro = ({ season }) => {
             if (remainingTime > 0) {
                 remainingTime--;
                 updatedFormattedTimeString(remainingTime);
-                cooldownTimerRunning = true;
             } else {
                 clearInterval(cooldownInterval);
                 countdown();

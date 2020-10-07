@@ -28,7 +28,7 @@ const Message = ({ message: { user, text, currentTime }, name, season }) => {
                 <div className="messageContainer justifyEnd">
                     <p className="sentText pr-10">{trimmedName}</p>
                     <div className={`messageBox backgroundMain ${seasonStyling}`}>
-                        <p className={`messageText colorWhite `}>{ReactEmoji.emojify(text)}</p>
+                        <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ const Message = ({ message: { user, text, currentTime }, name, season }) => {
                 <p className="timestampotherusers">{currentTime}</p>
                 <div className="messageContainer justifyStart">
                     <div className={`messageBox backgroundLight ${seasonStylingAlt}`}>
-                        <p className={"messageText colorDark"}>{ReactEmoji.emojify(text)}</p>
+                        <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
                     </div>
                     <p className="sentText pl-10">{user}</p>
                 </div>

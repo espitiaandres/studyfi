@@ -13,7 +13,7 @@ import './NotFoundPage.css';
 import sketchyFavicon from '../../images/sketchyFavicon.png';
 import { calculateCenter, trans } from '../../utils/springFunctions';
 
-function NotFoundPage() {
+const NotFoundPage = () => {
     const [hoveredOn, setHoveredOn] = useState(false);
     
     const [prop, setProp] = useSpring(() => ({

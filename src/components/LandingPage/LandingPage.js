@@ -17,7 +17,7 @@ import './LandingPage.css';
 
 library.add(fab);
 
-function LandingPage() {
+const LandingPage = () => {
     return (
         <div className="main-wrapper-landing-page">
             <div className="app-title">Studyfi</div>

@@ -13,7 +13,7 @@ import ChatApp from '../ChatApp/ChatApp';
 import TopSongs from '../TopSongs/TopSongs';
 import './Dashboard.css';
 
-function Dashboard({ item, isPlaying, progressms }) {
+const Dashboard = ({ item, isPlaying, progressms }) => {
     const [season, setSeason] = useState(false); 
 
     return (
@@ -26,7 +26,7 @@ function Dashboard({ item, isPlaying, progressms }) {
                 </div>
                 <div className="dashboardItem">
                     <button className="seasonSelect" onClick={() => {setSeason(!season)}}>
-                        Halloween mode!2s
+                        Halloween mode!
                     </button>
                     <Player
                         item={item}

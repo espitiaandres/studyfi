@@ -49,7 +49,7 @@ Source code: (Source code link)
 
 Created by Andres Espitia
 
-https://github.com/esepitiaandres
+https://github.com/espitiaandres
 
 Source code: https://github.com/espitiaandres/studyfi
 

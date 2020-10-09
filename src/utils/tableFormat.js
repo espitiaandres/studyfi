@@ -8,6 +8,7 @@
 
 import React from 'react';
 
+// Top tracks categories definitions
 const acousticnessDesc = "A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.";
 const danceabilityDesc = "Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.";
 const energyDesc = "Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.";
@@ -15,10 +16,22 @@ const keySignatureDesc = "The key the track is in. Integers map to pitches using
 const instrumentalnessDesc = "Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.";
 const valenceDesc = "A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).";
 
-const formatter = (cell, row) => {     
+// Top artists categories definitions
+const followersDesc = "The total number of followers.";
+const genreDesc = `A list of the genres the artist is associated with. For example: "Prog Rock" , "Post-Grunge". (If not yet classified, the array is empty.)`;
+const nameDesc = "The name of the artist";
+const photoDesc = "Image of the artist";
+const popularityDesc = "The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist’s popularity is calculated from the popularity of all the artist’s tracks.";
+
+const formatter = (cell, row) => {
+    const imgStyle = {
+        height: '64px',
+        width: '64px'
+    };
+
     return cell.toString().includes("http") ? 
     <span>
-        <img src={cell} alt="cell"/>
+        <img style={imgStyle} src={cell} alt="cell"/>
     </span> : 
     <span>
         {cell}
@@ -160,6 +173,69 @@ const topSongColumns = [
     }
 ];
 
+const topArtistColumns = [
+    {
+        text: 'Name',
+        dataField: 'name',
+        formatter,
+        headerData: nameDesc,
+        attrs: {
+            title: nameDesc
+        },
+        style: {
+            width: '10%'
+        }
+    },
+    {
+        text: 'Followers',
+        dataField: 'followers',
+        formatter,
+        headerData: followersDesc,
+        attrs: {
+            title: followersDesc
+        },
+        style: {
+            width: '10%'
+        }
+    },
+    {
+        text: 'Genres',
+        dataField: 'genre',
+        formatter,
+        headerData: genreDesc,
+        attrs: {
+            title: genreDesc
+        },
+        style: {
+            width: '10%'
+        }
+    },
+    {
+        text: 'Photo',
+        dataField: 'photo',
+        formatter,
+        headerData: photoDesc,
+        attrs: {
+            title: photoDesc
+        },
+        style: {
+            width: '10%'
+        }
+    },
+    {
+        text: 'Popularity',
+        dataField: 'popularity',
+        formatter,
+        headerData: popularityDesc,
+        attrs: {
+            title: popularityDesc
+        },
+        style: {
+            width: '10%'
+        }
+    }
+];
+
 const keySignaturesLetters = [
     'C',
     'C♯/D♭',
@@ -173,14 +249,21 @@ const keySignaturesLetters = [
     'A',
     'A♯/B♭',
     'B'
-]
+];
 
-export { topSongColumns,
+export { 
+    topSongColumns,
+    topArtistColumns,
     acousticnessDesc,
     danceabilityDesc,
     energyDesc,
     keySignatureDesc,
     instrumentalnessDesc,
     valenceDesc,
-    keySignaturesLetters
+    keySignaturesLetters,
+    followersDesc,
+    genreDesc,
+    nameDesc,
+    photoDesc,
+    popularityDesc
 };

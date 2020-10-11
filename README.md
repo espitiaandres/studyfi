@@ -10,8 +10,6 @@ Once logged in with your Spotify account, you can view which song you are curren
 
 ### TODO:
 - improve README.md documentation (add screenshots, more detail). follow whats on cwf?
-- What to do if the user plays a podcast?
-
 
 
 This is an example README for a CWF Project Submission. Everything below is optional, but feel free to brag about what you worked on here!

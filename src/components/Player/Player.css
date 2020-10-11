@@ -30,6 +30,7 @@
 
 .skipbuttons:hover {
     cursor: pointer;
+    filter: brightness(70%);
 }
 
 .nowPlayingName {
@@ -49,10 +50,10 @@
 }
 
 .nowPlayingStatus {
+    align-items: center;
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .nowPlayingAlbumCover {
@@ -108,4 +109,8 @@
 
 .controlButtonsColouring {
     color: black;
+}
+
+.noMusicPlayingMessage {
+    color: white;
 }

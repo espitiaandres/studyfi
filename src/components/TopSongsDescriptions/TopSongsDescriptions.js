@@ -27,32 +27,44 @@ const TopSongsDescriptions = ({ season }) => {
             <ReactTooltip className="tooltips" id="acousticness" type="light" effect="solid" place="top">
                 <span>{acousticnessDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStyling}`} data-tip data-for="acousticness">acousticness</button>
+            <button className={`tooltip ${seasonStyling}`} data-tip data-for="acousticness">
+                acousticness
+            </button>
 
             <ReactTooltip className="tooltips" id="danceability" type="light" effect="solid" place="top">
                 <span>{danceabilityDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="danceability">danceability</button>
+            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="danceability">
+                danceability
+            </button>
 
             <ReactTooltip className="tooltips" id="energy" type="light" effect="solid" place="top">
                 <span>{energyDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStyling}`} data-tip data-for="energy">energy</button>
+            <button className={`tooltip ${seasonStyling}`} data-tip data-for="energy">
+                energy
+            </button>
 
             <ReactTooltip className="tooltips" id="keysignature" type="light" effect="solid" place="top">
                 <span>{keySignatureDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStyling}`} data-tip data-for="keysignature">key signature</button>
+            <button className={`tooltip ${seasonStyling}`} data-tip data-for="keysignature">
+                key signature
+            </button>
 
             <ReactTooltip className="tooltips" id="instrumentalness" type="light" effect="solid" place="top">
                 <span>{instrumentalnessDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="instrumentalness">instrumentalness</button>
+            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="instrumentalness">
+                instrumentalness
+            </button>
 
             <ReactTooltip className="tooltips" id="valence" type="light" effect="solid" place="top">
                 <span>{valenceDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStyling}`} data-tip data-for="valence">valence</button>
+            <button className={`tooltip ${seasonStyling}`} data-tip data-for="valence">
+                valence
+            </button>
         </div>
     )
 }

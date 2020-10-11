@@ -22,12 +22,14 @@ import { calculateCenter, trans } from '../../utils/springFunctions';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, season }) => {  
-  const [colors, setColors] = useState([]);
-  const [hoveredOn, setHoveredOn] = useState(false);
-  const token = hash.access_token
+const Player = ({ item, isPlaying, progressms, season }) => {
   let seasonStyling = season ? "seasonStyling" : "";
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
+  const [colors, setColors] = useState([]);
+  const [hoveredOn, setHoveredOn] = useState(false);
+
+  const token = hash.access_token;
 
   const nextSong = () => {
     axios({
@@ -36,7 +38,7 @@ const Player = ({ item, isPlaying, progressms, season }) => {
       headers: {
         'Authorization': `Bearer ${token}`
       }
-    }).then(() => { console.log("skipped song") });
+    });
   }
 
   const previousSong = () => {
@@ -46,17 +48,34 @@ const Player = ({ item, isPlaying, progressms, season }) => {
       headers: {
         'Authorization': `Bearer ${token}`
       }
-    }).then(() => { console.log("replayed song") });
+    });
+  }
+
+  const pauseSong = () => {
+    axios({
+      method: 'put',
+      url: 'https://api.spotify.com/v1/me/player/pause',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  }
+
+  const resumeSong = () => {
+    axios({
+      method: 'put',
+      url: 'https://api.spotify.com/v1/me/player/play',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
   }
    
   const renderSwatches = () => {
     if (colors.length > 6) {
-      colors.shift();
-      colors.shift();
-      colors.shift();
-      colors.shift();
-      colors.shift();
-      colors.shift();
+      for (let i = 0; i < 6; i++) {
+        colors.shift();
+      }
     }
   
     if (colors.colors) {
@@ -99,8 +118,7 @@ const Player = ({ item, isPlaying, progressms, season }) => {
   let allArtists = "";
   let songCurrentTimeMinutesSeconds = "";
   let songDurationMinutesSeconds = "";  
-  let googleSearchString = item.artists[0].name + "+" + item.album.name ;
-  googleSearchString = googleSearchString.replace(" ", "+");
+  let googleSearchString;
 
   if (item) {
     songDuration = item.duration_ms;
@@ -112,13 +130,18 @@ const Player = ({ item, isPlaying, progressms, season }) => {
     item.artists.map((artist) => {
       return allArtists += `| ${artist.name} |`;
     })
+    googleSearchString = (item.artists[0].name + "+" + item.album.name).replace(" ", "+");
   }
+
+  console.log(item)
     
   const progressBarStyles = {
     width: (songCurrentTime * 100 / songDuration) + '%'
   };
   
   return (
+    item
+    ?
     <div className="nowPlayingSide">
       <ColorExtractor getColors={getColors}>
         <img src={albumImageURL} className="imageStyles" alt="albumimage" />
@@ -168,17 +191,22 @@ const Player = ({ item, isPlaying, progressms, season }) => {
       </div>
 
       <div className="nowPlayingStatus">
-        <div >
-          <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
-            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
+        <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
+          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
+        </button>
+        {isPlaying
+          ? 
+          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={pauseSong}>
+            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "pause"]} />
           </button>
-        </div>
-        {isPlaying ? "playing" : "paused"}
-        <div >
-          <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
-            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
+          : 
+          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={resumeSong}>
+            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "play"]} />
           </button>
-        </div>
+        }
+        <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
+          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
+        </button>
       </div>
 
       <div className="durationMenu">
@@ -188,6 +216,13 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         </div>    
         <p className="durationMenuTimes">{songDurationMinutesSeconds}</p>
       </div>
+    </div>
+    :
+    <div className="noMusicPlayingMessage">
+      <h1>hmm...</h1>
+      <p>
+        It seems that you're on Spotify but you're not currently listening to music. Listen to music for something to appear here!
+      </p>
     </div>
   )
 }

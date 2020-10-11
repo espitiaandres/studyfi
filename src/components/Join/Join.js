@@ -13,13 +13,11 @@ import JoinForm from '../JoinForm/JoinForm';
 const Join = ({ duplicate, season }) => {
     return (
             duplicate ? 
-            <div>
-                <div className="joinOuterContainer">
-                    <div className="joinInnerContainer">
-                        <p className="duplicatemessage">That username is already taken.</p> 
-                        <p className="duplicatemessage">Please use another one!</p>
-                        <JoinForm season={season}/>
-                    </div>
+            <div className="joinOuterContainer">
+                <div className="joinInnerContainer">
+                    <p className="duplicatemessage">That username is already taken.</p> 
+                    <p className="duplicatemessage">Please use another one!</p>
+                    <JoinForm season={season}/>
                 </div>
             </div>
             : 

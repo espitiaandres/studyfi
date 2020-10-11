@@ -158,14 +158,14 @@ const TopSongs = ({ season }) => {
             <h1 className="songsTableTitle">
                 your most listened to 
                 <button 
-                    className={`songsAndArtistsButton ${seasonStyling}`} 
+                    className={`songsAndArtistsButton ${seasonStylingAlt}`} 
                     onClick={() => setQueryParam('artists')}
                 >
                     artists
                 </button>
                 and 
                 <button 
-                    className={`songsAndArtistsButton ${seasonStyling}`}
+                    className={`songsAndArtistsButton ${seasonStylingAlt}`}
                     onClick={() => setQueryParam('tracks')}
                 >
                     tracks
@@ -193,13 +193,11 @@ const TopSongs = ({ season }) => {
             </div>
 
             {
-                queryParam === "tracks"
+                (queryParam === "tracks" && topArtistsPopulated && topTracksPopulated)
                 ? 
                 <div>
                     <TopSongsDescriptions season={season} />
                     {
-                        topArtistsPopulated && 
-                        topTracksPopulated && 
                         <div className="songsTable">
                             <BootstrapTable
                                 keyField="id"
@@ -214,8 +212,6 @@ const TopSongs = ({ season }) => {
                 <div>
                     <TopArtistsDescriptions season={season} />
                     {
-                        topArtistsPopulated && 
-                        topTracksPopulated && 
                         <div className="songsTable">
                             <BootstrapTable
                                 keyField="id"

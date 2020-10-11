@@ -62,7 +62,7 @@ const Chat = ({ location, item, season }) => {
             let tzpass = tz;
             tzpass = tzpass.includes("minus") ? tzpass.replace("minus", "+") : tzpass.replace("plus", "-");
             message.currentTime = moment().tz(`Etc/${tzpass}`).format("MMM DD h:mm a");
-            setMessages(messages => [ ...messages, message ]);
+            setMessages((messages) => [ ...messages, message ]);
         });
     }, [name]);
 
@@ -78,10 +78,21 @@ const Chat = ({ location, item, season }) => {
         <Join duplicate={duplicate} season={season} /> :                 
         <div className="outerContainer">
             <div className="container">
-                <InfoBar room={room} season={season}/>
-                <Messages messages={messages} name={name} season={season}/>
+                <InfoBar 
+                    room={room} 
+                    season={season}
+                />
+                <Messages 
+                    messages={messages} 
+                    name={name} 
+                    season={season} 
+                />
                 <Input 
-                    message={message} setMessage={setMessage} sendMessage={sendMessage} item={item} season={season}
+                    message={message} 
+                    setMessage={setMessage} 
+                    sendMessage={sendMessage} 
+                    item={item} 
+                    season={season}
                 />
             </div>
             <Userslist users={users}/>

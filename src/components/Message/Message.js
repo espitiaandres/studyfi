@@ -42,7 +42,6 @@ const Message = ({ message: { user, text, currentTime }, name, season }) => {
                     <p className="sentText pl-10">{user}</p>
                 </div>
             </div>
-
         )
     )
 }

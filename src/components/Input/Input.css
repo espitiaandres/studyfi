@@ -28,6 +28,7 @@ input:focus, textarea:focus, select:focus{
 
 .sendButton:hover {
   cursor: pointer;
+  filter: brightness(70%);
 }
 
 .seasonStyling {

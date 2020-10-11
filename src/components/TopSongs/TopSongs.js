@@ -111,7 +111,7 @@ const TopSongs = ({ season }) => {
             const topArtistFiltered = {};
             topArtistFiltered.followers = artist.followers.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             artist.genres.map((genre) => {
-                return allGenres += genre + ",";
+                return allGenres += "|" + genre + "| ";
             });
             topArtistFiltered.genre = allGenres.slice(0, -1);
             topArtistFiltered.name = artist.name;

@@ -23,7 +23,7 @@ const InfoBar = ({ room, season, onDisconnect }) => {
                 <h3>{room}</h3>
             </div>
             <div className="rightInnerContainer">
-                <Link to="https://www.andres-espitia.com/studyfi/#">
+                <Link to="/">
                     <div onClick={onDisconnect}>
                         <img src={closeIcon} alt="close" />
                     </div>

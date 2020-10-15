@@ -17,13 +17,13 @@ const Join = ({ duplicate, season }) => {
                 <div className="joinInnerContainer">
                     <p className="duplicatemessage">That username is already taken.</p> 
                     <p className="duplicatemessage">Please use another one!</p>
-                    <JoinForm season={season}/>
+                    <JoinForm season={season} />
                 </div>
             </div>
             : 
             <div className="joinOuterContainer">
                 <div className="joinInnerContainer">
-                    <JoinForm season={season}/>
+                    <JoinForm season={season} />
                 </div>
             </div>
     )

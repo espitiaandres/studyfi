@@ -7,11 +7,12 @@
 //
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import closeIcon from '../../icons/closeIcon.png';
 import onlineIcon from '../../icons/onlineIcon.png';
 import './InfoBar.css';
 
-const InfoBar = ({ room, season }) => {
+const InfoBar = ({ room, season, onDisconnect }) => {
     let seasonStyling = season ? "seasonStyling" : "";
     // let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
@@ -22,9 +23,11 @@ const InfoBar = ({ room, season }) => {
                 <h3>{room}</h3>
             </div>
             <div className="rightInnerContainer">
-                <a href="https://www.andres-espitia.com/studyfi/#">
-                    <img src={closeIcon} alt="close" />
-                </a>
+                <Link to="/">
+                    <div onClick={onDisconnect}>
+                        <img src={closeIcon} alt="close" />
+                    </div>
+                </Link>
             </div>
         </div>
     )

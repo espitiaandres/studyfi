@@ -12,17 +12,22 @@
   align-items: center;
   color: white;
   display: flex;
-  flex: 0.5;
+  flex: 0.9;
   margin-left: 5%;
   width: 100%;
 }
   
 .rightInnerContainer {
   display: flex;
-  flex: 0.5;
+  flex: 0.1;
   justify-content: flex-end;
   margin-right: 5%;
   width: 100%;
+}
+
+.rightInnerContainer:hover {
+  cursor: pointer;
+  filter: brightness(70%);
 }
 
 .onlineIcon {

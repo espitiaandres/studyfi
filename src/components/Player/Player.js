@@ -132,8 +132,6 @@ const Player = ({ item, isPlaying, progressms, season }) => {
     })
     googleSearchString = (item.artists[0].name + "+" + item.album.name).replace(" ", "+");
   }
-
-  console.log(item)
     
   const progressBarStyles = {
     width: (songCurrentTime * 100 / songDuration) + '%'

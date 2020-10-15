@@ -35,8 +35,8 @@ const App = () =>  {
     let token = hash.access_token;
     
     // socket.emit('join') and socket.emit('disconnect') calls are done to wake up the back end before the user joins a chat room.
-    const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
-    const socket = io(ENDPOINT, {transports: ['websocket']});
+    const backendEndpoint = 'https://react-chat-app-back-end.herokuapp.com/';
+    const socket = io(backendEndpoint, {transports: ['websocket']});
     socket.emit('join', { 
       name: '', 
       room: '', 
@@ -86,7 +86,7 @@ const App = () =>  {
 
   return (
     <div className="App">
-      {!token && <div><LandingPage /></div>}
+      {!token && <LandingPage />}
       {token && data && (
         <Dashboard
           item={item}

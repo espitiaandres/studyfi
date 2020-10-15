@@ -27,11 +27,12 @@ const Chat = ({ location, item, season }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [duplicate, setDuplicate] = useState(false);
-    const ENDPOINT = 'https://react-chat-app-back-end.herokuapp.com/';
+
+    const backendEndpoint = 'https://react-chat-app-back-end.herokuapp.com/';
 
     useEffect(() => {
         const { name, room, tz } = queryString.parse(location.search);
-        socket = io(ENDPOINT, {transports: ['websocket']});
+        socket = io(backendEndpoint, {transports: ['websocket']});
         setName(name);
         setRoom(room);
         setTZ(tz);
@@ -45,16 +46,10 @@ const Chat = ({ location, item, season }) => {
             socket.emit('disconnect');
             socket.off();
         };
-    }, [ENDPOINT, location.search]);
+    }, [backendEndpoint, location.search]);
 
     useEffect(() => {
-        socket.on("roomData", ({ users }) => {
-            setUsers(users);
-        });
-
-        socket.on('duplicate', (duplicate) => {
-            setDuplicate(duplicate.duplicate);
-        })
+        onUserEntry();
     });
 
     useEffect(() => {
@@ -72,6 +67,22 @@ const Chat = ({ location, item, season }) => {
             socket.emit('sendMessage', message, () => setMessage(''));
         }
     }
+
+    const onDisconnect = () => {
+        socket.disconnect();
+        socket = io(backendEndpoint, {transports: ['websocket']});
+        onUserEntry();
+    }
+
+    const onUserEntry = () => {
+        socket.on("roomData", ({ users }) => {
+            setUsers(users);
+        });
+
+        socket.on('duplicate', (user) => {
+            setDuplicate(user.duplicate);
+        });
+    }
     
     return (
         duplicate ? 
@@ -81,6 +92,7 @@ const Chat = ({ location, item, season }) => {
                 <InfoBar 
                     room={room} 
                     season={season}
+                    onDisconnect={onDisconnect}
                 />
                 <Messages 
                     messages={messages} 

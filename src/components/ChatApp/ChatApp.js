@@ -13,7 +13,7 @@ import Chat from '../Chat/Chat';
 
 const ChatApp = (props) => {
     return (
-        <Router basename="">
+        <Router basename="/studyfi">
             <Route path="/" exact render={(nativeProps) => (
                 <Join {...nativeProps} {...props}/>
             )}/>

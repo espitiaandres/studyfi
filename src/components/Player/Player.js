@@ -22,15 +22,19 @@ import { calculateCenter, trans } from '../../utils/springFunctions';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, season }) => {
+const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season }) => {
   let seasonStyling = season ? "seasonStyling" : "";
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
   const [colors, setColors] = useState([]);
   const [hoveredOn, setHoveredOn] = useState(false);
+  // const [repeat, setRepeat] = useState(repeatState);
+  // const [shuffle, setShuffle] = useState(shuffleState);
+  const [repeatError, setRepeatError] = useState('');
+  const [shuffleError, setShuffleError] = useState('');
 
   const token = hash.access_token;
-
+  
   const nextSong = () => {
     axios({
       method: 'post',
@@ -69,6 +73,46 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         'Authorization': `Bearer ${token}`
       }
     });
+  }
+
+  const shuffleSongs = () => {
+    axios({
+      method: 'put',
+      url: 'https://api.spotify.com/v1/me/player/shuffle',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        state: !shuffleState
+      }
+    }).then((response) => {
+      // console.log(response);
+    }).catch((error) => {
+      console.log(error);
+      setShuffleError(error);
+    })
+  }
+
+  const repeatSongs = () => {
+    const repeatStates = ["track", "context", "off"];
+     const repeatStateIndex = repeatStates.indexOf(repeatState);
+    const index = (repeatStateIndex !== repeatStates.length - 1) ? repeatStateIndex + 1 : 0;
+
+    axios({
+      method: 'put',
+      url: 'https://api.spotify.com/v1/me/player/repeat',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        state: repeatStates[index]
+      }
+    }).then((response) => {
+      // console.log(response);
+    }).catch((error) => {
+      console.log(error);
+      setRepeatError(error);
+    })
   }
    
   const renderSwatches = () => {
@@ -188,22 +232,34 @@ const Player = ({ item, isPlaying, progressms, season }) => {
         {item.album.name} - {releaseDateYear}
       </div>
 
+      <div className="shuffleRepeatState">
+        {shuffleError !== '' ? `shuffle: ${shuffleError.message}!` : (shuffleState ? "shuffle on" : "shuffle off")} - {repeatError !== ''? `repeat: ${repeatError.message}!` : `repeating ${repeatState}`}
+      </div>
+
       <div className="nowPlayingStatus">
-        <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong}>
+        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={shuffleSongs} title="shuffle songs">
+          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "random"]} />
+        </button>
+
+        <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong} title="previous song">
           <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
         </button>
         {isPlaying
           ? 
-          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={pauseSong}>
+          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={pauseSong} title="pause song">
             <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "pause"]} />
           </button>
           : 
-          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={resumeSong}>
+          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={resumeSong} title="play song">
             <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "play"]} />
           </button>
         }
-        <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong}>
+        <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong} title="next song">
           <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
+        </button>
+
+        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={repeatSongs} title="change repeat setting">
+          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "redo"]} />
         </button>
       </div>
 

@@ -9,6 +9,9 @@
 import React from 'react';
 
 // Top tracks categories definitions
+const trackPopularityDesc = `The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.
+The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.
+Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. Note that the popularity value may lag actual popularity by a few days: the value is not updated in real time.`;
 const acousticnessDesc = "A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.";
 const danceabilityDesc = "Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.";
 const energyDesc = "Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.";
@@ -21,7 +24,7 @@ const followersDesc = "The total number of followers.";
 const genreDesc = `A list of the genres the artist is associated with. For example: "Prog Rock" , "Post-Grunge". (If not yet classified, the array is empty.)`;
 const nameDesc = "The name of the artist";
 const photoDesc = "Image of the artist";
-const popularityDesc = "The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist’s popularity is calculated from the popularity of all the artist’s tracks.";
+const artistPopularityDesc = "The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist’s popularity is calculated from the popularity of all the artist’s tracks.";
 
 const formatter = (cell, row) => {
     const imgStyle = {
@@ -46,9 +49,6 @@ const topSongColumns = [
         headerData: 'Song name',
         attrs: {
             title: 'Song name'
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -58,9 +58,6 @@ const topSongColumns = [
         headerData: 'Album name',
         attrs: {
             title: 'Album name'
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -70,9 +67,6 @@ const topSongColumns = [
         headerData: 'Album cover',
         attrs: {
             title: 'Album cover'
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -82,9 +76,6 @@ const topSongColumns = [
         headerData: 'Song release date',
         attrs: {
             title: 'Song release date'
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -94,11 +85,8 @@ const topSongColumns = [
         headerData: 'Artists on the song',
         attrs: {
             title: 'Artists on the song'
-        },
-        style: {
-            width: '10%'
         }
-    },
+    },    
     {
         text: 'Acousticness',
         dataField: 'acousticness',
@@ -106,9 +94,15 @@ const topSongColumns = [
         headerData: acousticnessDesc,
         attrs: {
             title: acousticnessDesc
-        },
-        style: {
-            width: '10%'
+        }
+    },
+    {
+        text: 'Popularity',
+        dataField: 'popularity',
+        formatter,
+        headerData: trackPopularityDesc,
+        attrs: {
+            title: trackPopularityDesc
         }
     },
     {
@@ -118,9 +112,6 @@ const topSongColumns = [
         headerData: danceabilityDesc,
         attrs: {
             title: danceabilityDesc
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -130,9 +121,6 @@ const topSongColumns = [
         headerData: energyDesc,
         attrs: {
             title: energyDesc
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -142,9 +130,6 @@ const topSongColumns = [
         headerData: keySignatureDesc,
         attrs: {
             title: keySignatureDesc
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -154,9 +139,6 @@ const topSongColumns = [
         headerData: instrumentalnessDesc,
         attrs: {
             title: instrumentalnessDesc
-        },
-        style: {
-            width: '10%'
         }
     },
     {
@@ -166,9 +148,6 @@ const topSongColumns = [
         headerData: valenceDesc,
         attrs: {
             title: valenceDesc
-        },
-        style: {
-            width: '10%'
         }
     }
 ];
@@ -226,9 +205,9 @@ const topArtistColumns = [
         text: 'Popularity',
         dataField: 'popularity',
         formatter,
-        headerData: popularityDesc,
+        headerData: artistPopularityDesc,
         attrs: {
-            title: popularityDesc
+            title: artistPopularityDesc
         },
         style: {
             width: '10%'
@@ -254,6 +233,7 @@ const keySignaturesLetters = [
 export { 
     topSongColumns,
     topArtistColumns,
+    trackPopularityDesc,
     acousticnessDesc,
     danceabilityDesc,
     energyDesc,
@@ -265,5 +245,5 @@ export {
     genreDesc,
     nameDesc,
     photoDesc,
-    popularityDesc
+    artistPopularityDesc
 };

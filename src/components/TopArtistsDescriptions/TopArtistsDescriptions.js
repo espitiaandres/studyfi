@@ -14,7 +14,7 @@ import {
     genreDesc,
     nameDesc,
     photoDesc,
-    popularityDesc
+    artistPopularityDesc
 } from '../../utils/tableFormat';
 
 const TopArtistsDescriptions = ({ season }) => {
@@ -52,7 +52,7 @@ const TopArtistsDescriptions = ({ season }) => {
             </button>
 
             <ReactTooltip className="tooltips" id="popularity" type="light" effect="solid" place="top">
-                <span>{popularityDesc}</span>
+                <span>{artistPopularityDesc}</span>
             </ReactTooltip>
             <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="popularity">
                 popularity

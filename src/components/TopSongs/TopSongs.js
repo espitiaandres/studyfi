@@ -71,6 +71,7 @@ const TopSongs = ({ season }) => {
             topTrackFiltered.albumCover = song.album.images[2].url;
             topTrackFiltered.releaseDate = song.album.release_date;
             topTrackFiltered.id = song.id;
+            topTrackFiltered.popularity = song.popularity;
             audioFeaturesTracksIDs += song.id + ",";
             song.artists.map((artist) => {
                 return allArtists += `${artist.name}, `;

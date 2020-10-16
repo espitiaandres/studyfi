@@ -15,8 +15,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import './App.css';
 
-const App = () =>  {
-  let interval;
+const App = () =>  {  let interval;
   const itemDefault = {
     album: { 
       images: [{ url: "" }]
@@ -25,10 +24,14 @@ const App = () =>  {
     artists: [{ name: "" }],
     duration_ms: 0
   };
+
   const [token, setToken] = useState(null);
   const [item, setItem] = useState(itemDefault);
   const [isPlaying, setIsPlaying] = useState("Paused");
-  const [progressms, setProgressms] = useState(0)
+  const [progressms, setProgressms] = useState(0);
+  const [repeatState, setRepeatState] = useState();
+  const [shuffleState, setShuffleState] = useState();
+
   const [data, setData] =  useState(true);
 
   useEffect(() => {
@@ -80,6 +83,8 @@ const App = () =>  {
       setItem(data.item);
       setIsPlaying(data.is_playing);
       setProgressms(data.progress_ms);
+      setShuffleState(data.shuffle_state);
+      setRepeatState(data.repeat_state);
       setData(true);
     });
   }
@@ -92,6 +97,8 @@ const App = () =>  {
           item={item}
           isPlaying={isPlaying}
           progressms={progressms}
+          shuffleState={shuffleState}
+          repeatState={repeatState}
         />
       )}
       {!data && <NotFoundPage />}  

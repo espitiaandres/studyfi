@@ -6,10 +6,15 @@ Once logged in with your Spotify account, you can view which song you are curren
 
 - add chat functionality (added on September 5, 2020)
 - removed cors policy error ('http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource), and the 503 websocket connection error.
+- add user disconnect functionality with proper routing
 
 
 ### TODO:
 - improve README.md documentation (add screenshots, more detail). follow whats on cwf?
+- Add users devices functionality in Player.js
+- Add repeat and shuffle functionality in Player.js, find buttons on font-awesome (done)
+
+
 
 
 This is an example README for a CWF Project Submission. Everything below is optional, but feel free to brag about what you worked on here!

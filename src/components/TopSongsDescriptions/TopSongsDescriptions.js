@@ -10,6 +10,7 @@ import React from 'react';
 import ReactTooltip from "react-tooltip";
 import './TopSongsDescriptions.css';
 import { 
+    trackPopularityDesc,
     acousticnessDesc,
     danceabilityDesc,
     energyDesc,
@@ -29,6 +30,13 @@ const TopSongsDescriptions = ({ season }) => {
             </ReactTooltip>
             <button className={`tooltip ${seasonStyling}`} data-tip data-for="acousticness">
                 acousticness
+            </button>
+
+            <ReactTooltip className="tooltips" id="popularity" type="light" effect="solid" place="top">
+                <span>{trackPopularityDesc}</span>
+            </ReactTooltip>
+            <button className={`tooltip ${seasonStyling}`} data-tip data-for="popularity">
+                popularity
             </button>
 
             <ReactTooltip className="tooltips" id="danceability" type="light" effect="solid" place="top">

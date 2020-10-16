@@ -14,7 +14,7 @@ import sketchyFavicon from '../../images/sketchyFavicon.png';
 import { calculateCenter, trans } from '../../utils/springFunctions';
 
 const NotFoundPage = () => {
-    const [hoveredOn, setHoveredOn] = useState(false);
+    const [, setHoveredOn] = useState(false);
     
     const [prop, setProp] = useSpring(() => ({
         xys: [0, 0, 1],

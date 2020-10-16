@@ -137,11 +137,11 @@ const Pomodoro = ({ season }) => {
                 <button className={`controlButtons ${seasonStylingAlt}`} onClick={countdown} disabled={playButton}>
                     { !timerRunning ? <FontAwesomeIcon icon={["fas", "play"]} /> : <FontAwesomeIcon icon={["fas", "pause"]} /> }
                 </button>
-                <p className={`countdown ${seasonStyling}`}>
+                <div className={`countdown ${seasonStyling}`}>
                     <div className="controlButtonsColouring">
                         {minutesRemaining}:{secondsRemaining}
-                    </div>    
-                </p>
+                    </div>
+                </div>
             </div>
             <div className="icon-scroll animate__animated animate__bounce animate__infinite animate__slow">
                 <Link to="topsongs" spy={true} smooth={true} duration={400}>

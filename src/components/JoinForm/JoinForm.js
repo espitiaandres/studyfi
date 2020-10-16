@@ -51,7 +51,7 @@ const JoinForm = ({ season }) => {
                     <select className="joinInput mt-20" defaultValue={'default'} onChange={(event) => setTZ(event.target.value)}>
                         <option value='default'>choose your timezone</option>
                         {timezones.map(
-                            (tzs) => <option value={tzs}>
+                            (tzs) => <option value={tzs} key={tzs}>
                                         {tzs.includes("plus") ? tzs.replace("plus", "+") : tzs.replace("minus", "-")}
                                     </option>
                             )

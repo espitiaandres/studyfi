@@ -37,9 +37,9 @@ const App = () =>  {  let interval;
   useEffect(() => {
     let token = hash.access_token;
     
-    // socket.emit('join') and socket.emit('disconnect') calls are done to wake up the back end before the user joins a chat room.
     const backendEndpoint = 'https://react-chat-app-back-end.herokuapp.com/';
     const socket = io(backendEndpoint, {transports: ['websocket']});
+
     socket.emit('join', { 
       name: '', 
       room: '', 
@@ -99,6 +99,7 @@ const App = () =>  {  let interval;
           progressms={progressms}
           shuffleState={shuffleState}
           repeatState={repeatState}
+          token={token}
         />
       )}
       {!data && <NotFoundPage />}  

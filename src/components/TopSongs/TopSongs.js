@@ -10,13 +10,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import hash from '../../utils/hash';
 import TopSongsDescriptions from '../TopSongsDescriptions/TopSongsDescriptions';
 import TopArtistsDescriptions from '../TopArtistsDescriptions/TopArtistsDescriptions';
 import { topSongColumns, topArtistColumns, keySignaturesLetters } from '../../utils/tableFormat';
 import './TopSongs.css';
 
-const TopSongs = ({ season }) => {
+const TopSongs = ({ season, token }) => {
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
@@ -27,7 +26,6 @@ const TopSongs = ({ season }) => {
     const [topArtistsPopulated, setTopArtistsPopulated] = useState(false);
     const [queryParam, setQueryParam] = useState('tracks');
 
-    const token = hash.access_token;
     let filteredTopTracksData = [];
     let filteredTopArtistsData = [];
 
@@ -155,7 +153,7 @@ const TopSongs = ({ season }) => {
     };
             
     return (
-        <div id="topsongs">
+        <div id="topsongs" className="topSongs">
             <h1 className="songsTableTitle">
                 your most listened to 
                 <button 

@@ -17,23 +17,18 @@ import axios from 'axios';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import './Player.css';
-import hash from '../../utils/hash';
 import { calculateCenter, trans } from '../../utils/springFunctions';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season }) => {
+const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, token }) => {
   let seasonStyling = season ? "seasonStyling" : "";
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
   const [colors, setColors] = useState([]);
-  const [hoveredOn, setHoveredOn] = useState(false);
-  // const [repeat, setRepeat] = useState(repeatState);
-  // const [shuffle, setShuffle] = useState(shuffleState);
+  const [, setHoveredOn] = useState(false);
   const [repeatError, setRepeatError] = useState('');
   const [shuffleError, setShuffleError] = useState('');
-
-  const token = hash.access_token;
   
   const nextSong = () => {
     axios({
@@ -233,7 +228,9 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
 
       <div className="shuffleRepeatState">
-        {shuffleError !== '' ? `shuffle: ${shuffleError.message}!` : (shuffleState ? "shuffle on" : "shuffle off")} - {repeatError !== ''? `repeat: ${repeatError.message}!` : `repeating ${repeatState}`}
+        {shuffleError !== '' ? `shuffle: ${shuffleError.message}! ` : (shuffleState ? "shuffle on " : "shuffle off ")}
+        -
+        {repeatError !== ''? ` repeat: ${repeatError.message}!` : ` repeating ${repeatState}`}
       </div>
 
       <div className="nowPlayingStatus">

@@ -1,8 +1,10 @@
 # Studyfi
 
-:musical_note: A place to study, listen to music, and chat with friends. Getting work done while listening to music on one page. :musical_note:
+:musical_note: A place to study, listen to music, and chat with friends. Getting work done while listening to music on one page.
   
-:musical_keyboard: Once logged in with your Spotify account, you can view which song you are currently listening to, use a Pomodoro timer, chat with friends, and see your most listened to song and artists. :musical_keyboard:
+:musical_keyboard: Once logged in with your Spotify account, you can view which song you are currently listening to, use a Pomodoro timer, chat with friends, and see your most listened to song and artists.
+
+
 
 Created by Andres Espitia
 - https://github.com/espitiaandres
@@ -25,6 +27,7 @@ Live on: https://www.andres-espitia.com/studyfi
 - Insert gifs/pictures of working app
 
 
+
 ## Summary
 
 I decided to make a full stack web app using node.js and react.js to help me when studying. I've noticed that most apps that I use when studying are on different platforms (ex: Spotify on my phone/computer, Messenger on my computer, my phone's stopwatch), and that constant switching between platforms and devices would distract me. I decided to make my own web app which would contain all these services in one place, and also to learn more about react.js and node.js.
@@ -36,6 +39,7 @@ I decided to make a full stack web app using node.js and react.js to help me whe
     - Node.js
     - Express
  
+
 
 ## Inspiration
 
@@ -60,12 +64,14 @@ I was also curious what were most played songs and who were my most played artis
 -->
   
 
+
 ## Challenges
 
 The biggest challenge for me was piecing and wiring all of the different things I would need when studying. I had some experience in React.js but since this is a full-stack application, I tried to keep scalability and code reusability at the forefront. 
 
 Other challenges I faced were roadblocks on the backend, as I was rusty on Node.js and Express. One of these challenges was bypassing the CORS policy error and the different websocket connection errors that would arise from the chat portion of the app.
  
+
 
 ## Reflections
 

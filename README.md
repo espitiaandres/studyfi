@@ -5,7 +5,6 @@
 :musical_keyboard: Once logged in with your Spotify account, you can view which song you are currently listening to, use a Pomodoro timer, chat with friends, and see your most listened to song and artists.
 
 
-
 Created by Andres Espitia
 - https://github.com/espitiaandres
 
@@ -20,16 +19,13 @@ Live on: https://www.andres-espitia.com/studyfi
 
 ### TODO:
 
-- Insert gifs/pictures of working app into README.md
-
-- Add avatars from MaterialUI
-
-- Refactor tableFormat.js and separate definitions from table headers object
+- improve README.md
 
 
 ## Summary
 
 I decided to make a full stack web app using node.js and react.js to help me when studying. I've noticed that most apps that I use when studying are on different platforms (ex: Spotify on my phone/computer, Messenger on my computer, my phone's stopwatch), and that constant switching between platforms and devices would distract me. I decided to make my own web app which would contain all these services in one place, and also to learn more about react.js and node.js.
+
 
 ### Stack
 - **Front End**
@@ -38,6 +34,9 @@ I decided to make a full stack web app using node.js and react.js to help me whe
     - Node.js
     - Express
  
+
+If currently not playing music on Spotify, the following will occur:
+![](src/images/Documentation/NotFoundPage.gif)
 
 
 ## Inspiration

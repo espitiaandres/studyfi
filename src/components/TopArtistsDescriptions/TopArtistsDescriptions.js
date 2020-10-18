@@ -15,7 +15,7 @@ import {
     nameDesc,
     photoDesc,
     artistPopularityDesc
-} from '../../utils/tableFormat';
+} from '../../utils/TopArtistsDefintions';
 
 const TopArtistsDescriptions = ({ season }) => {
     let seasonStyling = season ? "seasonStyling" : "";

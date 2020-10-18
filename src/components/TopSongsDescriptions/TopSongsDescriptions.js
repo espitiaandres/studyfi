@@ -17,7 +17,7 @@ import {
     keySignatureDesc,
     instrumentalnessDesc,
     valenceDesc
-} from '../../utils/tableFormat';
+} from '../../utils/TopTracksDefinitions';
 
 const TopSongsDescriptions = ({ season }) => {
     let seasonStyling = season ? "seasonStyling" : "";

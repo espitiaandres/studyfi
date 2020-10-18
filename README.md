@@ -20,12 +20,13 @@ Live on: https://www.andres-espitia.com/studyfi
 
 ### TODO:
 
-- improve README.md documentation (add screenshots, more detail). follow whats on cwf?
-
 - Add users devices functionality in Player.js
 
 - Insert gifs/pictures of working app into README.md
 
+- Add avatars from MaterialUI
+
+- Refactor tableFormat.js and separate definitions from table headers object
 
 
 ## Summary

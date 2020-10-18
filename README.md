@@ -35,8 +35,27 @@ I decided to make a full stack web app using node.js and react.js to help me whe
     - Express
  
 
-If currently not playing music on Spotify, the following will occur:
+If currently not playing music on Spotify, the following will occur after signing in:
+
 ![](src/images/Documentation/NotFoundPage.gif)
+
+
+If currently playing music on Spotify, the following Dashboard page will appear.
+
+![](src/images/Documentation/LandingPage.gif)
+
+
+How to work the Pomodoro timer:
+
+![](src/images/Documentation/Pomodoro.gif)
+
+
+How to work the Spotify player:
+
+![](src/images/Documentation/Player.gif)
+
+
+Don't forget to scroll down or click on the bouncing chevron icon to view your most played artists and songs!
 
 
 ## Inspiration

@@ -35,21 +35,21 @@ const TopSongsDescriptions = ({ season }) => {
             <ReactTooltip className="tooltips" id="popularity" type="light" effect="solid" place="top">
                 <span>{trackPopularityDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStyling}`} data-tip data-for="popularity">
+            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="popularity">
                 popularity
             </button>
 
             <ReactTooltip className="tooltips" id="danceability" type="light" effect="solid" place="top">
                 <span>{danceabilityDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="danceability">
+            <button className={`tooltip ${seasonStyling}`} data-tip data-for="danceability">
                 danceability
             </button>
 
             <ReactTooltip className="tooltips" id="energy" type="light" effect="solid" place="top">
                 <span>{energyDesc}</span>
             </ReactTooltip>
-            <button className={`tooltip ${seasonStyling}`} data-tip data-for="energy">
+            <button className={`tooltip ${seasonStylingAlt}`} data-tip data-for="energy">
                 energy
             </button>
 

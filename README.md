@@ -45,7 +45,7 @@ If currently playing music on Spotify, the following Dashboard page will appear.
 ![](src/images/Documentation/LandingPage.gif)
 
 
-How to work the Pomodoro timer:
+How to work the Pomodoro timer. Also, check out the seasonal mode by clicking on the "______ mode" button at the top of the screen.
 
 ![](src/images/Documentation/Pomodoro.gif)
 

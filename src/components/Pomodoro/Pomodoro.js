@@ -108,22 +108,33 @@ const Pomodoro = ({ season }) => {
 
     return (
         <div className="pomodoroHeader">
-            <div>
-                <div className="pomodoroHeaderTitle">
-                    <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
-                    </div>
-                    <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
-                    </div>
-                    <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
-                    <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
-                    </div>
-                    <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                        <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
-                    </div>
+            <div className="pomodoroHeaderTitle">
+                <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                    <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
                 </div>
+                <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                    <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                </div>
+                <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
+                <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                    <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                </div>
+                <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                    <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                </div>
+            </div>
+
+            <div className="pomodoroHeaderTitle">
+                <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                    <FontAwesomeIcon icon={season ? ["fas", "skull-crossbones"] : ["fas", "clock"]} />
+                </div>
+                <div className={`countdown ${seasonStyling}AltIcons`}>
+                    {minutesRemaining}:{secondsRemaining}
+                </div>
+                <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                    <FontAwesomeIcon icon={season ? ["fas", "skull-crossbones"] : ["fas", "clock"]} />
+                </div>
+
             </div>
             <p>{pomodoroText}</p>
 
@@ -134,15 +145,11 @@ const Pomodoro = ({ season }) => {
                 <button className={`controlButtons ${seasonStylingAlt}`} onClick={clearCountdown} disabled={restartButton}>
                     <FontAwesomeIcon icon={["fas", "undo"]} />
                 </button>
-                <button className={`controlButtons ${seasonStylingAlt}`} onClick={countdown} disabled={playButton}>
+                <button className={`controlButtons ${seasonStyling}`} onClick={countdown} disabled={playButton}>
                     { !timerRunning ? <FontAwesomeIcon icon={["fas", "play"]} /> : <FontAwesomeIcon icon={["fas", "pause"]} /> }
                 </button>
-                <div className={`countdown ${seasonStyling}`}>
-                    <div className="controlButtonsColouring">
-                        {minutesRemaining}:{secondsRemaining}
-                    </div>
-                </div>
             </div>
+
             <div className="icon-scroll animate__animated animate__bounce animate__infinite animate__slow">
                 <Link to="topsongs" spy={true} smooth={true} duration={400}>
                     <FontAwesomeIcon icon={"chevron-down"} size="2x" />

@@ -234,28 +234,28 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
 
       <div className="nowPlayingStatus">
-        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={shuffleSongs} title="shuffle songs">
+        <button className={`skipbuttons ${seasonStyling}`} onClick={shuffleSongs} title="shuffle songs">
           <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "random"]} />
         </button>
 
-        <button className={`skipbuttons ${seasonStyling}`} onClick={previousSong} title="previous song">
+        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={previousSong} title="previous song">
           <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
         </button>
         {isPlaying
           ? 
-          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={pauseSong} title="pause song">
+          <button className={`skipbuttons ${seasonStyling}`} onClick={pauseSong} title="pause song">
             <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "pause"]} />
           </button>
           : 
-          <button className={`skipbuttons ${seasonStylingAlt}`} onClick={resumeSong} title="play song">
+          <button className={`skipbuttons ${seasonStyling}`} onClick={resumeSong} title="play song">
             <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "play"]} />
           </button>
         }
-        <button className={`skipbuttons ${seasonStyling}`} onClick={nextSong} title="next song">
+        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={nextSong} title="next song">
           <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
         </button>
 
-        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={repeatSongs} title="change repeat setting">
+        <button className={`skipbuttons ${seasonStyling}`} onClick={repeatSongs} title="change repeat setting">
           <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "redo"]} />
         </button>
       </div>

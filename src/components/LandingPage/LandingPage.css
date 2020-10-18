@@ -13,7 +13,7 @@
 
 .app-title {
     color: white;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', '-apple-system', 'HelveticaNeue', sans-serif;
     font-size: 120px;
     padding-bottom: 20px;
     -webkit-text-stroke: 1px black;

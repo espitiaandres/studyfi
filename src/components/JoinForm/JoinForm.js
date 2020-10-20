@@ -6,16 +6,20 @@
 //  Copyright © 2020 Andres Espitia. All rights reserved.
 //
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
 import 'animate.css';
 import './JoinForm.css';
 
-const JoinForm = ({ season }) => {
+const JoinForm = ({ user, season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
+    useEffect(() => {
+        setName(user);
+    })
 
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
@@ -24,7 +28,7 @@ const JoinForm = ({ season }) => {
     const onJoinFormSubmit = (e) => {
         e.preventDefault();
     }
-
+    
     let timezones = [];
 
     for (let i = 12; i >= 1; i--) {
@@ -42,10 +46,10 @@ const JoinForm = ({ season }) => {
             <div>
                 <h1 className={`heading ${seasonStylingAlt}Header`}>chat</h1>
                 <div>
-                    <input placeholder="name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} />
+                    <input className="joinInput" type="text" defaultValue={user} placeholder={user} onChange={(event) => setName(event.target.value)} />
                 </div>
                 <div>
-                    <input placeholder="room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} />
+                    <input className="joinInput mt-20" type="text" placeholder="room" onChange={(event) => setRoom(event.target.value)} />
                 </div>
                 <div>
                     <select className="joinInput mt-20" defaultValue={'default'} onChange={(event) => setTZ(event.target.value)}>

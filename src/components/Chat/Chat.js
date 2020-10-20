@@ -19,7 +19,7 @@ import './Chat.css';
 
 let socket;
 
-const Chat = ({ location, item, season }) => {
+const Chat = ({ location, item, user, season }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [tz, setTZ] = useState('');
@@ -85,8 +85,14 @@ const Chat = ({ location, item, season }) => {
     }
     
     return (
-        duplicate ? 
-        <Join duplicate={duplicate} season={season} /> :                 
+        duplicate 
+        ? 
+        <Join 
+            duplicate={duplicate} 
+            user={user}
+            season={season} 
+        />
+        :                 
         <div className="outerContainer">
             <div className="container">
                 <InfoBar 

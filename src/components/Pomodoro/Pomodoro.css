@@ -20,7 +20,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    padding-bottom: 100px;
+    padding-bottom: 60px;
 }
 
 .pomodoroHeader {
@@ -31,6 +31,15 @@
     justify-content: center;
 }
 
+.userProfile {
+    color: white;
+    text-decoration: none;
+}
+
+.userProfile:visited {
+    color: white;
+}
+
 .pomodoroHeaderTitle {
     align-items: center;
     display: flex;
@@ -39,8 +48,12 @@
     padding-bottom: 10px;
 }
 
-.pomodoroHeaderTitleText {
+.greetingText {
     font-size: 40px;
+}
+
+.pomodoroHeaderTitleText {
+    font-size: 32px;
     padding: 0px 10px 0px 10px;
 }
 

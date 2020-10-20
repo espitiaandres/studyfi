@@ -84,7 +84,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       // console.log(response);
     }).catch((error) => {
       console.log(error);
-      setShuffleError(error);
+      setShuffleError('Action is limited to Spotify Premium');
     })
   }
 
@@ -106,7 +106,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       // console.log(response);
     }).catch((error) => {
       console.log(error);
-      setRepeatError(error);
+      setRepeatError('Action is limited to Spotify Premium');
     })
   }
    
@@ -228,9 +228,9 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
 
       <div className="shuffleRepeatState">
-        {shuffleError !== '' ? `shuffle: ${shuffleError.message}! ` : (shuffleState ? "shuffle on " : "shuffle off ")}
+        {shuffleError !== '' ? `shuffle: ${shuffleError}! ` : (shuffleState ? "shuffle on " : "shuffle off ")}
         -
-        {repeatError !== ''? ` repeat: ${repeatError.message}!` : ` repeating ${repeatState}`}
+        {repeatError !== ''? ` repeat: ${repeatError}!` : ` repeating ${repeatState}`}
       </div>
 
       <div className="nowPlayingStatus">

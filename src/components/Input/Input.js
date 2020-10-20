@@ -33,14 +33,14 @@ const Input = ({ message, setMessage, sendMessage, item, season }) => {
             className="input"
             type="text"
             placeholder="Enter a message..."
-            value={message} 
+            value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}
+            onKeyPress={(e) => e.key === 'Enter' ? sendMessage(e) : null}
         />
-        <button className={`sendButton ${seasonStyling}`} onClick={(event) => sendMessage(event)}>
+        <button className={`sendButton ${seasonStyling}`} onClick={(e) => sendMessage(e)}>
             Send
         </button>
-        <button className={`sendButton ${seasonStyling}`} onClick={(event) => shareSong(event)}>
+        <button className={`sendButton ${seasonStyling}`} onClick={(e) => shareSong(e)}>
             Share song!
         </button>
     </form>

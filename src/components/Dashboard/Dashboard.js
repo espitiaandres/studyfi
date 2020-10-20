@@ -6,7 +6,8 @@
 //  Copyright © 2020 Andres Espitia. All rights reserved.
 //
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Player from '../Player/Player';
 import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
@@ -14,13 +15,35 @@ import TopSongs from '../TopSongs/TopSongs';
 import './Dashboard.css';
 
 const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, token }) => {
-    const [season, setSeason] = useState(false); 
+    const [season, setSeason] = useState(false);
+    const [user, setUser] = useState('');
+    const [userProfile, setUserProfile] = useState('');
+
+    useEffect(() => {
+        getCurrentUser();
+    }, []);
+
+    const getCurrentUser = () => {
+        axios({
+            method: 'get',
+            url: `https://api.spotify.com/v1/me`,
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }
+        }).then(({ data }) => {
+            console.log(data);
+            setUser(data.id);
+            setUserProfile(data.external_urls.spotify);
+        });
+    }
 
     return (
         <div className="overallDashboardWrapper">
             <div className="mainDashboardWrapper">
                 <div className="dashboardItem">
                     <Pomodoro 
+                        user={user}
+                        userProfile={userProfile}
                         season={season}
                     />
                 </div>
@@ -41,6 +64,7 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, tok
                 <div className="dashboardItem">
                     <ChatApp 
                         item={item}
+                        user={user}
                         season={season}
                     />
                 </div>

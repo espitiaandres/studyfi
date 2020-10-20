@@ -42,7 +42,7 @@ const TopSongs = ({ season, token }) => {
             }
         }).then(({ data }) => {
             topTracksParse(data);
-        })
+        });
 
         axios({
             method: 'get',
@@ -56,7 +56,7 @@ const TopSongs = ({ season, token }) => {
             }
         }).then(({ data }) => {
             topArtistsParse(data);
-        })
+        });
     }, [timerange]);
 
     const topTracksParse = (data) => {

@@ -6,11 +6,12 @@
 //  Copyright © 2020 Andres Espitia. All rights reserved.
 //
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-scroll';
+import moment from 'moment';
 import 'animate.css';
 import './Pomodoro.css';
 
@@ -29,13 +30,33 @@ let cooldownInterval;
 
 library.add(fas);
 
-const Pomodoro = ({ season }) => {
+const Pomodoro = ({ user, userProfile, season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     const [playButton, setPlayButton] = useState(false);
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
+    const [greeting, setGreeting] = useState('');
+
+    useEffect(() => {
+        const now = moment();
+        getGreetingSuffix(now);        
+    }, [])
+
+    const getGreetingSuffix = (now) => {
+        const currentHour = now.format("HH");
+        const afternoonTime = 12;
+        const eveningTime = 18;
+
+        if (currentHour > eveningTime) {
+            setGreeting('Good evening');
+        } else if (currentHour > afternoonTime) {
+            setGreeting('Good afternoon');
+        } else {
+            setGreeting('Good morning')
+        }
+    }
 
     // countdown changes the text to Work and is responsible for the working countdown
     const countdown = () => {
@@ -108,6 +129,15 @@ const Pomodoro = ({ season }) => {
 
     return (
         <div className="pomodoroHeader">
+            <h1 className="greetingText">
+                {greeting}, 
+                <a className="userProfile" href={userProfile} target="_blank">
+                    {` ${user}`}
+                </a>                
+            </h1>
+
+            {/*<h1 className="pomodoroHeaderTitleText">{moment().format("HH:mm:ss")}</h1>*/}
+
             <div className="pomodoroHeaderTitle">
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
                     <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />

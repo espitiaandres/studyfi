@@ -143,8 +143,6 @@ const Pomodoro = ({ user, userProfile, season }) => {
                 </a>                
             </h1>
 
-            {/*<h1 className="pomodoroHeaderTitleText">{moment().format("HH:mm:ss")}</h1>*/}
-
             <div className="pomodoroHeaderTitle">
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
                     <FontAwesomeIcon icon={season ? seasonIconOuter : ["fas", "pizza-slice"]} />

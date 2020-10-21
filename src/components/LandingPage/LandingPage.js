@@ -7,7 +7,7 @@
 //
 
 import React from 'react';
-import { authEndpoint, clientId, redirectUri, scopes } from '../../config';
+import { authEndpoint, clientId, redirectUri, scopes } from '../../utils/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';

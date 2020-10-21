@@ -1,7 +1,8 @@
 .controlButtons {
-    background-color: #1ED760;
-    border: 2px solid #1ED760;
-    padding: 3px 12px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    font-size: 16px;
+    padding: 3px 8px;
     margin: 0px 2px;
     outline: none;
 }
@@ -55,19 +56,6 @@
 .pomodoroHeaderTitleText {
     font-size: 32px;
     padding: 0px 10px 0px 10px;
-}
-
-.controlButtons-pizzaslice {
-    background-color: #1ED760;
-    border: 2px solid #1ED760;
-    margin: 0px 2px;
-    outline: none;
-    padding: 3px 12px;
-}
-
-.controlButtons-pizzaslice:hover {
-    cursor: pointer;
-    opacity: 0.7;
 }
 
 .icon-scroll {

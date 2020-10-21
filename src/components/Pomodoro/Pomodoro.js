@@ -127,6 +127,13 @@ const Pomodoro = ({ user, userProfile, season }) => {
         }
     }
 
+    const seasonIconOuter = ["fas", "spider"]; 
+    const seasonIconInner = ["fas", "ghost"];
+    const seasonIconTimer = ["fas", "skull-crossbones"];
+
+    const seasonColor = "#F37D0F";
+    const seasonColorAlt = "#FFE01B";
+
     return (
         <div className="pomodoroHeader">
             <h1 className="greetingText">
@@ -140,43 +147,54 @@ const Pomodoro = ({ user, userProfile, season }) => {
 
             <div className="pomodoroHeaderTitle">
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                    <FontAwesomeIcon icon={season ? seasonIconOuter : ["fas", "pizza-slice"]} />
                 </div>
                 <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                    <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                    <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
                 </div>
                 <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
                 <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                    <FontAwesomeIcon icon={season ? ["fas", "ghost"] : ["fas", "utensils"]} />
+                    <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
                 </div>
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? ["fas", "spider"] : ["fas", "pizza-slice"]} />
+                    <FontAwesomeIcon icon={season ? seasonIconOuter : ["fas", "pizza-slice"]} />
                 </div>
             </div>
 
             <div className="pomodoroHeaderTitle">
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? ["fas", "skull-crossbones"] : ["fas", "clock"]} />
+                    <FontAwesomeIcon icon={season ? seasonIconTimer : ["fas", "clock"]} />
                 </div>
                 <div className={`countdown ${seasonStyling}AltIcons`}>
                     {minutesRemaining}:{secondsRemaining}
                 </div>
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? ["fas", "skull-crossbones"] : ["fas", "clock"]} />
+                    <FontAwesomeIcon icon={season ? seasonIconTimer : ["fas", "clock"]} />
                 </div>
 
             </div>
             <p>{pomodoroText}</p>
 
             <div className="pomodoroPanel">
-                <button className={`controlButtons-pizzaslice ${seasonStyling}`} onClick={countdown} disabled={pizzaButton}>
-                    {season ? <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "spider"]} /> : <FontAwesomeIcon icon={["fas", "pizza-slice"]} />}
+                <button className="controlButtons" onClick={countdown} disabled={pizzaButton}>
+                    {season 
+                    ? 
+                    <FontAwesomeIcon icon={seasonIconOuter} style={{ color: season ? seasonColor : "#FFF" }} /> 
+                    : 
+                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} style={{ color: season ? seasonColor : "#FFF" }} />
+                    }
                 </button>
-                <button className={`controlButtons ${seasonStylingAlt}`} onClick={clearCountdown} disabled={restartButton}>
-                    <FontAwesomeIcon icon={["fas", "undo"]} />
+                <button className="controlButtons" onClick={clearCountdown} disabled={restartButton}>
+                    <FontAwesomeIcon icon={["fas", "undo"]}  style={{ color: season ? seasonColorAlt : "#FFF" }}/>
                 </button>
-                <button className={`controlButtons ${seasonStyling}`} onClick={countdown} disabled={playButton}>
-                    { !timerRunning ? <FontAwesomeIcon icon={["fas", "play"]} /> : <FontAwesomeIcon icon={["fas", "pause"]} /> }
+                <button className="controlButtons" onClick={countdown} disabled={playButton}>
+                    { 
+                    !timerRunning 
+                    ? 
+                    <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} /> 
+                    : 
+                    <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} /> 
+                    }
                 </button>
             </div>
 

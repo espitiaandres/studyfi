@@ -175,6 +175,9 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
   const progressBarStyles = {
     width: (songCurrentTime * 100 / songDuration) + '%'
   };
+
+  const seasonColor = "#F37D0F";
+  const seasonColorAlt = "#FFE01B";
   
   return (
     item
@@ -228,35 +231,36 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
 
       <div className="shuffleRepeatState">
-        {shuffleError !== '' ? `shuffle: ${shuffleError}! ` : (shuffleState ? "shuffle on " : "shuffle off ")}
-        -
-        {repeatError !== ''? ` repeat: ${repeatError}!` : ` repeating ${repeatState}`}
+        {shuffleError !== '' ? `shuffle: ${shuffleError}! - ` : null }
+        {repeatError !== ''? `repeat: ${repeatError}!` : `repeating ${repeatState}`}
       </div>
 
       <div className="nowPlayingStatus">
-        <button className={`skipbuttons ${seasonStyling}`} onClick={shuffleSongs} title="shuffle songs">
-          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "random"]} />
+        <button className={`skipbuttons`} onClick={shuffleSongs} title="shuffle songs">
+          <FontAwesomeIcon icon={["fas", "random"]} style={!shuffleState ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
 
-        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={previousSong} title="previous song">
-          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-left"]} />
+        <button className={`skipbuttons`} onClick={previousSong} title="previous song">
+          <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
+
         {isPlaying
           ? 
-          <button className={`skipbuttons ${seasonStyling}`} onClick={pauseSong} title="pause song">
-            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "pause"]} />
+          <button className={`skipbuttons`} onClick={pauseSong} title="pause song">
+            <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
           : 
-          <button className={`skipbuttons ${seasonStyling}`} onClick={resumeSong} title="play song">
-            <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "play"]} />
+          <button className={`skipbuttons`} onClick={resumeSong} title="play song">
+            <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
         }
-        <button className={`skipbuttons ${seasonStylingAlt}`} onClick={nextSong} title="next song">
-          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "arrow-alt-circle-right"]} />
+
+        <button className={`skipbuttons`} onClick={nextSong} title="next song">
+          <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
 
-        <button className={`skipbuttons ${seasonStyling}`} onClick={repeatSongs} title="change repeat setting">
-          <FontAwesomeIcon className="controlButtonsColouring" icon={["fas", "redo"]} />
+        <button className={`skipbuttons`} onClick={repeatSongs} title="change repeat setting">
+          <FontAwesomeIcon icon={["fas", "redo"]} style={repeatState === "off" ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
       </div>
 

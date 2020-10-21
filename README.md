@@ -21,6 +21,10 @@ Live on: https://www.andres-espitia.com/studyfi
 
 - improve README.md
 
+- Change UI in Player component, change stylings to shuffle and repeat buttons instead of text display.
+
+- Use npm module that gets the closest holiday, abstract css stylings and colours being used into another file.
+
 
 ## Summary
 

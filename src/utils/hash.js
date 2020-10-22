@@ -1,3 +1,11 @@
+//
+//  hash.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
+
 const hash = window.location.hash
   .substring(1)
   .split("&")

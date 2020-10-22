@@ -18,6 +18,7 @@ import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import './Player.css';
 import { calculateCenter, trans } from '../../utils/springFunctions';
+import { holidaysColors } from '../../utils/holidays';
 
 library.add(fas);
 
@@ -176,8 +177,10 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
     width: (songCurrentTime * 100 / songDuration) + '%'
   };
 
-  const seasonColor = "#F37D0F";
-  const seasonColorAlt = "#FFE01B";
+  const colorSchema = holidaysColors.halloween;
+  
+  const seasonColor = colorSchema.color;
+  const seasonColorAlt = colorSchema.colorAlt;
   
   return (
     item

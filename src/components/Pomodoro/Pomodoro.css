@@ -13,8 +13,9 @@
 }
 
 .countdown {
+    color: #1ED760;
     font-size: 28px;
-    padding: 3px 4px 3px 4px;
+    padding: 4px 16px 4px 16px;
 }
 
 .pomodoroPanel {
@@ -33,12 +34,20 @@
 }
 
 .userProfile {
-    color: white;
+    color: #1ED760;
     text-decoration: none;
 }
 
 .userProfile:visited {
-    color: white;
+    color: #1ED760;
+}
+
+.userProfileseasonStyling {
+    color: #F37D0F;
+}
+
+.userProfileseasonStyling:visited {
+    color: #F37D0F;
 }
 
 .pomodoroHeaderTitle {

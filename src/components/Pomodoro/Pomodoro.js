@@ -10,7 +10,9 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-scroll';
+import { holidaysColors } from '../../utils/holidays';
 import moment from 'moment';
 import 'animate.css';
 import './Pomodoro.css';
@@ -28,7 +30,7 @@ let pomodoroText = "press on the play button below to begin";
 let interval;
 let cooldownInterval;
 
-library.add(fas);
+library.add(fas, fab);
 
 const Pomodoro = ({ user, userProfile, season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
@@ -127,18 +129,19 @@ const Pomodoro = ({ user, userProfile, season }) => {
         }
     }
 
-    const seasonIconOuter = ["fas", "spider"]; 
-    const seasonIconInner = ["fas", "ghost"];
-    const seasonIconTimer = ["fas", "skull-crossbones"];
+    const colorSchema = holidaysColors.halloween;
 
-    const seasonColor = "#F37D0F";
-    const seasonColorAlt = "#FFE01B";
+    const seasonIconOuter = colorSchema.iconOuter; 
+    const seasonIconInner = colorSchema.iconInner;
+    const seasonIconTimer = colorSchema.iconTimer;
+    const seasonColor = colorSchema.color;
+    const seasonColorAlt = colorSchema.colorAlt;
 
     return (
         <div className="pomodoroHeader">
             <h1 className="greetingText">
                 {greeting}, 
-                <a className="userProfile" href={userProfile} target="_blank">
+                <a className={`userProfile userProfile${seasonStyling}`} href={userProfile} target="_blank">
                     {` ${user}`}
                 </a>                
             </h1>

@@ -21,8 +21,6 @@ Live on: https://www.andres-espitia.com/studyfi
 
 - improve README.md
 
-- Change UI in Player component, change stylings to shuffle and repeat buttons instead of text display.
-
 
 ## Summary
 

@@ -30,41 +30,11 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
   const [, setHoveredOn] = useState(false);
   const [repeatError, setRepeatError] = useState('');
   const [shuffleError, setShuffleError] = useState('');
-  
-  const nextSong = () => {
-    axios({
-      method: 'post',
-      url: 'https://api.spotify.com/v1/me/player/next',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-  }
 
-  const previousSong = () => {
+  const changeSong = (method, direction) => {
     axios({
-      method: 'post',
-      url: 'https://api.spotify.com/v1/me/player/previous',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-  }
-
-  const pauseSong = () => {
-    axios({
-      method: 'put',
-      url: 'https://api.spotify.com/v1/me/player/pause',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-  }
-
-  const resumeSong = () => {
-    axios({
-      method: 'put',
-      url: 'https://api.spotify.com/v1/me/player/play',
+      method,
+      url: `https://api.spotify.com/v1/me/player/${direction}`,
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -243,22 +213,22 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
           <FontAwesomeIcon icon={["fas", "random"]} style={!shuffleState ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
 
-        <button className={`skipbuttons`} onClick={previousSong} title="previous song">
+        <button className={`skipbuttons`} onClick={() => changeSong('post', 'previous')} title="previous song">
           <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
 
         {isPlaying
           ? 
-          <button className={`skipbuttons`} onClick={pauseSong} title="pause song">
+          <button className={`skipbuttons`} onClick={() => changeSong('put', 'pause')} title="pause song">
             <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
           : 
-          <button className={`skipbuttons`} onClick={resumeSong} title="play song">
+          <button className={`skipbuttons`} onClick={() => changeSong('put', 'play')} title="play song">
             <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
         }
 
-        <button className={`skipbuttons`} onClick={nextSong} title="next song">
+        <button className={`skipbuttons`} onClick={() => changeSong('post', 'next')} title="next song">
           <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
 
@@ -276,12 +246,21 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
     </div>
     :
+
+
+
+    {/*
+
+      Separate this into another component
+
+
     <div className="noMusicPlayingMessage">
       <h1>hmm...</h1>
       <p>
         It seems that you're on Spotify but you're not currently listening to music. Listen to music for something to appear here!
       </p>
     </div>
+     */}
   )
 }
 

@@ -21,6 +21,9 @@ Live on: https://www.andres-espitia.com/studyfi
 
 - improve README.md
 
+- In Player.js Separate player when item is false into another component
+
+- In App.js, pass in data as a prop instead of its properties (isplaying, progressms)
 
 ## Summary
 

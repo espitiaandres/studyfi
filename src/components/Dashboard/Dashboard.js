@@ -14,7 +14,7 @@ import ChatApp from '../ChatApp/ChatApp';
 import TopSongs from '../TopSongs/TopSongs';
 import './Dashboard.css';
 
-const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, token }) => {
+const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, device, token }) => {
     const [season, setSeason] = useState(false);
     const [user, setUser] = useState('');
     const [userProfile, setUserProfile] = useState('');
@@ -58,6 +58,7 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, tok
                         shuffleState={shuffleState}
                         repeatState={repeatState}
                         season={season}
+                        device={device}
                         token={token}
                     />
                 </div>

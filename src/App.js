@@ -31,6 +31,7 @@ const App = () =>  {  let interval;
   const [progressms, setProgressms] = useState(0);
   const [repeatState, setRepeatState] = useState();
   const [shuffleState, setShuffleState] = useState();
+  const [device, setDevice] = useState();
 
   const [data, setData] =  useState(true);
 
@@ -85,6 +86,7 @@ const App = () =>  {  let interval;
       setProgressms(data.progress_ms);
       setShuffleState(data.shuffle_state);
       setRepeatState(data.repeat_state);
+      setDevice(data.device.name);
       setData(true);
     });
   }
@@ -99,6 +101,7 @@ const App = () =>  {  let interval;
           progressms={progressms}
           shuffleState={shuffleState}
           repeatState={repeatState}
+          device={device}
           token={token}
         />
       )}

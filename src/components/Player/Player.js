@@ -22,7 +22,7 @@ import { holidaysColors } from '../../utils/holidays';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, token }) => {
+const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, device, token }) => {
   let seasonStyling = season ? "seasonStyling" : "";
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
@@ -235,7 +235,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
 
       <div className="shuffleRepeatState">
         {shuffleError !== '' ? `shuffle: ${shuffleError}! - ` : null }
-        {repeatError !== ''? `repeat: ${repeatError}!` : `repeating ${repeatState}`}
+        {repeatError !== ''? `repeat: ${repeatError}!` : `playing on ${device} - repeating ${repeatState}`}
       </div>
 
       <div className="nowPlayingStatus">

@@ -42,6 +42,10 @@
     color: #1ED760;
 }
 
+.userProfile:hover {
+    text-decoration: underline;
+}
+
 .userProfileseasonStyling {
     color: #F37D0F;
 }

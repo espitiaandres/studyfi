@@ -12,7 +12,8 @@ import JoinForm from '../JoinForm/JoinForm';
 
 const Join = ({ duplicate, user, season }) => {
     return (
-            duplicate ? 
+            duplicate 
+            ? 
             <div className="joinOuterContainer">
                 <div className="joinInnerContainer">
                     <p className="duplicatemessage">That username is already taken.</p> 

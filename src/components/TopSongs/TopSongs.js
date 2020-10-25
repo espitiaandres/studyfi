@@ -148,7 +148,8 @@ const TopSongs = ({ season, token }) => {
         paginationSize: 10,
         pageStartIndex: 1,
             sizePerPageList: [{
-            text: '5', value: 5
+            text: '5', 
+            value: 5
         }]
     };
             

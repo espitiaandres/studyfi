@@ -31,7 +31,6 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
             'Authorization': `Bearer ${token}`
             }
         }).then(({ data }) => {
-            console.log(data);
             setUser(data.id);
             setUserProfile(data.external_urls.spotify);
         });

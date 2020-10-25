@@ -23,8 +23,8 @@ const Userslist = ({ users }) => {
                 {
                   users.map(({ name }) => (
                     <div key={name} className="activeItem">
-                      {name}
                       <img alt="Online Icon" src={onlineIcon}/>
+                      {name}                      
                     </div>
                     )
                   )

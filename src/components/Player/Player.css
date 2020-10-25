@@ -33,19 +33,19 @@
 }
 
 .nowPlayingName {
+    color: white;
     font-size: 20px;
     margin-bottom: 4px;
-    color: white;
 }
 
 .nowPlayingArtists {
-    margin-bottom: 4px;
     color: white;
+    margin-bottom: 4px;
 }
 
 .nowPlayingAlbum {
-    margin-bottom: 4px;
     color: white;
+    margin-bottom: 4px;
 }
 
 .shuffleRepeatState {
@@ -77,31 +77,6 @@
     justify-content: center;
 }
 
-.progress {
-    border: 1px solid #eee;
-    height: 4px;
-    border-radius: 2px;
-    overflow: hidden;
-    width: 300px;
-}
-
-.progressBar {
-    background-color: #1ED760;
-    color: white;
-    height: 6px;
-}
-
-.durationMenu {
-    align-items: center;
-    color: white;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.durationMenuTimes {
-    padding: 0px 12px;
-}
-
 .seasonStyling {
     background-color: #F37D0F;
     border-color: #F37D0F;
@@ -110,8 +85,4 @@
 .seasonStylingAlt {
     background-color: #FFE01B;
     border-color: #FFE01B;
-}
-
-.noMusicPlayingMessage {
-    color: white;
 }

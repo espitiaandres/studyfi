@@ -12,13 +12,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { useSpring, animated } from 'react-spring';
-import moment from 'moment';
 import axios from 'axios';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import './Player.css';
 import { calculateCenter, trans } from '../../utils/springFunctions';
 import { holidaysColors } from '../../utils/holidays';
+import NoMusicPlaying from '../NoMusicPlaying/NoMusicPlaying';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 library.add(fas);
 
@@ -126,8 +127,6 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
   let releaseDateYear =  typeof releaseDateDMY === "string" ?  releaseDateDMY.split("-")[0] : "";
   let albumImageURL = "";
   let allArtists = "";
-  let songCurrentTimeMinutesSeconds = "";
-  let songDurationMinutesSeconds = "";  
   let googleSearchString;
 
   if (item) {
@@ -135,20 +134,13 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
     releaseDateDMY = item.album.release_date;
     releaseDateYear =  typeof releaseDateDMY === "string" ?  releaseDateDMY.split("-")[0] : "";
     albumImageURL = item.album.images[0].url;
-    songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
-    songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
     item.artists.map((artist) => {
       return allArtists += `| ${artist.name} |`;
     })
     googleSearchString = (item.artists[0].name + "+" + item.album.name).replace(" ", "+");
   }
-    
-  const progressBarStyles = {
-    width: (songCurrentTime * 100 / songDuration) + '%'
-  };
 
-  const colorSchema = holidaysColors.halloween;
-  
+  const colorSchema = holidaysColors.halloween;  
   const seasonColor = colorSchema.color;
   const seasonColorAlt = colorSchema.colorAlt;
   
@@ -178,16 +170,16 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
         {renderSwatches()}
       </div>
       <div className="nowPlayingName">
-        <TypistLoop interval={2000} >
+        <TypistLoop interval={1600} >
           {['a',''].map(text => 
             <Typist 
             className="pomodoroTitle" avgTypingDelay={90} key={text} startDelay={0}
             cursor={{
-            show: true,
-            blink: true,
-            element: '',
-            hideWhenDone: false,
-            hideWhenDoneDelay: 1000,
+              show: true,
+              blink: true,
+              element: '',
+              hideWhenDone: false,
+              hideWhenDoneDelay: 1000
             }}>
               {item.name}
             </Typist>
@@ -212,11 +204,9 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
         <button className={`skipbuttons`} onClick={shuffleSongs} title="shuffle songs">
           <FontAwesomeIcon icon={["fas", "random"]} style={!shuffleState ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
-
         <button className={`skipbuttons`} onClick={() => changeSong('post', 'previous')} title="previous song">
           <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
-
         {isPlaying
           ? 
           <button className={`skipbuttons`} onClick={() => changeSong('put', 'pause')} title="pause song">
@@ -227,40 +217,22 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
             <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
         }
-
         <button className={`skipbuttons`} onClick={() => changeSong('post', 'next')} title="next song">
           <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
-
         <button className={`skipbuttons`} onClick={repeatSongs} title="change repeat setting">
           <FontAwesomeIcon icon={["fas", "redo"]} style={repeatState === "off" ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
       </div>
 
-      <div className="durationMenu">
-        <p className="durationMenuTimes">{songCurrentTimeMinutesSeconds}</p>
-        <div className="progress">
-          <div className={`progressBar ${seasonStylingAlt} `} style={progressBarStyles} />
-        </div>    
-        <p className="durationMenuTimes">{songDurationMinutesSeconds}</p>
-      </div>
+      <ProgressBar
+        songCurrentTime={songCurrentTime}
+        songDuration={songDuration}
+        seasonStylingAlt={seasonStylingAlt}
+      />
     </div>
     :
-
-
-
-    {/*
-
-      Separate this into another component
-
-
-    <div className="noMusicPlayingMessage">
-      <h1>hmm...</h1>
-      <p>
-        It seems that you're on Spotify but you're not currently listening to music. Listen to music for something to appear here!
-      </p>
-    </div>
-     */}
+    <NoMusicPlaying />
   )
 }
 

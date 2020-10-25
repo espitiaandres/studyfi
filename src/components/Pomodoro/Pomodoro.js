@@ -60,7 +60,6 @@ const Pomodoro = ({ user, userProfile, season }) => {
         }
     }
 
-    // countdown changes the text to Work and is responsible for the working countdown
     const countdown = () => {
         setRestartButton(false);
         if (playButton) {
@@ -85,7 +84,6 @@ const Pomodoro = ({ user, userProfile, season }) => {
         setPizzaButton(true);
     }
 
-    // countdownCooldown changes the text to Work and is responsible for the resting countdown
     const countdownCooldown = () => {
         remainingTime = cooldownSetTimeSeconds;
         pomodoroText = season ? "2sp00ky4me" : "RestRestRestRestRest";
@@ -101,7 +99,6 @@ const Pomodoro = ({ user, userProfile, season }) => {
         }, 1000)
     }
 
-    // clearsCountDown clears the countdown once the working time has elapsed.
     const clearCountdown = () => {
         setPlayButton(false);
         setPizzaButton(false);
@@ -116,7 +113,6 @@ const Pomodoro = ({ user, userProfile, season }) => {
         setRestartButton(true);
     }
 
-    // updates the formatted time string to output to the user.
     const updatedFormattedTimeString = (remainingTime) => {
         minutesRemaining = Math.floor(remainingTime / secondsInAMinute);
         let baseMinutes = minutesRemaining * secondsInAMinute;
@@ -130,7 +126,6 @@ const Pomodoro = ({ user, userProfile, season }) => {
     }
 
     const colorSchema = holidaysColors.halloween;
-
     const seasonIconOuter = colorSchema.iconOuter; 
     const seasonIconInner = colorSchema.iconInner;
     const seasonIconTimer = colorSchema.iconTimer;
@@ -172,17 +167,15 @@ const Pomodoro = ({ user, userProfile, season }) => {
                 <div className={`iconsSpacing ${seasonStyling}Icons`}>
                     <FontAwesomeIcon icon={season ? seasonIconTimer : ["fas", "clock"]} />
                 </div>
-
             </div>
             <p>{pomodoroText}</p>
-
             <div className="pomodoroPanel">
                 <button className="controlButtons" onClick={countdown} disabled={pizzaButton}>
                     {season 
                     ? 
-                    <FontAwesomeIcon icon={seasonIconOuter} style={{ color: season ? seasonColor : "#FFF" }} /> 
+                    <FontAwesomeIcon icon={seasonIconOuter} style={{ color: seasonColor }} /> 
                     : 
-                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} style={{ color: season ? seasonColor : "#FFF" }} />
+                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} style={{ color: "#FFF" }} />
                     }
                 </button>
                 <button className="controlButtons" onClick={clearCountdown} disabled={restartButton}>

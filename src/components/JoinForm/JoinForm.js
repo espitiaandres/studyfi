@@ -19,7 +19,7 @@ const JoinForm = ({ user, season }) => {
 
     useEffect(() => {
         setName(user);
-    })
+    }, [user])
 
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');

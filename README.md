@@ -2,8 +2,7 @@
 
 :musical_note: A place to study, listen to music, and chat with friends. Getting work done while listening to music on one page.
   
-:musical_keyboard: Once logged in with your Spotify account, you can view which song you are currently listening to, use a Pomodoro timer, chat with friends, and see your most listened to song and artists.
-
+:musical_keyboard: Once logged in with your Spotify account, you can view which song you are currently listening to, use a Pomodoro timer, chat with friends, and see your most listened to songs and artists.
 
 Created by Andres Espitia
 - https://github.com/espitiaandres
@@ -17,13 +16,6 @@ Back End Source code:
 Live on: https://www.andres-espitia.com/studyfi
 
 
-### TODO:
-
-- improve README.md
-
-- In Player.js Separate player when item is false into another component
-
-- In App.js, pass in data as a prop instead of its properties (isplaying, progressms)
 
 ## Summary
 
@@ -43,12 +35,12 @@ If currently not playing music on Spotify, the following will occur after signin
 ![](src/images/Documentation/NotFoundPage.gif)
 
 
-If currently playing music on Spotify, the following Dashboard page will appear.
+If currently playing music on Spotify, a Dashboard page similar to the one below will appear.
 
 ![](src/images/Documentation/LandingPage.gif)
 
 
-How to work the Pomodoro timer. Also, check out the seasonal mode by clicking on the "______ mode" button at the top of the screen.
+This gif shows wow to work the Pomodoro timer. Also, check out the seasonal mode by clicking on the "______ mode" button at the top of the screen.
 
 ![](src/images/Documentation/Pomodoro.gif)
 
@@ -57,8 +49,10 @@ How to work the Spotify player:
 
 ![](src/images/Documentation/Player.gif)
 
+In the chat section to the right of the player, enter a name, room, and a timezone to start the chat. To chat with others, share the room you entered.
 
 Don't forget to scroll down or click on the bouncing chevron icon to view your most played artists and songs!
+
 
 
 ## Inspiration
@@ -82,7 +76,7 @@ I was also curious what were most played songs and who were my most played artis
 
 - add user disconnect functionality with proper routing
 -->
-  
+
 
 
 ## Challenges

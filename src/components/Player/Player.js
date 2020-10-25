@@ -53,7 +53,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
         state: !shuffleState
       }
     }).then((response) => {
-      // console.log(response);
+
     }).catch((error) => {
       console.log(error);
       setShuffleError('Action is limited to Spotify Premium');
@@ -62,7 +62,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
 
   const repeatSongs = () => {
     const repeatStates = ["track", "context", "off"];
-     const repeatStateIndex = repeatStates.indexOf(repeatState);
+    const repeatStateIndex = repeatStates.indexOf(repeatState);
     const index = (repeatStateIndex !== repeatStates.length - 1) ? repeatStateIndex + 1 : 0;
 
     axios({
@@ -75,7 +75,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
         state: repeatStates[index]
       }
     }).then((response) => {
-      // console.log(response);
+
     }).catch((error) => {
       console.log(error);
       setRepeatError('Action is limited to Spotify Premium');
@@ -170,7 +170,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
         {renderSwatches()}
       </div>
       <div className="nowPlayingName">
-        <TypistLoop interval={1600} >
+        <TypistLoop interval={2000} >
           {['a',''].map(text => 
             <Typist 
             className="pomodoroTitle" avgTypingDelay={90} key={text} startDelay={0}
@@ -179,7 +179,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
               blink: true,
               element: '',
               hideWhenDone: false,
-              hideWhenDoneDelay: 1000
+              hideWhenDoneDelay: 100
             }}>
               {item.name}
             </Typist>
@@ -190,37 +190,35 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       <div className="nowPlayingArtists">
         {allArtists}
       </div>
-
       <div className="nowPlayingAlbum">
         {item.album.name} - {releaseDateYear}
       </div>
-
       <div className="shuffleRepeatState">
         {shuffleError !== '' ? `shuffle: ${shuffleError}! - ` : null }
         {repeatError !== ''? `repeat: ${repeatError}!` : `playing on ${device} - repeating ${repeatState}`}
       </div>
 
-      <div className="nowPlayingStatus">
-        <button className={`skipbuttons`} onClick={shuffleSongs} title="shuffle songs">
+      <div className="nowPlayingPanel">
+        <button className="skipbuttons" onClick={shuffleSongs} title="shuffle songs">
           <FontAwesomeIcon icon={["fas", "random"]} style={!shuffleState ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
-        <button className={`skipbuttons`} onClick={() => changeSong('post', 'previous')} title="previous song">
+        <button className="skipbuttons" onClick={() => changeSong('post', 'previous')} title="previous song">
           <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
         {isPlaying
           ? 
-          <button className={`skipbuttons`} onClick={() => changeSong('put', 'pause')} title="pause song">
+          <button className="skipbuttons" onClick={() => changeSong('put', 'pause')} title="pause song">
             <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
           : 
-          <button className={`skipbuttons`} onClick={() => changeSong('put', 'play')} title="play song">
+          <button className="skipbuttons" onClick={() => changeSong('put', 'play')} title="play song">
             <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
         }
-        <button className={`skipbuttons`} onClick={() => changeSong('post', 'next')} title="next song">
+        <button className="skipbuttons" onClick={() => changeSong('post', 'next')} title="next song">
           <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
         </button>
-        <button className={`skipbuttons`} onClick={repeatSongs} title="change repeat setting">
+        <button className="skipbuttons" onClick={repeatSongs} title="change repeat setting">
           <FontAwesomeIcon icon={["fas", "redo"]} style={repeatState === "off" ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
         </button>
       </div>

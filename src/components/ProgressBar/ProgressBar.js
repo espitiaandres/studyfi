@@ -7,13 +7,12 @@
 //
 
 import React from 'react';
-import './ProgressBar.css';
 import moment from 'moment';
+import './ProgressBar.css';
 
 const ProgressBar = ({ songCurrentTime, songDuration, seasonStylingAlt }) => {
-
-    let songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
-    let songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
+    const songCurrentTimeMinutesSeconds = moment(songCurrentTime).format("mm:ss");
+    const songDurationMinutesSeconds = moment(songDuration).format("mm:ss");
 
     return (
         <div className="durationMenu">

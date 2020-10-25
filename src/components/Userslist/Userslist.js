@@ -19,7 +19,7 @@ const Userslist = ({ users }) => {
           <div>
             <p>Online:</p>
             <div className="activeContainer">
-              <p>
+              <div>
                 {
                   users.map(({ name }) => (
                     <div key={name} className="activeItem">
@@ -29,7 +29,7 @@ const Userslist = ({ users }) => {
                     )
                   )
                 }
-              </p>
+              </div>
             </div>
           </div>
         ) : (

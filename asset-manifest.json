@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/studyfi/static/css/main.9ef53845.chunk.css",
-    "main.js": "/studyfi/static/js/main.2270e948.chunk.js",
-    "main.js.map": "/studyfi/static/js/main.2270e948.chunk.js.map",
+    "main.css": "/studyfi/static/css/main.c5ea465e.chunk.css",
+    "main.js": "/studyfi/static/js/main.10890eaa.chunk.js",
+    "main.js.map": "/studyfi/static/js/main.10890eaa.chunk.js.map",
     "runtime-main.js": "/studyfi/static/js/runtime-main.5f7e87f6.js",
     "runtime-main.js.map": "/studyfi/static/js/runtime-main.5f7e87f6.js.map",
     "static/css/2.2ce0d9b2.chunk.css": "/studyfi/static/css/2.2ce0d9b2.chunk.css",
     "static/js/2.c5aa1a14.chunk.js": "/studyfi/static/js/2.c5aa1a14.chunk.js",
     "static/js/2.c5aa1a14.chunk.js.map": "/studyfi/static/js/2.c5aa1a14.chunk.js.map",
     "index.html": "/studyfi/index.html",
-    "precache-manifest.3cc5f4c48f8aeb2712ea1a3f57f283b9.js": "/studyfi/precache-manifest.3cc5f4c48f8aeb2712ea1a3f57f283b9.js",
+    "precache-manifest.4127b88c7d798eb8a9c2f42226e01ff1.js": "/studyfi/precache-manifest.4127b88c7d798eb8a9c2f42226e01ff1.js",
     "service-worker.js": "/studyfi/service-worker.js",
     "static/css/2.2ce0d9b2.chunk.css.map": "/studyfi/static/css/2.2ce0d9b2.chunk.css.map",
-    "static/css/main.9ef53845.chunk.css.map": "/studyfi/static/css/main.9ef53845.chunk.css.map",
+    "static/css/main.c5ea465e.chunk.css.map": "/studyfi/static/css/main.c5ea465e.chunk.css.map",
     "static/js/2.c5aa1a14.chunk.js.LICENSE.txt": "/studyfi/static/js/2.c5aa1a14.chunk.js.LICENSE.txt",
     "static/media/sketchyFavicon.png": "/studyfi/static/media/sketchyFavicon.4ab11064.png",
     "static/media/LandingPage.css": "/studyfi/static/media/spotifyLandingPageBackgroundChillHop.ac19a2ac.jpg",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.5f7e87f6.js",
     "static/css/2.2ce0d9b2.chunk.css",
     "static/js/2.c5aa1a14.chunk.js",
-    "static/css/main.9ef53845.chunk.css",
-    "static/js/main.2270e948.chunk.js"
+    "static/css/main.c5ea465e.chunk.css",
+    "static/js/main.10890eaa.chunk.js"
   ]
 }

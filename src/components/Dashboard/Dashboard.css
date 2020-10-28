@@ -1,8 +1,8 @@
 .overallDashboardWrapper {
+    background-attachment: fixed;
     background-color: black;
     background-image: url("../../images/vaporwaveDashboardBackground.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 .mainDashboardWrapper {

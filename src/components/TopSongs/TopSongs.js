@@ -57,7 +57,7 @@ const TopSongs = ({ season, token }) => {
         }).then(({ data }) => {
             topArtistsParse(data);
         });
-    }, [timerange]);
+    }, [timerange, token]);
 
     const topTracksParse = (data) => {
         let audioFeaturesTracksIDs = "";

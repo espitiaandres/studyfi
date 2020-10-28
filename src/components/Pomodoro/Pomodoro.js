@@ -136,7 +136,7 @@ const Pomodoro = ({ user, userProfile, season }) => {
         <div className="pomodoroHeader">
             <h1 className="greetingText">
                 {greeting}, 
-                <a className={`userProfile userProfile${seasonStyling}`} href={userProfile} target="_blank">
+                <a className={`userProfile userProfile${seasonStyling}`} href={userProfile} target="_blank" rel="noopener noreferrer">
                     {` ${user}`}
                 </a>                
             </h1>

@@ -18,11 +18,11 @@ input:focus, textarea:focus, select:focus{
 .sendButton {
   background: #1ED760;
   border: none;
-  color: #fff !important;
+  color: #fff;
   display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
   padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
   width: 20%;
 }
 

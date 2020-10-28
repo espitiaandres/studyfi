@@ -29,21 +29,21 @@ const Input = ({ message, setMessage, sendMessage, item, season }) => {
 
     return (
         <form className="form">
-        <input
-            className="input"
-            type="text"
-            placeholder="Enter a message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' ? sendMessage(e) : null}
-        />
-        <button className={`sendButton ${seasonStyling}`} onClick={(e) => sendMessage(e)}>
-            Send
-        </button>
-        <button className={`sendButton ${seasonStyling}`} onClick={(e) => shareSong(e)}>
-            Share song!
-        </button>
-    </form>
+            <input
+                className="input"
+                type="text"
+                placeholder="Enter a message..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' ? sendMessage(e) : null}
+            />
+            <button className={`sendButton ${seasonStyling}`} onClick={(e) => sendMessage(e)}>
+                Send
+            </button>
+            <button className={`sendButton ${seasonStyling}`} onClick={(e) => shareSong(e)}>
+                Share song!
+            </button>
+        </form>
     )
 }
 

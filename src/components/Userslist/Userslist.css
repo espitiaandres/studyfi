@@ -12,9 +12,9 @@
   align-items: center;
   display: flex;
   margin-bottom: 50%;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .activeItem {

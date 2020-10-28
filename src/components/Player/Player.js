@@ -24,7 +24,6 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 library.add(fas);
 
 const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, device, token }) => {
-  let seasonStyling = season ? "seasonStyling" : "";
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
   const [colors, setColors] = useState([]);

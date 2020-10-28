@@ -26,9 +26,9 @@
     display: inline-block;
     font-size: 16px;
     margin: 0px 20px;    
+    min-width: 160px;
     padding: 10px;
     text-decoration: none;
-    min-width: 160px;
 }
 
 .songsTableTimeRangeButton:hover {
@@ -42,10 +42,10 @@
     border-radius: 5px;
     display: inline-block;
     font-size: 32px;
-    margin: 0px 20px;    
+    margin: 0px 20px;
+    min-width: 100px;
     padding: 4px;
     text-decoration: none;
-    min-width: 100px;
 }
 
 .songsAndArtistsButton:hover {

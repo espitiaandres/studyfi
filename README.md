@@ -96,3 +96,16 @@ I don't think I'm done with this project. I'd like to extend this to be more int
 I'd also like to maybe venture into React native, or try to make this application more mobile friendly. I've always found mobile development interesting, so maybe I'll extend this project there.
 
 Stack Overflow, Google, and YouTube were the most helpful resources when developing this app. (So many hours of debugging were avoided by consulting these resources).
+
+
+
+
+
+
+<!-- ## TODO:
+
+- add jest (test suite)
+- add react-redux to decouple components
+- playlists stats component (menu with user's playlists, and when a playlist is chosen different stats are shown up about the songs in that playlist.) -->
+
+

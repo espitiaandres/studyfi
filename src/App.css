@@ -9,11 +9,6 @@ body {
   height: 100vh;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
 /* width */
 ::-webkit-scrollbar {
   width: 16px;
@@ -28,10 +23,3 @@ body {
 ::-webkit-scrollbar-thumb {
   background: grey; 
 }
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-

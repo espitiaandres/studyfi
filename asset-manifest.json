@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/studyfi/static/css/main.1e24109f.chunk.css",
+    "main.css": "/studyfi/static/css/main.be2342ca.chunk.css",
     "main.js": "/studyfi/static/js/main.b8040fca.chunk.js",
     "main.js.map": "/studyfi/static/js/main.b8040fca.chunk.js.map",
     "runtime-main.js": "/studyfi/static/js/runtime-main.5f7e87f6.js",
@@ -9,10 +9,10 @@
     "static/js/2.d43661aa.chunk.js": "/studyfi/static/js/2.d43661aa.chunk.js",
     "static/js/2.d43661aa.chunk.js.map": "/studyfi/static/js/2.d43661aa.chunk.js.map",
     "index.html": "/studyfi/index.html",
-    "precache-manifest.bec42d9b7d113f7789a9ecd64e0005c7.js": "/studyfi/precache-manifest.bec42d9b7d113f7789a9ecd64e0005c7.js",
+    "precache-manifest.52387832514e0ba1aaca8046caee5955.js": "/studyfi/precache-manifest.52387832514e0ba1aaca8046caee5955.js",
     "service-worker.js": "/studyfi/service-worker.js",
     "static/css/2.2ce0d9b2.chunk.css.map": "/studyfi/static/css/2.2ce0d9b2.chunk.css.map",
-    "static/css/main.1e24109f.chunk.css.map": "/studyfi/static/css/main.1e24109f.chunk.css.map",
+    "static/css/main.be2342ca.chunk.css.map": "/studyfi/static/css/main.be2342ca.chunk.css.map",
     "static/js/2.d43661aa.chunk.js.LICENSE.txt": "/studyfi/static/js/2.d43661aa.chunk.js.LICENSE.txt",
     "static/media/sketchyFavicon.png": "/studyfi/static/media/sketchyFavicon.4ab11064.png",
     "static/media/LandingPage.css": "/studyfi/static/media/spotifyLandingPageBackgroundChillHop.ac19a2ac.jpg",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.5f7e87f6.js",
     "static/css/2.2ce0d9b2.chunk.css",
     "static/js/2.d43661aa.chunk.js",
-    "static/css/main.1e24109f.chunk.css",
+    "static/css/main.be2342ca.chunk.css",
     "static/js/main.b8040fca.chunk.js"
   ]
 }

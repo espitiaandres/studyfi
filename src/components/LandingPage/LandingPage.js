@@ -25,7 +25,7 @@ const LandingPage = () => {
             <div className="app-title">Studyfi</div>
             <TypistLoop interval={700} >
                 {[
-                'A place to study, listen to music, and chat with friends.',
+                'A',
                 ''
                 ].map((text) => 
                     <Typist 
@@ -42,8 +42,7 @@ const LandingPage = () => {
                 className="login-button" 
                 href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
                 target=""
-            >                
-                <FontAwesomeIcon icon={['fab', 'spotify']} size="10x"/>
+            >
                 <p className="login-description">Login with Spotify</p>
             </a>
             <div className="footer">

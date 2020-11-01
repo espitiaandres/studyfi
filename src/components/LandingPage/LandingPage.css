@@ -2,6 +2,7 @@
     align-items: center;
     background-color: black;
     background-image: url("../../images/spotifyLandingPageBackgroundChillHop.jpg");
+    background-position: center;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -15,7 +16,6 @@
     color: white;
     font-family: 'Segoe UI', '-apple-system', 'HelveticaNeue', sans-serif;
     font-size: 120px;
-    padding-bottom: 20px;
     -webkit-text-stroke: 1px black;
 }
 
@@ -23,7 +23,7 @@
     color: white;
     font-size: 28px;
     font-weight: 700;
-    padding-bottom: 30px;
+    padding: 80px 0px;
     -webkit-text-stroke: 1px black;
 }
 
@@ -47,7 +47,7 @@
     display: flex;
     font-size: 20px;
     justify-content: center;
-    padding: 12px 40px;
+    padding: 12px 20px;
     text-align: center;
 }
 

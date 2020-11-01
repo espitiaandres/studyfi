@@ -15,3 +15,13 @@
     margin-top: 20px;
     width: 400px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .not-found-page-wrapper {
+        width: 90vw;
+    }
+
+    .sketchy-spotify {
+        width: 240px;
+    }
+}

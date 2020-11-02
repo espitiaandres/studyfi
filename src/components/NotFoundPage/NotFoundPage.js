@@ -60,7 +60,10 @@ const NotFoundPage = () => {
                         </a>
                     </div>
                 </animated.div>
-            </div>
+            </div>            
+            <p className="spaceTravellerGreeting">
+                Fellow space traveller: don't forget to listen to your neptunes once in a while. Listening to music that you love reduces stress, eases pain, and elevates your mood!
+            </p>
         </div>
     )
 }

@@ -17,15 +17,23 @@
     background-color: white;
     border-radius: 190px;
     margin-top: 20px;
+    width: 320px;
+}
+
+.spaceTravellerGreeting {
     width: 400px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
     .not-found-page-wrapper {
-        width: 90vw;
+        width: 95vw;
     }
 
     .sketchy-spotify {
         width: 240px;
+    }
+
+    .spaceTravellerGreeting {
+        width: 100%;
     }
 }

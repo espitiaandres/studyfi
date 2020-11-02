@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/studyfi/static/css/main.7ac7095b.chunk.css",
-    "main.js": "/studyfi/static/js/main.b8040fca.chunk.js",
-    "main.js.map": "/studyfi/static/js/main.b8040fca.chunk.js.map",
+    "main.css": "/studyfi/static/css/main.fe442eb4.chunk.css",
+    "main.js": "/studyfi/static/js/main.09974a51.chunk.js",
+    "main.js.map": "/studyfi/static/js/main.09974a51.chunk.js.map",
     "runtime-main.js": "/studyfi/static/js/runtime-main.5f7e87f6.js",
     "runtime-main.js.map": "/studyfi/static/js/runtime-main.5f7e87f6.js.map",
     "static/css/2.2ce0d9b2.chunk.css": "/studyfi/static/css/2.2ce0d9b2.chunk.css",
-    "static/js/2.d43661aa.chunk.js": "/studyfi/static/js/2.d43661aa.chunk.js",
-    "static/js/2.d43661aa.chunk.js.map": "/studyfi/static/js/2.d43661aa.chunk.js.map",
+    "static/js/2.5c999299.chunk.js": "/studyfi/static/js/2.5c999299.chunk.js",
+    "static/js/2.5c999299.chunk.js.map": "/studyfi/static/js/2.5c999299.chunk.js.map",
     "index.html": "/studyfi/index.html",
-    "precache-manifest.95a97601e18300c0a732f505177a6f21.js": "/studyfi/precache-manifest.95a97601e18300c0a732f505177a6f21.js",
+    "precache-manifest.8dcbbfa846d5c2a86bc0c1e3714319c6.js": "/studyfi/precache-manifest.8dcbbfa846d5c2a86bc0c1e3714319c6.js",
     "service-worker.js": "/studyfi/service-worker.js",
     "static/css/2.2ce0d9b2.chunk.css.map": "/studyfi/static/css/2.2ce0d9b2.chunk.css.map",
-    "static/css/main.7ac7095b.chunk.css.map": "/studyfi/static/css/main.7ac7095b.chunk.css.map",
-    "static/js/2.d43661aa.chunk.js.LICENSE.txt": "/studyfi/static/js/2.d43661aa.chunk.js.LICENSE.txt",
+    "static/css/main.fe442eb4.chunk.css.map": "/studyfi/static/css/main.fe442eb4.chunk.css.map",
+    "static/js/2.5c999299.chunk.js.LICENSE.txt": "/studyfi/static/js/2.5c999299.chunk.js.LICENSE.txt",
+    "static/media/NotFoundPage.css": "/studyfi/static/media/notFoundPageVaporwaveBackground.8eaff6c7.png",
     "static/media/sketchyFavicon.png": "/studyfi/static/media/sketchyFavicon.4ab11064.png",
     "static/media/LandingPage.css": "/studyfi/static/media/spotifyLandingPageBackgroundChillHop.ac19a2ac.jpg",
     "static/media/Dashboard.css": "/studyfi/static/media/vaporwaveDashboardBackground.f59d1a47.jpg"
@@ -21,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.5f7e87f6.js",
     "static/css/2.2ce0d9b2.chunk.css",
-    "static/js/2.d43661aa.chunk.js",
-    "static/css/main.7ac7095b.chunk.css",
-    "static/js/main.b8040fca.chunk.js"
+    "static/js/2.5c999299.chunk.js",
+    "static/css/main.fe442eb4.chunk.css",
+    "static/js/main.09974a51.chunk.js"
   ]
 }

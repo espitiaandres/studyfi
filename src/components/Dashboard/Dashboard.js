@@ -48,7 +48,7 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
                 </div>
                 <div className="dashboardItem">
                     <button className="seasonSelect" onClick={() => {setSeason(!season)}}>
-                        Halloween mode!
+                        Christmas mode!
                     </button>
                     <Player
                         item={item}

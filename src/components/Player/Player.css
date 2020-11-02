@@ -1,13 +1,3 @@
-.main-wrapper {
-    align-items: center;
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 0 auto;
-    width: 10%;
-}
-
 .imageStyles {
     height: 0px;
     width: 0px;
@@ -78,11 +68,11 @@
 }
 
 .seasonStyling {
-    background-color: #F37D0F;
-    border-color: #F37D0F;
+    background-color: #A92921;
+    border-color: #A92921;
 }
 
 .seasonStylingAlt {
-    background-color: #FFE01B;
-    border-color: #FFE01B;
+    background-color: #0A7533;
+    border-color: #0A7533;
 }

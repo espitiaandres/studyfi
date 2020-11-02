@@ -125,7 +125,7 @@ const Pomodoro = ({ user, userProfile, season }) => {
         }
     }
 
-    const colorSchema = holidaysColors.halloween;
+    const colorSchema = holidaysColors.christmas;
     const seasonIconOuter = colorSchema.iconOuter; 
     const seasonIconInner = colorSchema.iconInner;
     const seasonIconTimer = colorSchema.iconTimer;

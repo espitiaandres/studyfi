@@ -47,11 +47,11 @@
 }
 
 .userProfileseasonStyling {
-    color: #F37D0F;
+    color: #A92921;
 }
 
 .userProfileseasonStyling:visited {
-    color: #F37D0F;
+    color: #A92921;
 }
 
 .pomodoroHeaderTitle {
@@ -86,21 +86,21 @@
 }
 
 .seasonStyling {
-    background-color: #F37D0F;
-    border-color: #F37D0F;
+    background-color: #A92921;
+    border-color: #A92921;
 }
 
 .seasonStylingAlt {
-    background-color: #FFE01B;
-    border-color: #FFE01B;
+    background-color: #0A7533;
+    border-color: #0A7533;
 }
 
 .seasonStylingIcons {
-    color: #F37D0F;
+    color: #A92921;
 }
 
 .seasonStylingAltIcons {
-    color: #FFE01B;
+    color: #0A7533;
 }
 
 .controlButtonsColouring {

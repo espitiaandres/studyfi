@@ -9,6 +9,10 @@ body {
   height: 100vh;
 }
 
+button {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 16px;

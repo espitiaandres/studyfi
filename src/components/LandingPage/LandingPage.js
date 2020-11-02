@@ -8,15 +8,11 @@
 
 import React from 'react';
 import { authEndpoint, clientId, redirectUri, scopes } from '../../utils/config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 import moment from 'moment';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import './LandingPage.css';
 
-library.add(fab);
 const currentYear = moment().format('YYYY');
 
 const LandingPage = () => {

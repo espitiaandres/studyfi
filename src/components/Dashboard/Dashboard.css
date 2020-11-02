@@ -2,6 +2,7 @@
     background-attachment: fixed;
     background-color: black;
     background-image: url("../../images/vaporwaveDashboardBackground.jpg");
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -20,8 +21,8 @@
 }
 
 .seasonSelect {
-    background-color: #F37D0F;
-    border: 4px solid #F37D0F;
+    background-color: #A92921;
+    border: 4px solid #A92921;
 }
 
 .seasonSelect:hover {

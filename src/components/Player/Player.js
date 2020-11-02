@@ -108,7 +108,11 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
 
   const [prop, setProp] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 1, tension: 180, friction: 10 },
+    config: { 
+      mass: 1, 
+      tension: 180, 
+      friction: 10 
+    },
   }));
 
   const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
@@ -139,7 +143,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
     googleSearchString = (item.artists[0].name + "+" + item.album.name).replace(" ", "+");
   }
 
-  const colorSchema = holidaysColors.halloween;  
+  const colorSchema = holidaysColors.christmas;  
   const seasonColor = colorSchema.color;
   const seasonColorAlt = colorSchema.colorAlt;
   

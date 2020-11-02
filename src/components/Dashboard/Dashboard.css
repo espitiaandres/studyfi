@@ -17,12 +17,13 @@
 }
 
 .dashboardItem {
-    width: 470px;
+    width: 440px;
 }
 
 .seasonSelect {
     background-color: #A92921;
     border: 4px solid #A92921;
+    color: white;
 }
 
 .seasonSelect:hover {
@@ -31,6 +32,9 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+    * {
+        zoom: 0.9;
+    }
     .maindDashboardWrapper {
         width: 100vw;
     }

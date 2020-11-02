@@ -32,9 +32,9 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-    * {
+    /* * {
         zoom: 0.8;
-    }
+    } */
     
     .mainDashboardWrapper {
         width: 100vw;

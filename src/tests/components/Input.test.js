@@ -1,5 +1,5 @@
 //
-//  NotFoundPage.test.js
+//  Input.test.js
 //  react-spotify-player
 //
 //  Created by Andres Espitia.
@@ -8,9 +8,9 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import NotFoundPage from '../../components/NotFoundPage/NotFoundPage';
+import Input from '../../components/Input/Input';
 
-test('should render NotFoundPage correctly', () => {
-    const wrapper = shallow(<NotFoundPage />);
+test('should render Input component correctly', () => {
+    const wrapper = shallow(<Input />);
     expect(wrapper).toMatchSnapshot();
 });

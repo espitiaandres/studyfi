@@ -1,5 +1,5 @@
 //
-//  NotFoundPage.test.js
+//  InfoBar.test.js
 //  react-spotify-player
 //
 //  Created by Andres Espitia.
@@ -8,9 +8,9 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import NotFoundPage from '../../components/NotFoundPage/NotFoundPage';
+import InfoBar from '../../components/InfoBar/InfoBar';
 
-test('should render NotFoundPage correctly', () => {
-    const wrapper = shallow(<NotFoundPage />);
+test('should render InfoBar component correctly', () => {
+    const wrapper = shallow(<InfoBar />);
     expect(wrapper).toMatchSnapshot();
 });

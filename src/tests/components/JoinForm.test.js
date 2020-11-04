@@ -1,5 +1,5 @@
 //
-//  NotFoundPage.test.js
+//  JoinForm.test.js
 //  react-spotify-player
 //
 //  Created by Andres Espitia.
@@ -8,9 +8,9 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import NotFoundPage from '../../components/NotFoundPage/NotFoundPage';
+import JoinForm from '../../components/JoinForm/JoinForm';
 
-test('should render NotFoundPage correctly', () => {
-    const wrapper = shallow(<NotFoundPage />);
+test('should render JoinForm component correctly', () => {
+    const wrapper = shallow(<JoinForm />);
     expect(wrapper).toMatchSnapshot();
 });

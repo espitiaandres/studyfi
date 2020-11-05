@@ -148,7 +148,7 @@ const Pomodoro = ({ user, userProfile, season }) => {
                 <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
                     <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
                 </div>
-                <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
+                <h1 className="pomodoroHeaderTitleText">{season ? "pomodoroooo" : "pomodoro"}</h1>
                 <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
                     <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
                 </div>

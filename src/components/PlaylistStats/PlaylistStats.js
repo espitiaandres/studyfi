@@ -117,7 +117,7 @@ const PlaylistStats = ({ user, token }) => {
         <div className="playlistStats">
             Hello from PlaylistStats component
 
-            
+
             <div className={classes.root}>
                 <Tabs
                     orientation="vertical"
@@ -131,7 +131,7 @@ const PlaylistStats = ({ user, token }) => {
                     <Tab label="Item Two"  />
                     <Tab label="Item Three" />
 
-                    {/*
+                    {/* Don't delete this
                     <Tab label="Item One" {...a11yProps(0)} />
                     <Tab label="Item Two" {...a11yProps(1)} />
                     <Tab label="Item Three" {...a11yProps(2)} />

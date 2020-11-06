@@ -58,21 +58,20 @@
     padding: 0px 80px;
 }
 
-.songsTablePagination {
-    background: #1ED760;
-    border: none;
-    border-radius: 1px;
+.songsTablePagination {    
+    color: #1ED760;
     display: inline-block;
     font-size: 16px;
+    font-weight: 700;
     margin: 2px 4px;
-    text-decoration: none;
-    width: 30px;
+    width: 20px;
 }
 
 .songsTablePagination:hover {
     cursor: pointer;
     filter: brightness(70%);
-}  
+}
+
 .columnDescriptions {
     padding-bottom: 20px;
 }
@@ -83,4 +82,12 @@
 
 .seasonStylingAlt {
     background: #0A7533;
+}
+
+.seasonStylingPagination {
+    color: #A92921;
+}
+
+.seasonStylingAltPagination {
+    color: #0A7533;
 }

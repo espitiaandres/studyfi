@@ -22,7 +22,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    padding-bottom: 60px;
+    padding-bottom: 50px;
 }
 
 .pomodoroHeader {
@@ -69,6 +69,12 @@
 .pomodoroHeaderTitleText {
     font-size: 32px;
     padding: 0px 10px 0px 10px;
+}
+
+.listeningHabitsTag {
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 24px;
 }
 
 .icon-scroll {

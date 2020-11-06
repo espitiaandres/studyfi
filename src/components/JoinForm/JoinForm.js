@@ -62,7 +62,7 @@ const JoinForm = ({ user, season }) => {
                         }
                     </select>
                 </div>
-                <div>
+                <div className="signInButton">
                     <Link 
                         onClick={e => (!name || !room || !tz) ?  e.preventDefault() : null} 
                         to={`/chat?name=${name}&room=${room}&tz=${tz}`}
@@ -70,6 +70,9 @@ const JoinForm = ({ user, season }) => {
                         <button className={`button mt-20 ${seasonStyling}`} type="submit">sign in</button>
                     </Link>
                 </div>
+                <p className="listeningHabitsTagChat">
+                    curious about your music listening habits?
+                </p>
                 <div className="icon-scroll-chat animate__animated animate__bounce animate__infinite animate__slow">
                     <LinkScroll to="topsongs" spy={true} smooth={true} duration={400}>
                         <FontAwesomeIcon icon={"chevron-down"} size="2x" />

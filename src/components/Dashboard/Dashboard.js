@@ -12,6 +12,7 @@ import Player from '../Player/Player';
 import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
 import TopSongs from '../TopSongs/TopSongs';
+import PlaylistStats from '../PlaylistStats/PlaylistStats';
 import './Dashboard.css';
 
 const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, device, token }) => {
@@ -28,7 +29,7 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
             method: 'get',
             url: `https://api.spotify.com/v1/me`,
             headers: {
-            'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             }
         }).then(({ data }) => {
             setUser(data.id);
@@ -74,7 +75,13 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
                     season={season}
                     token={token}
                 />
-            </div>            
+            </div>
+            <div className="mainDashboardWrapper">
+                <PlaylistStats 
+                    user={user}
+                    token={token}
+                />
+            </div>       
         </div>
     )
 }

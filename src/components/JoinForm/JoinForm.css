@@ -37,6 +37,10 @@
     opacity: 0.7;
 }
 
+.signInButton {
+    padding-bottom: 60px;
+}
+
 .seasonStyling {
     background: #A92921;
 }
@@ -56,6 +60,12 @@ button:focus {
   
 .mt-20 {
     margin-top: 20px;
+}
+
+.listeningHabitsTagChat {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: -24px;
 }
 
 @media (min-width: 330px) and (max-width: 480px) {

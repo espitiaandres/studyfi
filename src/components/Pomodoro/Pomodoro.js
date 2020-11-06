@@ -10,7 +10,6 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-scroll';
 import { holidaysColors } from '../../utils/holidays';
 import moment from 'moment';
@@ -30,7 +29,7 @@ let pomodoroText = "press on the play button below to begin";
 let interval;
 let cooldownInterval;
 
-library.add(fas, fab);
+library.add(fas);
 
 const Pomodoro = ({ user, userProfile, season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
@@ -148,7 +147,7 @@ const Pomodoro = ({ user, userProfile, season }) => {
                 <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
                     <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
                 </div>
-                <h1 className="pomodoroHeaderTitleText">{season ? "pomodoroooo" : "pomodoro"}</h1>
+                <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
                 <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
                     <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
                 </div>
@@ -191,7 +190,10 @@ const Pomodoro = ({ user, userProfile, season }) => {
                     }
                 </button>
             </div>
-
+            
+            <p className="listeningHabitsTag">
+                curious about your music listening habits?
+            </p>
             <div className="icon-scroll animate__animated animate__bounce animate__infinite animate__slow">
                 <Link to="topsongs" spy={true} smooth={true} duration={400}>
                     <FontAwesomeIcon icon={"chevron-down"} size="2x" />

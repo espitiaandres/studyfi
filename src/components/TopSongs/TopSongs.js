@@ -34,7 +34,7 @@ const TopSongs = ({ season, token }) => {
             method: 'get',
             url: `https://api.spotify.com/v1/me/top/tracks`,
             headers: {
-            'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
             params: {
                 limit: 50,
@@ -48,7 +48,7 @@ const TopSongs = ({ season, token }) => {
             method: 'get',
             url: `https://api.spotify.com/v1/me/top/artists`,
             headers: {
-            'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
             params: {
                 limit: 50,
@@ -129,14 +129,14 @@ const TopSongs = ({ season, token }) => {
           <div>
             {
               pageWithoutIndication.map(p => (
-                <button 
+                <p
                     className={p.page % 2 === 1 ? 
-                                `songsTablePagination ${seasonStyling}` : 
-                                `songsTablePagination ${seasonStylingAlt}`} 
+                                `songsTablePagination ${seasonStyling}Pagination` : 
+                                `songsTablePagination ${seasonStylingAlt}Pagination`} 
                     onClick={() => onPageChange(p.page)}
                 >
                     {p.page}
-                </button>
+                </p>
               ))
             }
           </div>

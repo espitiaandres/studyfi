@@ -151,7 +151,7 @@ const PlaylistStats = ({ user, token }) => {
                     {
                         playlistsInfo.map((playlist, index) => {
                             return (
-                                <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs}>
+                                <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs} token={token}>
                                     {playlist.name}
                                 </TabPanel>
                             )

@@ -1,3 +1,7 @@
 .playlistStats {
     height: 100vh;
 }
+
+.playlistStatsTitle {
+    color: white;
+}

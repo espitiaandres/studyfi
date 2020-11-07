@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+//
+//  PlaylistStats.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
 
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-
-import axios from 'axios';
+import TabPanel from '../TabPanel/TabPanel';
 import './PlaylistStats.css';
 
 const PlaylistStats = ({ user, token }) => {
     const [playlistsInfo, setPlaylistsInfo] = useState([]);
-    const [playlistsNames, setPlaylistsNames] = useState([]);
+    const [playlistsSongs, setPlaylistsSongs] = useState({});
     const [value, setValue] = useState(0);
 
-    const getUserPlaylists = (token) => {
+    const getUserPlaylists = () => {
         axios({
             method: 'get',
             url: 'https://api.spotify.com/v1/me/playlists',
@@ -28,7 +32,7 @@ const PlaylistStats = ({ user, token }) => {
             }
         }).then(({ data }) => {
             const playlistsInfoArray = [];
-            const playlistsNamesArray = [];
+
             data.items.map((playlist) => {
                 const info = {};
                 info.description = playlist.description;
@@ -36,74 +40,84 @@ const PlaylistStats = ({ user, token }) => {
                 info.images = playlist.images;
                 info.name = playlist.name;
 
-                console.log(user);
-
-
                 if (playlist.owner.display_name === user || playlist.owner.display_name === "Spotify") {
                     playlistsInfoArray.push(info);
-                    playlistsNamesArray.push(playlist.name);
                 }
-
-                // how to get tracks
-                // "https://api.spotify.com/v1/playlists/1dz1weAfxnvT2eoxMpiCsD/tracks"
-
             })
-            console.log(playlistsInfoArray);
-            playlistsNamesArray.sort();
+
+            playlistsInfoArray.sort((a, b) => {
+                const textA = a.name.toUpperCase();
+                const textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            })
+
             setPlaylistsInfo(playlistsInfoArray);
-            setPlaylistsNames(playlistsNamesArray);
         }).catch((error) => {
             console.log(error);
         })
     }
 
+    let playlistSongsFetched = {};
+
+    const getPlaylistSongs = (id, offset) => {
+        axios({
+            method: 'get',
+            url: `https://api.spotify.com/v1/playlists/${id}/tracks`,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }, params: {
+                limit: 100,
+                offset
+            }
+        }).then(({ data }) => {
+            let playlistSongsIDs = [];
+
+            if (data.items.length > 0) {
+                data.items.map((p) => {
+                    playlistSongsIDs.push(p.track.id);
+                });
+
+                if (!playlistSongsFetched[id]) {
+                    playlistSongsFetched[id] = [...playlistSongsIDs];
+                } else {
+                    playlistSongsFetched[id].push(...playlistSongsIDs);
+                }
+            }
+
+            if (data.items.length === data.limit) {
+                getPlaylistSongs(id, offset+100);
+            }
+            setPlaylistsSongs(playlistSongsFetched);
+        }).catch((error) => {
+            console.log(error)
+        })        
+    }
+
     useEffect(() => {
-        getUserPlaylists(token);
+        getUserPlaylists();
     }, [user, token]);
 
-    function TabPanel(props) {
-        const { children, value, index, ...other } = props;
+    useEffect(() => {
+        playlistsInfo.map((p) => {
+            getPlaylistSongs(p.id, 0);
+        })
+    }, [playlistsInfo]);    
       
-        return (
-          <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`vertical-tabpanel-${index}`}
-            aria-labelledby={`vertical-tab-${index}`}
-            {...other}
-          >
-            {value === index && (
-              <Box p={3}>
-                <Typography>{children}</Typography>
-              </Box>
-            )}
-            <p>{playlistsNames[index]}</p>
-            <p>{user}</p>
-          </div>
-        );
-    }
-      
-    TabPanel.propTypes = {
-        children: PropTypes.node,
-        index: PropTypes.any.isRequired,
-        value: PropTypes.any.isRequired,
-    };
-      
-    function a11yProps(index) {
+    const tabProps = (index) => {
         return {
-          id: `vertical-tab-${index}`,
-          'aria-controls': `vertical-tabpanel-${index}`,
+            id: `vertical-tab-${index}`,
+            'aria-controls': `vertical-tabpanel-${index}`,
         };
     }
       
     const useStyles = makeStyles((theme) => ({
         root: {
-          flexGrow: 1,
-          backgroundColor: theme.palette.background.paper,
-          display: 'flex',
-          height: 224,
+            flexGrow: 1,
+            backgroundColor: theme.palette.background.paper,
+            display: 'flex',
+            height: '80%',
         }, tabs: {
-          borderRight: `1px solid ${theme.palette.divider}`,
+            borderRight: `1px solid ${theme.palette.divider}`,
         }
     }));
 
@@ -112,40 +126,38 @@ const PlaylistStats = ({ user, token }) => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
-
+    
     return (
-        <div className="playlistStats">
-            Hello from PlaylistStats component
-
-
-            <div className={classes.root}>
-                <Tabs
-                    orientation="vertical"
-                    variant="scrollable"
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="Vertical tabs example"
-                    className={classes.tabs}
-                >
-                    <Tab label="Item One" />
-                    <Tab label="Item Two"  />
-                    <Tab label="Item Three" />
-
-                    {/* Don't delete this
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                    */}
-                </Tabs>
-                <TabPanel value={value} index={0}>
-                    Item One
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    Item Two
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                    Item Three
-                </TabPanel>
+        <div>
+            <div className="playlistStats">
+                <h1 className="playlistStatsTitle">here are some stats about your playlists</h1>
+                <div className={classes.root}>
+                    <Tabs
+                        orientation="vertical"
+                        variant="scrollable"
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="Vertical tabs example"
+                        className={classes.tabs}
+                    >
+                        {
+                            playlistsInfo.map((playlist, index) => {
+                                return (
+                                    <Tab label={playlist.name} {...tabProps(index)}/>
+                                )
+                            })
+                        }
+                    </Tabs>               
+                    {
+                        playlistsInfo.map((playlist, index) => {
+                            return (
+                                <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs}>
+                                    {playlist.name}
+                                </TabPanel>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

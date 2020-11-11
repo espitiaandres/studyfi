@@ -61,6 +61,7 @@ const PlaylistStats = ({ user, season, token }) => {
                 if (playlist.owner.display_name === user || playlist.owner.display_name === "Spotify") {
                     playlistsInfoArray.push(info);
                 }
+                return data.items;
             })
 
             playlistsInfoArray.sort((a, b) => {
@@ -93,6 +94,7 @@ const PlaylistStats = ({ user, season, token }) => {
             if (data.items.length > 0) {
                 data.items.map((p) => {
                     playlistSongsIDs.push(p.track.id);
+                    return data.items;
                 });
                 if (!playlistSongsFetched[id]) {
                     playlistSongsFetched[id] = [...playlistSongsIDs];
@@ -117,6 +119,7 @@ const PlaylistStats = ({ user, season, token }) => {
     useEffect(() => {
         playlistsInfo.map((p) => {
             getPlaylistSongs(p.id, 0);
+            return playlistsInfo;
         })
     }, [playlistsInfo]);    
       
@@ -192,8 +195,8 @@ const PlaylistStats = ({ user, season, token }) => {
                             onMouseEnter={onMouseEnter}
                         >
                             <div>
-                                <a href="https://open.spotify.com/" target="_blank">
-                                    <img src={logoAesthetic} />
+                                <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
+                                    <img src={logoAesthetic} alt={logoAesthetic}/>
                                 </a>
                             </div>
                         </animated.div>

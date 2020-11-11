@@ -13,22 +13,25 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import ApexChart from '../ApexChart/ApexChart';
 import { averageFeaturesOutput } from '../../utils/featureStats';
+import { holidaysColors } from '../../utils/holidays';
+import './TabPanel.css';
 
 const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, season, token, ...other }) => {
+  let color = season ? holidaysColors.christmas.color : "#1ED760";
+  let colorAlt = season ? holidaysColors.christmas.colorAlt : "#1ED760";
+
   const [features, setFeatures] = useState({});
   const [acousticnessAvg, setAcousticnessAvg] = useState(0);
   const [danceabilityAvg, setDanceabilityAvg] = useState(0);
-  // const [durationmsAvg, setDurationmsAvg] = useState(0);
   const [energyAvg, setEnergyAvg] = useState(0);
   const [instrumentalnessAvg, setInstrumentalnessAvg] = useState(0);
   const [livenessAvg, setLivenessAvg] = useState(0);
-  const [speechinessAvg, setSpeechinessAvg] = useState(0);
   const [valenceAvg, setValenceAvg] = useState(0);
 
   useEffect(() => {
-    if (JSON.stringify(playlistsSongs) !== "{}") {
-      let ids = "";
-      let chosenID = playlistsInfo[value].id; 
+    let ids = "";
+    let chosenID = playlistsInfo[value].id; 
+    if (playlistsSongs[chosenID]) {
       if (playlistsSongs[chosenID].length > 100) {
         const chunk = 100;
         const j = playlistsSongs[chosenID].length;
@@ -42,7 +45,7 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
         getAudioFeatures(ids, chosenID);
       }
     }
-  }, [value]);
+  }, [playlistsSongs, value]);
 
   let featuresFetched = {};
   
@@ -63,29 +66,22 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
         featuresFetched[playlist].push(...audio_features);
       }
 
-      console.log(value);
-      console.log(featuresFetched);
       setFeatures(featuresFetched);
 
       const {
         acousticnessAvgReturn,
         danceabilityAvgReturn,
-        // durationmsAvgReturn,
         energyAvgReturn,
         instrumentalnessAvgReturn,
         livenessAvgReturn,
-        speechinessAvgReturn,
         valenceAvgReturn
       } = averageFeaturesOutput(featuresFetched[playlist]);
 
-      console.log(acousticnessAvgReturn);
       setAcousticnessAvg(acousticnessAvgReturn);
       setDanceabilityAvg(danceabilityAvgReturn);
-      // setDurationmsAvg(durationmsAvgReturn);
       setEnergyAvg(energyAvgReturn);
       setInstrumentalnessAvg(instrumentalnessAvgReturn);
       setLivenessAvg(livenessAvgReturn);
-      setSpeechinessAvg(speechinessAvgReturn);
       setValenceAvg(valenceAvgReturn);
     }).catch((error) => {
       console.log(error);
@@ -99,6 +95,7 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
       {...other}
+      className="tabpanelContent"
     >
       {value === index && (
         <Box p={3}>
@@ -110,64 +107,40 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
         ?
         <div>
           <div>
-            {playlistsInfo[value].name}
-          </div>
-          <div>
             {playlistsInfo[value].description}
-          </div>
-          <div>
-            {playlistsInfo[value].id}
-          </div>
-          <div>
-            {playlistsSongs[playlistsInfo[value].id] ? playlistsSongs[playlistsInfo[value].id].length : "test"}
           </div>
             {
               playlistsSongs[playlistsInfo[value].id] 
               ?
               <div>
-                <div>
-                  <p>acoustiness</p>
+                <div className="featureGraphs">
                   <div>
-                    <ApexChart value={acousticnessAvg} />
-                  </div>                  
-                </div>
-                <div>
-                  <p>danceability</p>
+                    <p>acoustiness</p>
+                    <ApexChart value={acousticnessAvg} color={color} />      
+                  </div>
                   <div>
-                    <ApexChart value={danceabilityAvg} />
+                    <p>danceability</p>
+                    <ApexChart value={danceabilityAvg} color={colorAlt} />
+                  </div>
+                  <div>
+                    <p>energy</p>
+                    <ApexChart value={energyAvg} color={color} />
+                  </div>
+                  <div>
+                    <p>instrumentalness</p>
+                    <ApexChart value={instrumentalnessAvg} color={colorAlt} />
+                  </div>
+                  <div>
+                    <p>liveness</p>
+                    <ApexChart value={livenessAvg} color={color} />
+                  </div>
+                  <div>
+                    <p>valence</p>
+                    <ApexChart value={valenceAvg} color={colorAlt} />
                   </div>
                 </div>
-                <div>
-                  <p>energy</p>
-                  <div>
-                    <ApexChart value={energyAvg} />
-                  </div>                  
-                </div>
-                <div>
-                  <p>instrumentalness</p>
-                  <div>
-                    <ApexChart value={instrumentalnessAvg} />
-                  </div>                  
-                </div>
-                  <div>
-                  <p>liveness</p>
-                  <div>
-                    <ApexChart value={livenessAvg} />
-                  </div>                  
-                </div>
-                <div>
-                  <p>speechiness</p>
-                  <div>
-                    <ApexChart value={speechinessAvg} />
-                  </div>                  
-                </div>
-                <div>
-                  <p>valence</p>
-                  <div>
-                    <ApexChart value={valenceAvg} />
-                  </div>                  
-                </div>
-              </div>              
+                <p>Statement about playlist goes here</p>
+              </div>    
               :
               <div></div>
             }

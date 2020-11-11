@@ -11,13 +11,31 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { useSpring, animated } from 'react-spring';
 import TabPanel from '../TabPanel/TabPanel';
+import logoAesthetic from '../../images/spotify-logo-aesthetic.png';
+import { calculateCenter, trans } from '../../utils/springFunctions';
 import './PlaylistStats.css';
 
 const PlaylistStats = ({ user, season, token }) => {
     const [playlistsInfo, setPlaylistsInfo] = useState([]);
     const [playlistsSongs, setPlaylistsSongs] = useState({});
     const [value, setValue] = useState(0);
+    const [, setHoveredOn] = useState(false);
+    
+    const [prop, setProp] = useSpring(() => ({
+        xys: [0, 0, 1],
+        config: { mass: 1, tension: 180, friction: 10 },
+    }));
+
+    const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
+
+    const onMouseLeave = () => {
+        setProp({ xys: [0, 0, 1] });
+        setHoveredOn(false);
+    }
+
+    const onMouseEnter = () => setHoveredOn(true);
 
     const getUserPlaylists = () => {
         axios({
@@ -76,7 +94,6 @@ const PlaylistStats = ({ user, season, token }) => {
                 data.items.map((p) => {
                     playlistSongsIDs.push(p.track.id);
                 });
-
                 if (!playlistSongsFetched[id]) {
                     playlistSongsFetched[id] = [...playlistSongsIDs];
                 } else {
@@ -112,11 +129,11 @@ const PlaylistStats = ({ user, season, token }) => {
       
     const useStyles = makeStyles((theme) => ({
         root: {
-            flexGrow: 1,
+            flexGrow: 0.5,
             backgroundColor: theme.palette.background.paper,
             display: 'flex',
-            height: '80%',
-            width: '80vw'
+            height: '500px',
+            width: '1000px'
         }, tabs: {
             borderRight: `1px solid ${theme.palette.divider}`,
         }
@@ -129,37 +146,61 @@ const PlaylistStats = ({ user, season, token }) => {
     }
     
     return (
-        <div>
-            <div className="playlistStats">
-                <h1 className="playlistStatsTitle">here are some stats about your playlists</h1>
-                <div className={classes.root}>
-                    <Tabs
-                        orientation="vertical"
-                        variant="scrollable"
-                        value={value}
-                        onChange={handleChange}
-                        aria-label="Vertical tabs example"
-                        className={classes.tabs}
-                    >
+        <div className="playlistStats">
+            {
+                playlistsInfo.length > 0
+                ?
+                <div>
+                    <h1 className="playlistStatsTitle">here are some stats about your playlists</h1>
+                    <div className={classes.root}>
+                        <Tabs
+                            orientation="vertical"
+                            variant="scrollable"
+                            value={value}
+                            onChange={handleChange}
+                            aria-label="Vertical tabs example"
+                            className={classes.tabs}
+                        >
+                            {
+                                playlistsInfo.map((playlist, index) => {
+                                    return (
+                                        <Tab label={playlist.name} {...tabProps(index)}/>
+                                    )
+                                })
+                            }
+                        </Tabs>               
                         {
                             playlistsInfo.map((playlist, index) => {
                                 return (
-                                    <Tab label={playlist.name} {...tabProps(index)}/>
+                                    <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs} season={season} token={token}>
+                                        {playlist.name}
+                                    </TabPanel>
                                 )
                             })
                         }
-                    </Tabs>               
-                    {
-                        playlistsInfo.map((playlist, index) => {
-                            return (
-                                <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs} season={season} token={token}>
-                                    {playlist.name}
-                                </TabPanel>
-                            )
-                        })
-                    }
+                    </div>
                 </div>
-            </div>
+                :
+                <div className="playlistStatsTitle">
+                    <h1>Hmm... we couldn't find any playlists.</h1>
+                    <p>You need to create a Spotify playlist for something to appear here.</p>
+                    <div>
+                        <animated.div
+                            onMouseMove={onMouseMove}
+                            onMouseLeave={onMouseLeave}
+                            style={{ transform: prop.xys.interpolate(trans) }}
+                            onMouseEnter={onMouseEnter}
+                        >
+                            <div>
+                                <a href="https://open.spotify.com/" target="_blank">
+                                    <img src={logoAesthetic} />
+                                </a>
+                            </div>
+                        </animated.div>
+                    </div>
+                </div>
+            }
+
         </div>
     )
 }

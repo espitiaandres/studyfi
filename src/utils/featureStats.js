@@ -13,9 +13,6 @@ const averageFeaturesOutput = (features) => {
     const danceabilityArray = features.map(s => s.danceability);
     const danceabilityAvgReturn = averageFeatures(danceabilityArray);
 
-    // const durationmsArray = features.map(s => s.duration_ms);
-    // const durationmsAvgReturn = averageFeatures(durationmsArray);
-
     const energyArray = features.map(s => s.energy);
     const energyAvgReturn = averageFeatures(energyArray);
 
@@ -25,20 +22,15 @@ const averageFeaturesOutput = (features) => {
     const livenessArray = features.map(s => s.liveness);
     const livenessAvgReturn = averageFeatures(livenessArray);
 
-    const speechinessArray = features.map(s => s.speechiness);
-    const speechinessAvgReturn = averageFeatures(speechinessArray);
-
     const valenceArray = features.map(s => s.valence);
     const valenceAvgReturn = averageFeatures(valenceArray);
 
     return {
         acousticnessAvgReturn,
         danceabilityAvgReturn,
-        // durationmsAvgReturn,
         energyAvgReturn,
         instrumentalnessAvgReturn,
         livenessAvgReturn,
-        speechinessAvgReturn,
         valenceAvgReturn
     };
 }

@@ -191,7 +191,6 @@ const TopSongs = ({ season, token }) => {
                     ... of all time
                 </button>
             </div>
-
             {
                 (queryParam === "tracks" && topArtistsPopulated && topTracksPopulated)
                 ? 

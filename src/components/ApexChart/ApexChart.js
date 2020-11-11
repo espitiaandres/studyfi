@@ -9,8 +9,7 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const ApexChart = ({ value }) => {
-    
+const ApexChart = ({ value, color }) => {
     const states = {          
         series: [value],
         options: {
@@ -65,7 +64,7 @@ const ApexChart = ({ value }) => {
                     stops: [0, 50, 53, 91]
                 },
             },
-            colors: ['#1ED760']
+            colors: [color]
         },
     };
 

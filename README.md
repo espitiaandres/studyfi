@@ -105,5 +105,5 @@ Stack Overflow, Google, and YouTube were the most helpful resources when develop
 ## TODO:
 
 - add react-redux to decouple components
-- playlists stats component (menu with user's playlists, and when a playlist is chosen different stats are shown up about the songs in that playlist.) 
+- statement about each playlist depending on the stat.
 - make stylings mobile user friendly

@@ -14,7 +14,7 @@ import Tab from '@material-ui/core/Tab';
 import TabPanel from '../TabPanel/TabPanel';
 import './PlaylistStats.css';
 
-const PlaylistStats = ({ user, token }) => {
+const PlaylistStats = ({ user, season, token }) => {
     const [playlistsInfo, setPlaylistsInfo] = useState([]);
     const [playlistsSongs, setPlaylistsSongs] = useState({});
     const [value, setValue] = useState(0);
@@ -116,6 +116,7 @@ const PlaylistStats = ({ user, token }) => {
             backgroundColor: theme.palette.background.paper,
             display: 'flex',
             height: '80%',
+            width: '80vw'
         }, tabs: {
             borderRight: `1px solid ${theme.palette.divider}`,
         }
@@ -151,7 +152,7 @@ const PlaylistStats = ({ user, token }) => {
                     {
                         playlistsInfo.map((playlist, index) => {
                             return (
-                                <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs} token={token}>
+                                <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs} season={season} token={token}>
                                     {playlist.name}
                                 </TabPanel>
                             )

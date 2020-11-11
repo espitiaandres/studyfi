@@ -11,9 +11,19 @@ import axios from 'axios';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import ApexChart from '../ApexChart/ApexChart';
+import { averageFeaturesOutput } from '../../utils/featureStats';
 
-const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, token, ...other }) => {
+const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, season, token, ...other }) => {
   const [features, setFeatures] = useState({});
+  const [acousticnessAvg, setAcousticnessAvg] = useState(0);
+  const [danceabilityAvg, setDanceabilityAvg] = useState(0);
+  // const [durationmsAvg, setDurationmsAvg] = useState(0);
+  const [energyAvg, setEnergyAvg] = useState(0);
+  const [instrumentalnessAvg, setInstrumentalnessAvg] = useState(0);
+  const [livenessAvg, setLivenessAvg] = useState(0);
+  const [speechinessAvg, setSpeechinessAvg] = useState(0);
+  const [valenceAvg, setValenceAvg] = useState(0);
 
   useEffect(() => {
     if (JSON.stringify(playlistsSongs) !== "{}") {
@@ -35,7 +45,7 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, token
   }, [value]);
 
   let featuresFetched = {};
-
+  
   const getAudioFeatures = (ids, playlist) => {
     axios({
       method: 'get',
@@ -53,20 +63,30 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, token
         featuresFetched[playlist].push(...audio_features);
       }
 
+      console.log(value);
       console.log(featuresFetched);
       setFeatures(featuresFetched);
 
-      // send featuresFetched to get metadata (add into utils folder): average, standard deviation, and other things for the following categories:
-      // acoustiness,
-      // danceability,
-      // duration_ms,
-      // energy,
-      // instrumentalness,
-      // liveness,
-      // loudness, 
-      // speechiness,
-      // tempo
+      const {
+        acousticnessAvgReturn,
+        danceabilityAvgReturn,
+        // durationmsAvgReturn,
+        energyAvgReturn,
+        instrumentalnessAvgReturn,
+        livenessAvgReturn,
+        speechinessAvgReturn,
+        valenceAvgReturn
+      } = averageFeaturesOutput(featuresFetched[playlist]);
 
+      console.log(acousticnessAvgReturn);
+      setAcousticnessAvg(acousticnessAvgReturn);
+      setDanceabilityAvg(danceabilityAvgReturn);
+      // setDurationmsAvg(durationmsAvgReturn);
+      setEnergyAvg(energyAvgReturn);
+      setInstrumentalnessAvg(instrumentalnessAvgReturn);
+      setLivenessAvg(livenessAvgReturn);
+      setSpeechinessAvg(speechinessAvgReturn);
+      setValenceAvg(valenceAvgReturn);
     }).catch((error) => {
       console.log(error);
     });
@@ -101,6 +121,56 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, token
           <div>
             {playlistsSongs[playlistsInfo[value].id] ? playlistsSongs[playlistsInfo[value].id].length : "test"}
           </div>
+            {
+              playlistsSongs[playlistsInfo[value].id] 
+              ?
+              <div>
+                <div>
+                  <p>acoustiness</p>
+                  <div>
+                    <ApexChart value={acousticnessAvg} />
+                  </div>                  
+                </div>
+                <div>
+                  <p>danceability</p>
+                  <div>
+                    <ApexChart value={danceabilityAvg} />
+                  </div>
+                </div>
+                <div>
+                  <p>energy</p>
+                  <div>
+                    <ApexChart value={energyAvg} />
+                  </div>                  
+                </div>
+                <div>
+                  <p>instrumentalness</p>
+                  <div>
+                    <ApexChart value={instrumentalnessAvg} />
+                  </div>                  
+                </div>
+                  <div>
+                  <p>liveness</p>
+                  <div>
+                    <ApexChart value={livenessAvg} />
+                  </div>                  
+                </div>
+                <div>
+                  <p>speechiness</p>
+                  <div>
+                    <ApexChart value={speechinessAvg} />
+                  </div>                  
+                </div>
+                <div>
+                  <p>valence</p>
+                  <div>
+                    <ApexChart value={valenceAvg} />
+                  </div>                  
+                </div>
+              </div>              
+              :
+              <div></div>
+            }
         </div>
         :
         <div>

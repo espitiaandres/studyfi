@@ -79,6 +79,7 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
             <div className="mainDashboardWrapper">
                 <PlaylistStats 
                     user={user}
+                    season={season}
                     token={token}
                 />
             </div>       

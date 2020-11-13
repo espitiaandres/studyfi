@@ -203,7 +203,6 @@ const PlaylistStats = ({ user, season, token }) => {
                     </div>
                 </div>
             }
-
         </div>
     )
 }

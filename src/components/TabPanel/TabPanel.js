@@ -8,9 +8,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import ApexChart from '../ApexChart/ApexChart';
 import { averageFeaturesOutput } from '../../utils/featureStats';
 import { holidaysColors } from '../../utils/holidays';
@@ -27,6 +25,7 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
   const [instrumentalnessAvg, setInstrumentalnessAvg] = useState(0);
   const [livenessAvg, setLivenessAvg] = useState(0);
   const [valenceAvg, setValenceAvg] = useState(0);
+  const [playlistStatement, setPlaylistStatment] = useState("");
 
   useEffect(() => {
     let ids = "";
@@ -74,7 +73,8 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
         energyAvgReturn,
         instrumentalnessAvgReturn,
         livenessAvgReturn,
-        valenceAvgReturn
+        valenceAvgReturn,
+        playlistSummary
       } = averageFeaturesOutput(featuresFetched[playlist]);
 
       setAcousticnessAvg(acousticnessAvgReturn);
@@ -83,6 +83,7 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
       setInstrumentalnessAvg(instrumentalnessAvgReturn);
       setLivenessAvg(livenessAvgReturn);
       setValenceAvg(valenceAvgReturn);
+      setPlaylistStatment(playlistSummary);
     }).catch((error) => {
       console.log(error);
     });
@@ -97,18 +98,10 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
       {...other}
       className="tabpanelContent"
     >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
       {
         playlistsInfo[value]
         ?
         <div>
-          <div>
-            {playlistsInfo[value].description}
-          </div>
             {
               playlistsSongs[playlistsInfo[value].id] 
               ?
@@ -139,7 +132,13 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
                     <ApexChart value={valenceAvg} color={colorAlt} />
                   </div>
                 </div>
-                <p>Statement about playlist goes here</p>
+                <div className="playlistImageWrapper">
+                  <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
+                </div>
+                <div>
+                  {playlistsInfo[value].description}
+                </div>
+                <p>{`${playlistsInfo[value].name}: ${playlistStatement}`}</p>
               </div>    
               :
               <div></div>

@@ -10,7 +10,7 @@ import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 const ApexChart = ({ value, color }) => {
-    const states = {          
+    const configs = {          
         series: [value],
         options: {
             chart: {
@@ -70,7 +70,11 @@ const ApexChart = ({ value, color }) => {
 
     return (
         <div>
-            <ReactApexChart options={states.options} series={states.series} type="radialBar" />
+            <ReactApexChart 
+                options={configs.options} 
+                series={configs.series} 
+                type="radialBar" 
+            />
         </div>
     )
 }

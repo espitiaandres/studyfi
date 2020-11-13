@@ -105,5 +105,4 @@ Stack Overflow, Google, and YouTube were the most helpful resources when develop
 ## TODO:
 
 - add react-redux to decouple components
-- statement about each playlist depending on the stat.
 - make stylings mobile user friendly

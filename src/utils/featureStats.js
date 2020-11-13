@@ -62,7 +62,7 @@ const averageFeaturesOutput = (features) => {
 
 const averageFeatures = (featureArray) => {
     let sum = featureArray.reduce((sum, value) => {
-        return (sum+value);
+        return (sum + value);
     }, 0);
 
     const featureAvgRaw = (sum / featureArray.length) * 100;
@@ -75,27 +75,16 @@ const playlistFeaturesSummary = (topAverages) => {
 
     for (let i = 0; i < topAverages.length; i++) {
         if (topAverages[i].name === "acousticness") {
-            // if (i === topAverages.length - 1) {
-            //     summary += " and be in touch with nature.";
-            // } else {
-            //     summary += "be in touch with nature, ";
-            // }
-            summary += (i === topAverages.length - 1 ) ? " and be in touch with nature." : "be in touch with nature, ";
-            
+            summary += (i === topAverages.length - 1 ) ? " and be in touch with nature." : "be in touch with nature, ";            
         } else if (topAverages[i].name === "danceability") {
-            // summary += "get the party started, ";
             summary += (i === topAverages.length - 1 ) ? " and get the party started." : "get the party started, ";
         } else if (topAverages[i].name === "energy") {
-            // summary += "release your energy, ";
             summary += (i === topAverages.length - 1 ) ? " and release your energy." : "release your energy, ";
         } else if (topAverages[i].name === "instrumentalness") {
-            // summary += "focus, ";
             summary += (i === topAverages.length - 1 ) ? " and focus." : "focus, ";
         } else if (topAverages[i].name === "liveness") {
-            // summary += "replicate a live concert, ";
             summary += (i === topAverages.length - 1 ) ? " and replicate a live concert." : "replicate a live concert, ";
         } else if (topAverages[i].name === "valence") {
-            // summary += "feel good about life, ";
             summary += (i === topAverages.length - 1 ) ? " and feel good about life." : "feel good about life, ";
         }
     }

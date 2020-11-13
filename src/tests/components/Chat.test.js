@@ -24,8 +24,7 @@ const chatPropsTest = {
 
 test('should render Chat component correctly', () => {
     const wrapper = shallow(
-        <Chat 
-        // location, item, user, season
+        <Chat
             location={chatPropsTest.location}
             item={"chatPropsTest.item"}
             user={chatPropsTest.user}

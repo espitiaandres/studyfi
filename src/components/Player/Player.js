@@ -176,7 +176,10 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
         <TypistLoop interval={2000} >
           {['a',''].map(text => 
             <Typist 
-            className="pomodoroTitle" avgTypingDelay={90} key={text} startDelay={0}
+            className="pomodoroTitle" 
+            avgTypingDelay={90} 
+            key={text} 
+            startDelay={0}
             cursor={{
               show: true,
               blink: true,

@@ -11,31 +11,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { useSpring, animated } from 'react-spring';
+import NoPlaylists from '../NoPlaylists/NoPlaylists';
 import TabPanel from '../TabPanel/TabPanel';
-import logoAesthetic from '../../images/spotify-logo-aesthetic.png';
-import { calculateCenter, trans } from '../../utils/springFunctions';
 import './PlaylistStats.css';
 
 const PlaylistStats = ({ user, season, token }) => {
     const [playlistsInfo, setPlaylistsInfo] = useState([]);
     const [playlistsSongs, setPlaylistsSongs] = useState({});
     const [value, setValue] = useState(0);
-    const [, setHoveredOn] = useState(false);
-    
-    const [prop, setProp] = useSpring(() => ({
-        xys: [0, 0, 1],
-        config: { mass: 1, tension: 180, friction: 10 },
-    }));
-
-    const onMouseMove = ({ clientX: x, clientY: y }) => setProp({ xys: calculateCenter(x, y) });
-
-    const onMouseLeave = () => {
-        setProp({ xys: [0, 0, 1] });
-        setHoveredOn(false);
-    }
-
-    const onMouseEnter = () => setHoveredOn(true);
 
     const getUserPlaylists = () => {
         axios({
@@ -108,7 +91,7 @@ const PlaylistStats = ({ user, season, token }) => {
             }
             setPlaylistsSongs(playlistSongsFetched);
         }).catch((error) => {
-            console.log(error)
+            console.log(error);
         })        
     }
 
@@ -184,24 +167,7 @@ const PlaylistStats = ({ user, season, token }) => {
                     </div>
                 </div>
                 :
-                <div className="playlistStatsTitle">
-                    <h1>Hmm... we couldn't find any playlists.</h1>
-                    <p>You need to create a Spotify playlist for something to appear here.</p>
-                    <div>
-                        <animated.div
-                            onMouseMove={onMouseMove}
-                            onMouseLeave={onMouseLeave}
-                            style={{ transform: prop.xys.interpolate(trans) }}
-                            onMouseEnter={onMouseEnter}
-                        >
-                            <div>
-                                <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
-                                    <img src={logoAesthetic} alt={logoAesthetic}/>
-                                </a>
-                            </div>
-                        </animated.div>
-                    </div>
-                </div>
+                <NoPlaylists />
             }
         </div>
     )

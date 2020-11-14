@@ -1,7 +1,18 @@
-import { createStore } from 'redux';
+//
+//  configureStore.js
+//  react-spotify-player
+//
+//  Created by Andres Espitia.
+//  Copyright © 2020 Andres Espitia. All rights reserved.
+//
 
-const store = () => {
-    const store = createStore();
+import { createStore, combineReducers } from 'redux';
+import tokensReducer from '../reducers/token';
+
+const configureStore = () => {
+    const store = createStore(
+        
+    );
 }
 
-export default store;
+export default configureStore;

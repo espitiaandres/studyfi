@@ -8,12 +8,19 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 import './index.css';
 import App from './App';
 
-ReactDOM.render(
+const store = configureStore();
+
+const jsx = (
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider>
+      <App store={store}/>
+    </Provider>
+  </React.StrictMode>
 );
+
+ReactDOM.render(jsx, document.getElementById('root'));

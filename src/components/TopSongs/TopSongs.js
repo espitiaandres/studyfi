@@ -7,6 +7,7 @@
 //
 
 import React, { useState, useEffect } from 'react';
+import { connect, useSelector } from 'react-redux';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
@@ -15,7 +16,7 @@ import TopArtistsDescriptions from '../TopArtistsDescriptions/TopArtistsDescript
 import { topSongColumns, topArtistColumns, keySignaturesLetters } from '../../utils/tableFormat';
 import './TopSongs.css';
 
-const TopSongs = ({ season, token }) => {
+const TopSongs = ({ season }) => {
     let seasonStyling = season ? "seasonStyling" : "";
     let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
@@ -26,38 +27,29 @@ const TopSongs = ({ season, token }) => {
     const [topArtistsPopulated, setTopArtistsPopulated] = useState(false);
     const [queryParam, setQueryParam] = useState('tracks');
 
+    const token = useSelector(state => state.token);
+
     let filteredTopTracksData = [];
     let filteredTopArtistsData = [];
 
     useEffect(() => {
-        axios({
-            method: 'get',
-            url: `https://api.spotify.com/v1/me/top/tracks`,
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            params: {
-                limit: 50,
-                time_range: timerange
-            }
-        }).then(({ data }) => {
-            topTracksParse(data);
-        });
-
-        axios({
-            method: 'get',
-            url: `https://api.spotify.com/v1/me/top/artists`,
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            params: {
-                limit: 50,
-                time_range: timerange
-            }
-        }).then(({ data }) => {
-            topArtistsParse(data);
-        });
+        requestTemplate("tracks").then(({ data }) => topTracksParse(data));
+        requestTemplate("artists").then(({ data }) => topArtistsParse(data));
     }, [timerange, token]);
+
+    const requestTemplate = (endpoint) => {
+        return axios({
+            method: 'get',
+            url: `https://api.spotify.com/v1/me/top/${endpoint}`,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            params: {
+                limit: 50,
+                time_range: timerange
+            }
+        });
+    }
 
     const topTracksParse = (data) => {
         let audioFeaturesTracksIDs = "";
@@ -108,7 +100,8 @@ const TopSongs = ({ season, token }) => {
         data.items.map((artist) => {
             let allGenres = "";
             const topArtistFiltered = {};
-            topArtistFiltered.followers = artist.followers.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const followersRegex = /\B(?=(\d{3})+(?!\d))/g;
+            topArtistFiltered.followers = artist.followers.total.toString().replace(followersRegex, ",");
             artist.genres.map((genre) => {
                 return allGenres += "|" + genre + "| ";
             });
@@ -132,7 +125,7 @@ const TopSongs = ({ season, token }) => {
                 <p
                     className={p.page % 2 === 1 ? 
                                 `songsTablePagination ${seasonStyling}Pagination` : 
-                                `songsTablePagination ${seasonStylingAlt}Pagination`} 
+                                `songsTablePagination ${seasonStylingAlt}Pagination`}
                     onClick={() => onPageChange(p.page)}
                 >
                     {p.page}
@@ -226,4 +219,4 @@ const TopSongs = ({ season, token }) => {
     )
 }
 
-export default TopSongs
+export default connect(undefined, undefined)(TopSongs);

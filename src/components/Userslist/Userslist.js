@@ -11,35 +11,35 @@ import onlineIcon from '../../icons/onlineIcon.png';
 import './Userslist.css';
 
 const Userslist = ({ users }) => {
-  return (
-    <div className="userslist">
-      {
-        users.length > 1 ? 
-        (
-          <div>
-            <p>Online:</p>
-            <div className="activeContainer">
-              <div>
-                {
-                  users.map(({ name }) => (
-                    <div key={name} className="activeItem">
-                      <img alt="Online Icon" src={onlineIcon}/>
-                      {name}                      
+    return (
+        <div className="userslist">
+            {
+                users.length > 1 ? 
+                (
+                    <div>
+                        <p>Online:</p>
+                        <div className="activeContainer">
+                            <div>
+                                {
+                                    users.map(({ name }) => (
+                                        <div key={name} className="activeItem">
+                                            <img alt="Online Icon" src={onlineIcon}/>
+                                            {name}                      
+                                        </div>
+                                        )
+                                    )
+                                }
+                            </div>
+                        </div>
                     </div>
-                    )
-                  )
-                }
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <p>Looks like you're alone in this chat room...</p>
-          </div>
+                ) : (
+                    <div>
+                        <p>Looks like you're alone in this chat room...</p>
+                    </div>
+                )
+            }
+        </div>
         )
-      }
-    </div>
-    )
-  };
+    };
 
 export default Userslist;

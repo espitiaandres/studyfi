@@ -8,6 +8,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { connect, useSelector } from 'react-redux';
 import Player from '../Player/Player';
 import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
@@ -15,10 +16,12 @@ import TopSongs from '../TopSongs/TopSongs';
 import PlaylistStats from '../PlaylistStats/PlaylistStats';
 import './Dashboard.css';
 
-const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, device, token }) => {
+const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, device }) => {
     const [season, setSeason] = useState(false);
     const [user, setUser] = useState('');
     const [userProfile, setUserProfile] = useState('');
+
+    const token = useSelector(state => state.token);
 
     useEffect(() => {
         getCurrentUser();
@@ -59,7 +62,6 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
                         repeatState={repeatState}
                         season={season}
                         device={device}
-                        token={token}
                     />
                 </div>
                 <div className="dashboardItem">
@@ -73,18 +75,17 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
             <div className="mainDashboardWrapper">
                 <TopSongs 
                     season={season}
-                    token={token}
                 />
             </div>
             <div className="mainDashboardWrapper">
                 <PlaylistStats 
                     user={user}
                     season={season}
-                    token={token}
                 />
             </div>       
         </div>
     )
 }
 
-export default Dashboard
+// export default Dashboard
+export default connect(undefined, undefined)(Dashboard);

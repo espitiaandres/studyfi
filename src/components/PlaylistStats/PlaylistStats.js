@@ -8,6 +8,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { connect, useSelector } from 'react-redux';
 import axios from 'axios';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -15,10 +16,12 @@ import NoPlaylists from '../NoPlaylists/NoPlaylists';
 import TabPanel from '../TabPanel/TabPanel';
 import './PlaylistStats.css';
 
-const PlaylistStats = ({ user, season, token }) => {
+const PlaylistStats = ({ user, season }) => {
     const [playlistsInfo, setPlaylistsInfo] = useState([]);
     const [playlistsSongs, setPlaylistsSongs] = useState({});
     const [value, setValue] = useState(0);
+
+    const token = useSelector(state => state.token);
 
     const getUserPlaylists = () => {
         axios({
@@ -137,7 +140,9 @@ const PlaylistStats = ({ user, season, token }) => {
                 playlistsInfo.length > 0
                 ?
                 <div>
-                    <h1 className="playlistStatsTitle">here are some stats about your playlists</h1>
+                    <h1 className="playlistStatsTitle">
+                        here are some stats about your playlists
+                    </h1>
                     <div className={classes.root}>
                         <Tabs
                             orientation="vertical"
@@ -158,7 +163,13 @@ const PlaylistStats = ({ user, season, token }) => {
                         {
                             playlistsInfo.map((playlist, index) => {
                                 return (
-                                    <TabPanel value={value} index={index} playlistsInfo={playlistsInfo} playlistsSongs={playlistsSongs} season={season} token={token}>
+                                    <TabPanel 
+                                        value={value} 
+                                        index={index} 
+                                        playlistsInfo={playlistsInfo} 
+                                        playlistsSongs={playlistsSongs} 
+                                        season={season}
+                                    >
                                         {playlist.name}
                                     </TabPanel>
                                 )
@@ -173,4 +184,4 @@ const PlaylistStats = ({ user, season, token }) => {
     )
 }
 
-export default PlaylistStats;
+export default connect(undefined, undefined)(PlaylistStats);

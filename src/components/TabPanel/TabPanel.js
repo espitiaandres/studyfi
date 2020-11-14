@@ -7,14 +7,14 @@
 //
 
 import React, { useState, useEffect } from 'react';
+import { connect, useSelector } from 'react-redux';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import ApexChart from '../ApexChart/ApexChart';
 import { averageFeaturesOutput } from '../../utils/featureStats';
 import { holidaysColors } from '../../utils/holidays';
 import './TabPanel.css';
 
-const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, season, token, ...other }) => {
+const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, season, ...other }) => {
   let color = season ? holidaysColors.christmas.color : "#1ED760";
   let colorAlt = season ? holidaysColors.christmas.colorAlt : "#1ED760";
 
@@ -26,6 +26,8 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
   const [livenessAvg, setLivenessAvg] = useState(0);
   const [valenceAvg, setValenceAvg] = useState(0);
   const [playlistStatement, setPlaylistStatment] = useState("");
+
+  const token = useSelector(state => state.token);
 
   useEffect(() => {
     let ids = "";
@@ -99,64 +101,46 @@ const TabPanel = ({ children, value, index, playlistsInfo, playlistsSongs, seaso
       className="tabpanelContent"
     >
       {
-        playlistsInfo[value]
-        ?
+        playlistsSongs[playlistsInfo[value].id] 
+        &&
         <div>
-            {
-              playlistsSongs[playlistsInfo[value].id] 
-              ?
-              <div>
-                <div className="featureGraphs">
-                  <div>
-                    <p>acoustiness</p>
-                    <ApexChart value={acousticnessAvg} color={color} />      
-                  </div>
-                  <div>
-                    <p>danceability</p>
-                    <ApexChart value={danceabilityAvg} color={colorAlt} />
-                  </div>
-                  <div>
-                    <p>energy</p>
-                    <ApexChart value={energyAvg} color={color} />
-                  </div>
-                  <div>
-                    <p>instrumentalness</p>
-                    <ApexChart value={instrumentalnessAvg} color={colorAlt} />
-                  </div>
-                  <div>
-                    <p>liveness</p>
-                    <ApexChart value={livenessAvg} color={color} />
-                  </div>
-                  <div>
-                    <p>valence</p>
-                    <ApexChart value={valenceAvg} color={colorAlt} />
-                  </div>
-                </div>
-                <div className="playlistImageWrapper">
-                  <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
-                </div>
-                <div>
-                  {playlistsInfo[value].description}
-                </div>
-                <p>{`${playlistsInfo[value].name}: ${playlistStatement}`}</p>
-              </div>    
-              :
-              <div></div>
-            }
-        </div>
-        :
-        <div>
-          sorry, playlists unable to load...
+          <div className="featureGraphs">
+            <div>
+              <p>acoustiness</p>
+              <ApexChart value={acousticnessAvg} color={color} />      
+            </div>
+            <div>
+              <p>danceability</p>
+              <ApexChart value={danceabilityAvg} color={colorAlt} />
+            </div>
+            <div>
+              <p>energy</p>
+              <ApexChart value={energyAvg} color={color} />
+            </div>
+            <div>
+              <p>instrumentalness</p>
+              <ApexChart value={instrumentalnessAvg} color={colorAlt} />
+            </div>
+            <div>
+              <p>liveness</p>
+              <ApexChart value={livenessAvg} color={color} />
+            </div>
+            <div>
+              <p>valence</p>
+              <ApexChart value={valenceAvg} color={colorAlt} />
+            </div>
+          </div>
+          <div className="playlistImageWrapper">
+            <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
+          </div>
+          <div>
+            {playlistsInfo[value].description}
+          </div>
+          <p>{`${playlistsInfo[value].name}: ${playlistStatement}`}</p>
         </div>
       }
     </div>
   );
 }
-  
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
 
-export default TabPanel;
+export default connect(undefined, undefined)(TabPanel);

@@ -7,6 +7,7 @@
 //
 
 import React, { useState } from 'react';
+import { connect, useSelector } from 'react-redux';
 import { ColorExtractor } from 'react-color-extractor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -23,13 +24,15 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, device, token }) => {
+const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, device }) => {
   let seasonStylingAlt = season ? "seasonStylingAlt" : "";
-
+  
   const [colors, setColors] = useState([]);
   const [, setHoveredOn] = useState(false);
   const [repeatError, setRepeatError] = useState('');
   const [shuffleError, setShuffleError] = useState('');
+
+  const token = useSelector(state => state.token);
 
   const changeSong = (method, direction) => {
     axios({
@@ -63,7 +66,6 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
     const repeatStates = ["track", "context", "off"];
     const repeatStateIndex = repeatStates.indexOf(repeatState);
     const index = (repeatStateIndex !== repeatStates.length - 1) ? repeatStateIndex + 1 : 0;
-
     axios({
       method: 'put',
       url: 'https://api.spotify.com/v1/me/player/repeat',
@@ -240,4 +242,4 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
   )
 }
 
-export default Player;
+export default connect(undefined, undefined)(Player);

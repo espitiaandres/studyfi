@@ -16,11 +16,11 @@ import App from './App';
 const store = configureStore();
 
 const jsx = (
-  <React.StrictMode>
-    <Provider>
-      <App store={store}/>
-    </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </React.StrictMode>
 );
 
 ReactDOM.render(jsx, document.getElementById('root'));

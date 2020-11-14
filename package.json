@@ -45,6 +45,7 @@
     "react-typist": "^2.0.5",
     "react-typist-loop": "0.0.5",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "socket.io": "^2.3.0",

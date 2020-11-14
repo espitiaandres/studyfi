@@ -105,38 +105,40 @@ const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, season, ...othe
         &&
         <div>
           <div className="featureGraphs">
-            <div>
-              <p>acoustiness</p>
-              <ApexChart value={acousticnessAvg} color={color} />      
+                <div>
+                    <p>acoustiness</p>
+                    <ApexChart value={acousticnessAvg} color={color} />      
+                </div>
+                <div>
+                    <p>danceability</p>
+                    <ApexChart value={danceabilityAvg} color={colorAlt} />
+                </div>
+                <div>
+                    <p>energy</p>
+                    <ApexChart value={energyAvg} color={color} />
+                </div>
+                <div>
+                    <p>instrumentalness</p>
+                    <ApexChart value={instrumentalnessAvg} color={colorAlt} />
+                </div>
+                <div>
+                    <p>liveness</p>
+                    <ApexChart value={livenessAvg} color={color} />
+                </div>
+                <div>
+                    <p>valence</p>
+                    <ApexChart value={valenceAvg} color={colorAlt} />
+                </div>
+            </div>
+            <div className="playlistImageWrapper">
+                <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
             </div>
             <div>
-              <p>danceability</p>
-              <ApexChart value={danceabilityAvg} color={colorAlt} />
+                {playlistsInfo[value].description}
             </div>
-            <div>
-              <p>energy</p>
-              <ApexChart value={energyAvg} color={color} />
-            </div>
-            <div>
-              <p>instrumentalness</p>
-              <ApexChart value={instrumentalnessAvg} color={colorAlt} />
-            </div>
-            <div>
-              <p>liveness</p>
-              <ApexChart value={livenessAvg} color={color} />
-            </div>
-            <div>
-              <p>valence</p>
-              <ApexChart value={valenceAvg} color={colorAlt} />
-            </div>
-          </div>
-          <div className="playlistImageWrapper">
-            <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
-          </div>
-          <div>
-            {playlistsInfo[value].description}
-          </div>
-          <p>{`${playlistsInfo[value].name}: ${playlistStatement}`}</p>
+            <p>
+                {`${playlistsInfo[value].name}: ${playlistStatement}`}
+            </p>
         </div>
       }
     </div>

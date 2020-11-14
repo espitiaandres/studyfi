@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/studyfi/static/css/main.b0ffca18.chunk.css",
-    "main.js": "/studyfi/static/js/main.881a022a.chunk.js",
-    "main.js.map": "/studyfi/static/js/main.881a022a.chunk.js.map",
+    "main.js": "/studyfi/static/js/main.02042ff2.chunk.js",
+    "main.js.map": "/studyfi/static/js/main.02042ff2.chunk.js.map",
     "runtime-main.js": "/studyfi/static/js/runtime-main.5f7e87f6.js",
     "runtime-main.js.map": "/studyfi/static/js/runtime-main.5f7e87f6.js.map",
     "static/css/2.2ce0d9b2.chunk.css": "/studyfi/static/css/2.2ce0d9b2.chunk.css",
-    "static/js/2.951ad160.chunk.js": "/studyfi/static/js/2.951ad160.chunk.js",
-    "static/js/2.951ad160.chunk.js.map": "/studyfi/static/js/2.951ad160.chunk.js.map",
+    "static/js/2.47f27566.chunk.js": "/studyfi/static/js/2.47f27566.chunk.js",
+    "static/js/2.47f27566.chunk.js.map": "/studyfi/static/js/2.47f27566.chunk.js.map",
     "index.html": "/studyfi/index.html",
-    "precache-manifest.399f774bec1c960086390918e87a3c50.js": "/studyfi/precache-manifest.399f774bec1c960086390918e87a3c50.js",
+    "precache-manifest.0d220495607d3c5799bfeffd654ee884.js": "/studyfi/precache-manifest.0d220495607d3c5799bfeffd654ee884.js",
     "service-worker.js": "/studyfi/service-worker.js",
     "static/css/2.2ce0d9b2.chunk.css.map": "/studyfi/static/css/2.2ce0d9b2.chunk.css.map",
     "static/css/main.b0ffca18.chunk.css.map": "/studyfi/static/css/main.b0ffca18.chunk.css.map",
-    "static/js/2.951ad160.chunk.js.LICENSE.txt": "/studyfi/static/js/2.951ad160.chunk.js.LICENSE.txt",
+    "static/js/2.47f27566.chunk.js.LICENSE.txt": "/studyfi/static/js/2.47f27566.chunk.js.LICENSE.txt",
     "static/media/NotFoundPage.css": "/studyfi/static/media/notFoundPageVaporwaveBackground.8eaff6c7.png",
     "static/media/sketchyFavicon.png": "/studyfi/static/media/sketchyFavicon.4ab11064.png",
     "static/media/spotify-logo-aesthetic.png": "/studyfi/static/media/spotify-logo-aesthetic.1e6fe7da.png",
@@ -23,8 +23,8 @@
   "entrypoints": [
     "static/js/runtime-main.5f7e87f6.js",
     "static/css/2.2ce0d9b2.chunk.css",
-    "static/js/2.951ad160.chunk.js",
+    "static/js/2.47f27566.chunk.js",
     "static/css/main.b0ffca18.chunk.css",
-    "static/js/main.881a022a.chunk.js"
+    "static/js/main.02042ff2.chunk.js"
   ]
 }

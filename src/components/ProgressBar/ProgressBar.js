@@ -27,4 +27,4 @@ const ProgressBar = ({ songCurrentTime, songDuration, seasonStylingAlt }) => {
     )
 }
 
-export default ProgressBar
+export default ProgressBar;

@@ -7,11 +7,12 @@
 //
 
 import React from 'react';
+import { connect, useSelector } from 'react-redux';
 import './Input.css';
 
-const Input = ({ message, setMessage, sendMessage, item, season }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    // let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+const Input = ({ message, setMessage, sendMessage, item }) => {
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
 
     const shareSong = (event) => {
         let songDescription = `I'm listening to: ${item.name} `;
@@ -47,4 +48,4 @@ const Input = ({ message, setMessage, sendMessage, item, season }) => {
     )
 }
 
-export default Input;
+export default connect(undefined, undefined)(Input);

@@ -14,14 +14,21 @@ import Pomodoro from '../Pomodoro/Pomodoro';
 import ChatApp from '../ChatApp/ChatApp';
 import TopSongs from '../TopSongs/TopSongs';
 import PlaylistStats from '../PlaylistStats/PlaylistStats';
+import { startSetSeason } from '../../actions/season';
 import './Dashboard.css';
 
-const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, device }) => {
+const Dashboard = (props) => {
+    const { item, isPlaying, progressms, shuffleState, repeatState, device } = props;
     const [season, setSeason] = useState(false);
     const [user, setUser] = useState('');
     const [userProfile, setUserProfile] = useState('');
 
     const token = useSelector(state => state.token);
+
+    const onSeasonSelect = () => {
+        setSeason(!season);
+        props.startSetSeason(season);        
+    }
 
     useEffect(() => {
         getCurrentUser();
@@ -47,11 +54,10 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
                     <Pomodoro 
                         user={user}
                         userProfile={userProfile}
-                        season={season}
                     />
                 </div>
                 <div className="dashboardItem">
-                    <button className="seasonSelect" onClick={() => {setSeason(!season)}}>
+                    <button className="seasonSelect" onClick={onSeasonSelect}>
                         Christmas mode!
                     </button>
                     <Player
@@ -60,7 +66,6 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
                         progressms={progressms}
                         shuffleState={shuffleState}
                         repeatState={repeatState}
-                        season={season}
                         device={device}
                     />
                 </div>
@@ -68,24 +73,22 @@ const Dashboard = ({ item, isPlaying, progressms, shuffleState, repeatState, dev
                     <ChatApp 
                         item={item}
                         user={user}
-                        season={season}
                     />
                 </div>
             </div>
             <div className="mainDashboardWrapper">
-                <TopSongs 
-                    season={season}
-                />
+                <TopSongs />
             </div>
             <div className="mainDashboardWrapper">
-                <PlaylistStats 
-                    user={user}
-                    season={season}
-                />
+                <PlaylistStats user={user} />
             </div>       
         </div>
     )
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    startSetSeason: (season) => dispatch(startSetSeason(!season))
+})
+
 // export default Dashboard
-export default connect(undefined, undefined)(Dashboard);
+export default connect(undefined, mapDispatchToProps)(Dashboard);

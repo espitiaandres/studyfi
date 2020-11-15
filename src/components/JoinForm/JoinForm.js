@@ -10,12 +10,14 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
+import { connect, useSelector } from 'react-redux';
 import 'animate.css';
 import './JoinForm.css';
 
-const JoinForm = ({ user, season }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+const JoinForm = ({ user }) => {
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
+    const seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     useEffect(() => {
         setName(user);
@@ -83,4 +85,4 @@ const JoinForm = ({ user, season }) => {
     )
 }
 
-export default JoinForm
+export default connect(undefined, undefined)(JoinForm);

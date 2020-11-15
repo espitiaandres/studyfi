@@ -104,5 +104,4 @@ Stack Overflow, Google, and YouTube were the most helpful resources when develop
 
 ## TODO:
 
-- add react-redux to decouple components
 - make stylings mobile user friendly

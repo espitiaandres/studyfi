@@ -8,6 +8,7 @@
 
 import React from 'react';
 import ReactTooltip from "react-tooltip";
+import { connect, useSelector } from 'react-redux';
 import './TopArtistsDescriptions.css';
 import { 
     followersDesc,
@@ -17,9 +18,10 @@ import {
     artistPopularityDesc
 } from '../../utils/TopArtistsDefintions';
 
-const TopArtistsDescriptions = ({ season }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+const TopArtistsDescriptions = () => {
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
+    const seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     return (
         <div className="columnDescriptions">
@@ -61,4 +63,4 @@ const TopArtistsDescriptions = ({ season }) => {
     )
 }
 
-export default TopArtistsDescriptions;
+export default connect(undefined, undefined)(TopArtistsDescriptions);

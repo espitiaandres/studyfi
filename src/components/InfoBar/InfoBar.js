@@ -8,13 +8,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect, useSelector } from 'react-redux';
 import closeIcon from '../../icons/closeIcon.png';
 import onlineIcon from '../../icons/onlineIcon.png';
 import './InfoBar.css';
 
-const InfoBar = ({ room, season, onDisconnect }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    // let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+const InfoBar = ({ room, onDisconnect }) => {
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
 
     return (
         <div className={`infoBar ${seasonStyling}`}>
@@ -33,4 +34,4 @@ const InfoBar = ({ room, season, onDisconnect }) => {
     )
 }
 
-export default InfoBar;
+export default connect(undefined, undefined)(InfoBar);

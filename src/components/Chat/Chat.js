@@ -19,7 +19,7 @@ import './Chat.css';
 
 let socket;
 
-const Chat = ({ location, item, user, season }) => {
+const Chat = ({ location, item, user }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [tz, setTZ] = useState('');
@@ -90,27 +90,23 @@ const Chat = ({ location, item, user, season }) => {
         <Join 
             duplicate={duplicate} 
             user={user}
-            season={season} 
         />
         :                 
         <div className="outerContainer">
             <div className="container">
                 <InfoBar 
                     room={room} 
-                    season={season}
                     onDisconnect={onDisconnect}
                 />
                 <Messages 
                     messages={messages} 
-                    name={name} 
-                    season={season} 
+                    name={name}
                 />
                 <Input 
                     message={message} 
                     setMessage={setMessage} 
                     sendMessage={sendMessage} 
-                    item={item} 
-                    season={season}
+                    item={item}
                 />
             </div>
             <Userslist users={users}/>

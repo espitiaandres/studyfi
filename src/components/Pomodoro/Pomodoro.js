@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-scroll';
+import { connect, useSelector } from 'react-redux';
 import { holidaysColors } from '../../utils/holidays';
 import moment from 'moment';
 import 'animate.css';
@@ -21,6 +22,7 @@ const setTimeMinutes = 25;                                              // minut
 const setTimeSeconds = setTimeMinutes * secondsInAMinute - 1;           // seconds
 const cooldownSetTimeMinutes = 5;
 const cooldownSetTimeSeconds = cooldownSetTimeMinutes * secondsInAMinute;
+
 let remainingTime = setTimeSeconds;
 let minutesRemaining = setTimeMinutes < 10 ? "0" + setTimeMinutes.toString() : setTimeMinutes.toString();
 let secondsRemaining = "00";
@@ -31,14 +33,15 @@ let cooldownInterval;
 
 library.add(fas);
 
-const Pomodoro = ({ user, userProfile, season }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
-
+const Pomodoro = ({ user, userProfile }) => {
     const [playButton, setPlayButton] = useState(false);
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
     const [greeting, setGreeting] = useState('');
+
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
+    const seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     useEffect(() => {
         const now = moment();
@@ -203,4 +206,4 @@ const Pomodoro = ({ user, userProfile, season }) => {
     )
 }
 
-export default Pomodoro
+export default connect(undefined, undefined)(Pomodoro);

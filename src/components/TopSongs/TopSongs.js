@@ -16,9 +16,10 @@ import TopArtistsDescriptions from '../TopArtistsDescriptions/TopArtistsDescript
 import { topSongColumns, topArtistColumns, keySignaturesLetters } from '../../utils/tableFormat';
 import './TopSongs.css';
 
-const TopSongs = ({ season }) => {
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
+const TopSongs = () => {
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
+    const seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     const [timerange, setTimerange] = useState('long_term');
     const [topTracks, setTopTracks] = useState([]);
@@ -188,7 +189,7 @@ const TopSongs = ({ season }) => {
                 (queryParam === "tracks" && topArtistsPopulated && topTracksPopulated)
                 ? 
                 <div>
-                    <TopSongsDescriptions season={season} />
+                    <TopSongsDescriptions />
                     {
                         <div className="songsTable">
                             <BootstrapTable
@@ -202,7 +203,7 @@ const TopSongs = ({ season }) => {
                 </div>
                 : 
                 <div>
-                    <TopArtistsDescriptions season={season} />
+                    <TopArtistsDescriptions />
                     {
                         <div className="songsTable">
                             <BootstrapTable

@@ -16,7 +16,7 @@ import NoPlaylists from '../NoPlaylists/NoPlaylists';
 import TabPanel from '../TabPanel/TabPanel';
 import './PlaylistStats.css';
 
-const PlaylistStats = ({ user, season }) => {
+const PlaylistStats = ({ user }) => {
     const [playlistsInfo, setPlaylistsInfo] = useState([]);
     const [playlistsSongs, setPlaylistsSongs] = useState({});
     const [value, setValue] = useState(0);
@@ -167,8 +167,7 @@ const PlaylistStats = ({ user, season }) => {
                                         value={value} 
                                         index={index} 
                                         playlistsInfo={playlistsInfo} 
-                                        playlistsSongs={playlistsSongs} 
-                                        season={season}
+                                        playlistsSongs={playlistsSongs}
                                     >
                                         {playlist.name}
                                     </TabPanel>

@@ -52,4 +52,4 @@ const NoPlaylists = () => {
     )
 }
 
-export default NoPlaylists
+export default NoPlaylists;

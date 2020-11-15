@@ -8,12 +8,15 @@
 
 import React from 'react';
 import ReactEmoji from 'react-emoji';
+import { connect, useSelector } from 'react-redux';
 import './Message.css';
 
-const Message = ({ message: { user, text, currentTime }, name, season }) => {
+const Message = ({ message: { user, text, currentTime }, name }) => {
+    const season = useSelector(state => state.season);
+    const seasonStyling = season ? "seasonStyling" : "";
+    const seasonStylingAlt = season ? "seasonStylingAlt" : "";
+
     let isSentByCurrentUser = false;
-    let seasonStyling = season ? "seasonStyling" : "";
-    let seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     const trimmedName = name.trim().toLowerCase();
 
@@ -46,4 +49,4 @@ const Message = ({ message: { user, text, currentTime }, name, season }) => {
     )
 }
 
-export default Message;
+export default connect(undefined, undefined)(Message);

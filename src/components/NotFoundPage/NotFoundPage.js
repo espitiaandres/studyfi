@@ -68,4 +68,4 @@ const NotFoundPage = () => {
     )
 }
 
-export default NotFoundPage
+export default NotFoundPage;

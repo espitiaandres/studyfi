@@ -14,9 +14,10 @@ import { averageFeaturesOutput } from '../../utils/featureStats';
 import { holidaysColors } from '../../utils/holidays';
 import './TabPanel.css';
 
-const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, season, ...other }) => {
-  let color = season ? holidaysColors.christmas.color : "#1ED760";
-  let colorAlt = season ? holidaysColors.christmas.colorAlt : "#1ED760";
+const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, ...other }) => {
+  const season = useSelector(state => state.season);
+  const color = season ? holidaysColors.christmas.color : "#1ED760";
+  const colorAlt = season ? holidaysColors.christmas.colorAlt : "#1ED760";
 
   const [features, setFeatures] = useState({});
   const [acousticnessAvg, setAcousticnessAvg] = useState(0);

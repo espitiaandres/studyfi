@@ -24,14 +24,15 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 
 library.add(fas);
 
-const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season, device }) => {
-  let seasonStylingAlt = season ? "seasonStylingAlt" : "";
-  
+const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, device }) => {
   const [colors, setColors] = useState([]);
   const [, setHoveredOn] = useState(false);
   const [repeatError, setRepeatError] = useState('');
   const [shuffleError, setShuffleError] = useState('');
 
+  const season = useSelector(state => state.season);
+  const seasonStylingAlt = season ? "seasonStylingAlt" : "";
+  
   const token = useSelector(state => state.token);
 
   const changeSong = (method, direction) => {
@@ -154,21 +155,21 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
     ?
     <div className="nowPlayingSide">
       <ColorExtractor getColors={getColors}>
-        <img src={albumImageURL} className="imageStyles" alt="albumimage" />
+          <img src={albumImageURL} className="imageStyles" alt="albumimage" />
       </ColorExtractor>
       <div className="swatchesStyles">
-        {renderSwatches()}
+          {renderSwatches()}
       </div>
       <div>
         <animated.div
-            onMouseMove={onMouseMove}
-            onMouseLeave={onMouseLeave}
-            style={{ transform: prop.xys.interpolate(trans) }}
-            onMouseEnter={onMouseEnter}
+          onMouseMove={onMouseMove}
+          onMouseLeave={onMouseLeave}
+          style={{ transform: prop.xys.interpolate(trans) }}
+          onMouseEnter={onMouseEnter}
         >
-            <a href={`https://www.google.com/search?q=${googleSearchString}`} rel="noopener noreferrer" target="_blank">
-              <img src={albumImageURL} className="nowPlayingAlbumCover" alt="albumimage"/>
-            </a>
+        <a href={`https://www.google.com/search?q=${googleSearchString}`} rel="noopener noreferrer" target="_blank">
+          <img src={albumImageURL} className="nowPlayingAlbumCover" alt="albumimage"/>
+        </a>
         </animated.div>
       </div>
       <div className="swatchesStyles">
@@ -176,22 +177,22 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
       <div className="nowPlayingName">
         <TypistLoop interval={2000} >
-          {['a',''].map(text => 
-            <Typist 
+        {['a',''].map(text => 
+          <Typist 
             className="pomodoroTitle" 
             avgTypingDelay={90} 
             key={text} 
             startDelay={0}
             cursor={{
-              show: true,
-              blink: true,
-              element: '',
-              hideWhenDone: false,
-              hideWhenDoneDelay: 100
-            }}>
-              {item.name}
-            </Typist>
-          )}
+            show: true,
+            blink: true,
+            element: '',
+            hideWhenDone: false,
+            hideWhenDoneDelay: 100
+          }}>
+            {item.name}
+          </Typist>
+        )}
         </TypistLoop>
       </div>
 
@@ -207,13 +208,14 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
       </div>
 
       <div className="nowPlayingPanel">
-        <button className="skipbuttons" onClick={shuffleSongs} title="shuffle songs">
-          <FontAwesomeIcon icon={["fas", "random"]} style={!shuffleState ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
-        </button>
-        <button className="skipbuttons" onClick={() => changeSong('post', 'previous')} title="previous song">
-          <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
-        </button>
-        {isPlaying
+          <button className="skipbuttons" onClick={shuffleSongs} title="shuffle songs">
+            <FontAwesomeIcon icon={["fas", "random"]} style={!shuffleState ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
+          </button>
+          <button className="skipbuttons" onClick={() => changeSong('post', 'previous')} title="previous song">
+            <FontAwesomeIcon icon={["fas", "arrow-alt-circle-left"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
+          </button>
+          {
+          isPlaying
           ? 
           <button className="skipbuttons" onClick={() => changeSong('put', 'pause')} title="pause song">
             <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} />
@@ -222,14 +224,14 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, season
           <button className="skipbuttons" onClick={() => changeSong('put', 'play')} title="play song">
             <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
-        }
-        <button className="skipbuttons" onClick={() => changeSong('post', 'next')} title="next song">
-          <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
-        </button>
-        <button className="skipbuttons" onClick={repeatSongs} title="change repeat setting">
-          <FontAwesomeIcon icon={["fas", "redo"]} style={repeatState === "off" ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
-        </button>
-      </div>
+          }
+          <button className="skipbuttons" onClick={() => changeSong('post', 'next')} title="next song">
+            <FontAwesomeIcon icon={["fas", "arrow-alt-circle-right"]} style={{ color: season ? seasonColorAlt : "#FFF" }} />
+          </button>
+          <button className="skipbuttons" onClick={repeatSongs} title="change repeat setting">
+            <FontAwesomeIcon icon={["fas", "redo"]} style={repeatState === "off" ? { color: "#FFF" } : (season ? { color: seasonColor } : { color: "#1ED760" })} />
+          </button>
+        </div>
 
       <ProgressBar
         songCurrentTime={songCurrentTime}

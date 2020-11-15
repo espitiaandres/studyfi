@@ -55,11 +55,16 @@ const Chat = ({ location, item, user }) => {
     useEffect(() => {
         socket.on('message', (message) => {
             let tzpass = tz;
+
+            if (tzpass === "") {
+                return;
+            }
+
             tzpass = tzpass.includes("minus") ? tzpass.replace("minus", "+") : tzpass.replace("plus", "-");
             message.currentTime = moment().tz(`Etc/${tzpass}`).format("MMM DD h:mm a");
             setMessages((messages) => [ ...messages, message ]);
         });
-    }, [name]);
+    }, [name, tz]);
 
     const sendMessage = (event) => {
         event.preventDefault();

@@ -190,30 +190,26 @@ const TopSongs = () => {
                 ? 
                 <div>
                     <TopSongsDescriptions />
-                    {
-                        <div className="songsTable">
-                            <BootstrapTable
-                                keyField="id"
-                                data={topTracks}
-                                columns={topSongColumns}
-                                pagination={paginationFactory(options)}
-                            />
-                        </div>
-                    }
+                    <div className="songsTable">
+                        <BootstrapTable
+                            keyField="id"
+                            data={topTracks}
+                            columns={topSongColumns}
+                            pagination={paginationFactory(options)}
+                        />
+                    </div>
                 </div>
                 : 
                 <div>
                     <TopArtistsDescriptions />
-                    {
-                        <div className="songsTable">
-                            <BootstrapTable
-                                keyField="id"
-                                data={topArtists}
-                                columns={topArtistColumns}
-                                pagination={paginationFactory(options)}
-                            />
-                        </div>
-                    }
+                    <div className="songsTable">
+                        <BootstrapTable
+                            keyField="id"
+                            data={topArtists}
+                            columns={topArtistColumns}
+                            pagination={paginationFactory(options)}
+                        />
+                    </div>
                 </div>
             }
         </div>

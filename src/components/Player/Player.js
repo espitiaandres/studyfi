@@ -16,11 +16,11 @@ import { useSpring, animated } from 'react-spring';
 import axios from 'axios';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
-import './Player.css';
 import { calculateCenter, trans } from '../../utils/springFunctions';
 import { holidaysColors } from '../../utils/holidays';
 import NoMusicPlaying from '../NoMusicPlaying/NoMusicPlaying';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import './Player.css';
 
 library.add(fas);
 
@@ -55,8 +55,6 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, device
       params: {
         state: !shuffleState
       }
-    }).then((response) => {
-
     }).catch((error) => {
       console.log(error);
       setShuffleError('Action is limited to Spotify Premium');
@@ -76,8 +74,6 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, device
       params: {
         state: repeatStates[index]
       }
-    }).then((response) => {
-
     }).catch((error) => {
       console.log(error);
       setRepeatError('Action is limited to Spotify Premium');

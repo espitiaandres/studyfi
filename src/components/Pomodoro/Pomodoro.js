@@ -18,8 +18,8 @@ import 'animate.css';
 import './Pomodoro.css';
 
 const secondsInAMinute = 60;
-const setTimeMinutes = 25;                                              // minutes
-const setTimeSeconds = setTimeMinutes * secondsInAMinute - 1;           // seconds
+const setTimeMinutes = 25;           
+const setTimeSeconds = setTimeMinutes * secondsInAMinute - 1;
 const cooldownSetTimeMinutes = 5;
 const cooldownSetTimeSeconds = cooldownSetTimeMinutes * secondsInAMinute;
 
@@ -38,6 +38,8 @@ const Pomodoro = ({ user, userProfile }) => {
     const [restartButton, setRestartButton] = useState(false);
     const [pizzaButton, setPizzaButton] = useState(false);
     const [greeting, setGreeting] = useState('');
+    const [minutesLeft, setMinutesLeft] = useState(minutesRemaining);
+    const [secondsLeft, setSecondsLeft] = useState(secondsRemaining);
 
     const season = useSelector(state => state.season);
     const seasonStyling = season ? "seasonStyling" : "";
@@ -68,7 +70,7 @@ const Pomodoro = ({ user, userProfile }) => {
             return;
         }
         remainingTime = setTimeSeconds;
-        pomodoroText = season ? "spookspookspookspookspook" : "WorkWorkWorkWorkWork";
+        pomodoroText = "WorkWorkWorkWorkWork";
         remainingTime++;
         updatedFormattedTimeString(remainingTime);
         timerRunning = true;
@@ -125,6 +127,9 @@ const Pomodoro = ({ user, userProfile }) => {
         if (secondsRemaining < 10) {
             secondsRemaining = secondsRemaining === 0 ? "00" : "0" + secondsRemaining.toString();
         }
+
+        setMinutesLeft(minutesRemaining);
+        setSecondsLeft(secondsRemaining);
     }
 
     const colorSchema = holidaysColors.christmas;
@@ -142,42 +147,76 @@ const Pomodoro = ({ user, userProfile }) => {
                     {` ${user}`}
                 </a>                
             </h1>
-
-            <div className="pomodoroHeaderTitle">
-                <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? seasonIconOuter : ["fas", "pizza-slice"]} />
+            {
+                season
+                ?
+                <div>
+                    <div className="pomodoroHeaderTitle">
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={seasonIconOuter} />
+                        </div>
+                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                            <FontAwesomeIcon icon={seasonIconInner} />
+                        </div>
+                        <h1 className="pomodoroHeaderTitleText">pomodorooooo</h1>
+                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                            <FontAwesomeIcon icon={seasonIconInner} />
+                        </div>
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={seasonIconOuter} />
+                        </div>
+                    </div>
+                    <div className="pomodoroHeaderTimer">
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={seasonIconTimer} />
+                        </div>
+                        <div className={`countdown ${seasonStyling}AltIcons`}>
+                            {minutesLeft}:{secondsLeft}
+                        </div>
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={seasonIconTimer} />
+                        </div>
+                    </div>
                 </div>
-                <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                    <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
-                </div>
-                <h1 className="pomodoroHeaderTitleText">{season ? "pomodorooooo" : "pomodoro"}</h1>
-                <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                    <FontAwesomeIcon icon={season ? seasonIconInner : ["fas", "utensils"]} />
-                </div>
-                <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? seasonIconOuter : ["fas", "pizza-slice"]} />
-                </div>
-            </div>
-
-            <div className="pomodoroHeaderTitle">
-                <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? seasonIconTimer : ["fas", "clock"]} />
-                </div>
-                <div className={`countdown ${seasonStyling}AltIcons`}>
-                    {minutesRemaining}:{secondsRemaining}
-                </div>
-                <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                    <FontAwesomeIcon icon={season ? seasonIconTimer : ["fas", "clock"]} />
-                </div>
-            </div>
+                :
+                <div>
+                    <div className="pomodoroHeaderTitle">
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
+                        </div>
+                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                            <FontAwesomeIcon icon={["fas", "utensils"]} />
+                        </div>
+                        <h1 className="pomodoroHeaderTitleText">pomodoro</h1>
+                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
+                            <FontAwesomeIcon icon={["fas", "utensils"]} />
+                        </div>
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
+                        </div>
+                    </div>
+                    <div className="pomodoroHeaderTimer">
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={["fas", "clock"]} />
+                        </div>
+                        <div className={`countdown ${seasonStyling}AltIcons`}>
+                            {minutesLeft}:{secondsLeft}
+                        </div>
+                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
+                            <FontAwesomeIcon icon={["fas", "clock"]} />
+                        </div>
+                    </div>
+                </div>                
+            }
             <p>{pomodoroText}</p>
             <div className="pomodoroPanel">
                 <button className="controlButtons" onClick={countdown} disabled={pizzaButton}>
-                    {season 
-                    ? 
-                    <FontAwesomeIcon icon={seasonIconOuter} style={{ color: seasonColor }} /> 
-                    : 
-                    <FontAwesomeIcon icon={["fas", "pizza-slice"]} style={{ color: "#FFF" }} />
+                    {
+                        season
+                        ?
+                        <FontAwesomeIcon icon={seasonIconOuter} style={{ color: seasonColor }} /> 
+                        : 
+                        <FontAwesomeIcon icon={["fas", "pizza-slice"]} style={{ color: "#FFF" }} />
                     }
                 </button>
                 <button className="controlButtons" onClick={clearCountdown} disabled={restartButton}>
@@ -185,15 +224,14 @@ const Pomodoro = ({ user, userProfile }) => {
                 </button>
                 <button className="controlButtons" onClick={countdown} disabled={playButton}>
                     { 
-                    !timerRunning 
-                    ? 
-                    <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} /> 
-                    : 
-                    <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} /> 
+                        !timerRunning 
+                        ? 
+                        <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} /> 
+                        : 
+                        <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} /> 
                     }
                 </button>
-            </div>
-            
+            </div>            
             <p className="listeningHabitsTag">
                 curious about your music listening habits?
             </p>

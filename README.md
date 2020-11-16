@@ -19,15 +19,19 @@ Live on: https://www.andres-espitia.com/studyfi
 
 ## Summary
 
-I decided to make a full stack web app using node.js and react.js to help me when studying. I've noticed that most apps that I use when studying are on different platforms (ex: Spotify on my phone/computer, Messenger on my computer, my phone's stopwatch), and that constant switching between platforms and devices would distract me. I decided to make my own web app which would contain all these services in one place, and also to learn more about react.js and node.js.
+I decided to make a full stack web app using Node, Express, and React to help me when studying. I've noticed that most apps that I use when studying are on different platforms (ex: Spotify on my phone/computer, Messenger on my computer, my phone's stopwatch), and that constant switching between platforms and devices would distract me. I decided to make my own web app which would contain all these services in one place, and also to learn more about Node, Express, React, and Redux.
 
 
 ### Stack
 - **Front End**
   - React.js
+  - Websockets
+  - Redux
+
  - **Back End**: 
     - Node.js
     - Express
+    - Websockets
  
 
 If currently not playing music on Spotify, the following will occur after signing in:
@@ -96,9 +100,6 @@ I don't think I'm done with this project. I'd like to extend this to be more int
 I'd also like to maybe venture into React native, or try to make this application more mobile friendly. I've always found mobile development interesting, so maybe I'll extend this project there.
 
 Stack Overflow, Google, and YouTube were the most helpful resources when developing this app. (So many hours of debugging were avoided by consulting these resources).
-
-
-
 
 
 

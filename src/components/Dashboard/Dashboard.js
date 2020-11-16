@@ -90,5 +90,4 @@ const mapDispatchToProps = (dispatch) => ({
     startSetSeason: (season) => dispatch(startSetSeason(!season))
 })
 
-// export default Dashboard
 export default connect(undefined, mapDispatchToProps)(Dashboard);

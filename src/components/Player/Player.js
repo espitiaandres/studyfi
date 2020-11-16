@@ -184,12 +184,13 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, device
             key={text} 
             startDelay={0}
             cursor={{
-            show: true,
-            blink: true,
-            element: '',
-            hideWhenDone: false,
-            hideWhenDoneDelay: 100
-          }}>
+              show: true,
+              blink: true,
+              element: '',
+              hideWhenDone: false,
+              hideWhenDoneDelay: 100
+            }}
+          >
             {item.name}
           </Typist>
         )}

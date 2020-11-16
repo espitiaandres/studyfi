@@ -35,11 +35,11 @@ const NotFoundPage = () => {
             <Typist 
                 avgTypingDelay={60} 
                 cursor={{
-                show: true,
-                blink: true,
-                element: '',
-                hideWhenDone: false,
-                hideWhenDoneDelay: 1000,
+                    show: true,
+                    blink: true,
+                    element: '',
+                    hideWhenDone: false,
+                    hideWhenDoneDelay: 1000,
                 }}
             >
                 <h1>Hmm... it seems like you aren't listening to music.</h1>

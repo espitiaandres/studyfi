@@ -19,7 +19,6 @@ const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, ...other }) => 
   const color = season ? holidaysColors.christmas.color : "#1ED760";
   const colorAlt = season ? holidaysColors.christmas.colorAlt : "#1ED760";
 
-  const [features, setFeatures] = useState({});
   const [acousticnessAvg, setAcousticnessAvg] = useState(0);
   const [danceabilityAvg, setDanceabilityAvg] = useState(0);
   const [energyAvg, setEnergyAvg] = useState(0);
@@ -68,8 +67,6 @@ const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, ...other }) => 
         featuresFetched[playlist].push(...audio_features);
       }
 
-      setFeatures(featuresFetched);
-
       const {
         acousticnessAvgReturn,
         danceabilityAvgReturn,
@@ -106,39 +103,39 @@ const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, ...other }) => 
         &&
         <div>
           <div className="featureGraphs">
-                <div>
-                    <p>acoustiness</p>
-                    <ApexChart value={acousticnessAvg} color={color} />      
-                </div>
-                <div>
-                    <p>danceability</p>
-                    <ApexChart value={danceabilityAvg} color={colorAlt} />
-                </div>
-                <div>
-                    <p>energy</p>
-                    <ApexChart value={energyAvg} color={color} />
-                </div>
-                <div>
-                    <p>instrumentalness</p>
-                    <ApexChart value={instrumentalnessAvg} color={colorAlt} />
-                </div>
-                <div>
-                    <p>liveness</p>
-                    <ApexChart value={livenessAvg} color={color} />
-                </div>
-                <div>
-                    <p>valence</p>
-                    <ApexChart value={valenceAvg} color={colorAlt} />
-                </div>
+              <div>
+                  <p>acoustiness</p>
+                  <ApexChart value={acousticnessAvg} color={color} />      
+              </div>
+              <div>
+                  <p>danceability</p>
+                  <ApexChart value={danceabilityAvg} color={colorAlt} />
+              </div>
+              <div>
+                  <p>energy</p>
+                  <ApexChart value={energyAvg} color={color} />
+              </div>
+              <div>
+                  <p>instrumentalness</p>
+                  <ApexChart value={instrumentalnessAvg} color={colorAlt} />
+              </div>
+              <div>
+                  <p>liveness</p>
+                  <ApexChart value={livenessAvg} color={color} />
+              </div>
+              <div>
+                  <p>valence</p>
+                  <ApexChart value={valenceAvg} color={colorAlt} />
+              </div>
             </div>
             <div className="playlistImageWrapper">
-                <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
+              <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
             </div>
             <div>
-                {playlistsInfo[value].description}
+              {playlistsInfo[value].description}
             </div>
             <p>
-                {`${playlistsInfo[value].name}: ${playlistStatement}`}
+              {`${playlistsInfo[value].name}: ${playlistStatement}`}
             </p>
         </div>
       }

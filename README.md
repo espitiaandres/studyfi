@@ -39,23 +39,19 @@ If currently not playing music on Spotify, the following will occur after signin
 ![](src/images/Documentation/NotFoundPage.gif)
 
 
-If currently playing music on Spotify, a Dashboard page similar to the one below will appear.
+If currently playing music on Spotify, a Dashboard page similar to the one below will appear. If you are currently playing music, you can control it as seen below.
 
 ![](src/images/Documentation/LandingPage.gif)
 
 
-This gif shows wow to work the Pomodoro timer. Also, check out the seasonal mode by clicking on the "______ mode" button at the top of the screen.
+This gif shows how to work the Pomodoro timer. Also, check out the seasonal mode by clicking on the "______ mode" button at the top of the screen.
 
 ![](src/images/Documentation/Pomodoro.gif)
 
 
-How to work the Spotify player:
+In the chat section to the right of the player, enter a name, room, and a timezone to start the chat. To chat with others, share the room you entered with those people.
 
-![](src/images/Documentation/Player.gif)
-
-In the chat section to the right of the player, enter a name, room, and a timezone to start the chat. To chat with others, share the room you entered.
-
-Don't forget to scroll down or click on the bouncing chevron icon to view your most played artists and songs!
+Don't forget to scroll down or click on the bouncing arrow to view your most played artists and songs, and to see statistics about your playlists!
 
 
 

@@ -129,13 +129,13 @@ const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, ...other }) => 
               </div>
             </div>
             <div className="playlistImageWrapper">
-              <img src={playlistsInfo[value].images[0].url} className="playlistImage"/>
+                <img src={playlistsInfo[value].images[0].url} alt={""} className="playlistImage"/>
             </div>
             <div>
-              {playlistsInfo[value].description}
+                {playlistsInfo[value].description}
             </div>
             <p>
-              {`${playlistsInfo[value].name}: ${playlistStatement}`}
+                {`${playlistsInfo[value].name}: ${playlistStatement}`}
             </p>
         </div>
       }

@@ -26,8 +26,8 @@ const cooldownSetTimeSeconds = cooldownSetTimeMinutes * secondsInAMinute;
 let remainingTime = setTimeSeconds;
 let minutesRemaining = setTimeMinutes < 10 ? "0" + setTimeMinutes.toString() : setTimeMinutes.toString();
 let secondsRemaining = "00";
-let timerRunning = false;
 let pomodoroText = "press on the play button below to begin";
+let timerRunning = false;
 let interval;
 let cooldownInterval;
 
@@ -120,6 +120,7 @@ const Pomodoro = ({ user, userProfile }) => {
     const updatedFormattedTimeString = (remainingTime) => {
         minutesRemaining = Math.floor(remainingTime / secondsInAMinute);
         let baseMinutes = minutesRemaining * secondsInAMinute;
+        
         if (minutesRemaining < 10) {
             minutesRemaining = minutesRemaining === 0 ? "00" : "0" + minutesRemaining.toString();
         }

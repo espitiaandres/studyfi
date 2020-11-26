@@ -1,0 +1,32 @@
+.pomodoroHeaderTitle {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+}
+
+.iconsSpacing {
+    padding: 0px 8px;
+}
+
+.seasonStylingIcons {
+    color: #A92921;
+}
+
+.seasonStylingAltIcons {
+    color: #0A7533;
+}
+
+.pomodoroHeaderTimer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.pomodoroHeaderTitleText {
+    font-size: 32px;
+    padding: 0px 10px 0px 10px;
+}

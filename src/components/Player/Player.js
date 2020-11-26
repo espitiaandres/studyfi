@@ -214,12 +214,12 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, device
           {
           isPlaying
           ? 
-          <button className="skipbuttons" onClick={() => changeSong('put', 'pause')} title="pause song">
-            <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} />
-          </button>
-          : 
-          <button className="skipbuttons" onClick={() => changeSong('put', 'play')} title="play song">
-            <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
+            <button className="skipbuttons" onClick={() => changeSong('put', 'pause')} title="pause song">
+              <FontAwesomeIcon icon={["fas", "pause"]} style={{ color: season ? seasonColor : "#FFF" }} />
+            </button>
+            : 
+            <button className="skipbuttons" onClick={() => changeSong('put', 'play')} title="play song">
+              <FontAwesomeIcon icon={["fas", "play"]} style={{ color: season ? seasonColor : "#FFF" }} />
           </button>
           }
           <button className="skipbuttons" onClick={() => changeSong('post', 'next')} title="next song">

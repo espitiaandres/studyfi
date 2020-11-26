@@ -15,6 +15,8 @@ import { connect, useSelector } from 'react-redux';
 import { holidaysColors } from '../../utils/holidays';
 import moment from 'moment';
 import 'animate.css';
+import PomodoroIconsSeasonal from '../PomodoroIconsSeasonal/PomodoroIconsSeasonal';
+import PomodoroIcons from '../PomodoroIcons/PomodoroIcons';
 import './Pomodoro.css';
 
 const secondsInAMinute = 60;
@@ -43,7 +45,6 @@ const Pomodoro = ({ user, userProfile }) => {
 
     const season = useSelector(state => state.season);
     const seasonStyling = season ? "seasonStyling" : "";
-    const seasonStylingAlt = season ? "seasonStylingAlt" : "";
 
     useEffect(() => {
         const now = moment();
@@ -151,63 +152,18 @@ const Pomodoro = ({ user, userProfile }) => {
             {
                 season
                 ?
-                <div>
-                    <div className="pomodoroHeaderTitle">
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={seasonIconOuter} />
-                        </div>
-                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                            <FontAwesomeIcon icon={seasonIconInner} />
-                        </div>
-                        <h1 className="pomodoroHeaderTitleText">pomodorooooo</h1>
-                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                            <FontAwesomeIcon icon={seasonIconInner} />
-                        </div>
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={seasonIconOuter} />
-                        </div>
-                    </div>
-                    <div className="pomodoroHeaderTimer">
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={seasonIconTimer} />
-                        </div>
-                        <div className={`countdown ${seasonStyling}AltIcons`}>
-                            {minutesLeft}:{secondsLeft}
-                        </div>
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={seasonIconTimer} />
-                        </div>
-                    </div>
-                </div>
+                <PomodoroIconsSeasonal
+                    minutesLeft={minutesLeft}
+                    secondsLeft={secondsLeft}
+                    seasonIconOuter={seasonIconOuter}
+                    seasonIconInner={seasonIconInner}
+                    seasonIconTimer={seasonIconTimer}
+                />
                 :
-                <div>
-                    <div className="pomodoroHeaderTitle">
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
-                        </div>
-                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                            <FontAwesomeIcon icon={["fas", "utensils"]} />
-                        </div>
-                        <h1 className="pomodoroHeaderTitleText">pomodoro</h1>
-                        <div className={`iconsSpacing ${seasonStylingAlt}Icons`}>
-                            <FontAwesomeIcon icon={["fas", "utensils"]} />
-                        </div>
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={["fas", "pizza-slice"]} />
-                        </div>
-                    </div>
-                    <div className="pomodoroHeaderTimer">
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={["fas", "clock"]} />
-                        </div>
-                        <div className={`countdown ${seasonStyling}AltIcons`}>
-                            {minutesLeft}:{secondsLeft}
-                        </div>
-                        <div className={`iconsSpacing ${seasonStyling}Icons`}>
-                            <FontAwesomeIcon icon={["fas", "clock"]} />
-                        </div>
-                    </div>
-                </div>                
+                <PomodoroIcons
+                    minutesLeft={minutesLeft}
+                    secondsLeft={secondsLeft}
+                />
             }
             <p>{pomodoroText}</p>
             <div className="pomodoroPanel">

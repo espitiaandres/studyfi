@@ -32,8 +32,14 @@
 }
 
 .songsTableTimeRangeButton:hover {
+    animation: fadeIn ease 0.7s;
+    -webkit-animation: fadeIn ease 0.7s;
+    -moz-animation: fadeIn ease 0.7s;
+    -o-animation: fadeIn ease 0.7s;
+    -ms-animation: fadeIn ease 0.7s;
+    background: black;
+    color: white;
     cursor: pointer;
-    filter: brightness(70%);
 }
 
 .songsAndArtistsButton {
@@ -49,8 +55,15 @@
 }
 
 .songsAndArtistsButton:hover {
+    animation: fadeIn ease 0.7s;
+    -webkit-animation: fadeIn ease 0.7s;
+    -moz-animation: fadeIn ease 0.7s;
+    -o-animation: fadeIn ease 0.7s;
+    -ms-animation: fadeIn ease 0.7s;
+    background: black;
+    color: white;
     cursor: pointer;
-    filter: brightness(70%);
+    font-size: 32px;
 }
 
 .songsTable {

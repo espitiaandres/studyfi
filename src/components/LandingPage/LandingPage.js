@@ -18,22 +18,27 @@ const currentYear = moment().format('YYYY');
 const LandingPage = () => {
     return (
         <div className="main-wrapper-landing-page">
-            <div className="app-title">Studyfi</div>
-            <TypistLoop interval={700} >
-                {[
-                'A',
-                ''
-                ].map((text) => 
-                    <Typist 
-                    className="app-description" 
-                    avgTypingDelay={60}  
-                    key={text} 
-                    startDelay={0}
-                    >
-                        A place to study, listen to music, and chat with friends.
-                    </Typist>
-                )}
-            </TypistLoop>
+            <div className="app-title">
+                Studyfi
+            </div>
+            <div className="app-description">
+                <div>A place to</div>
+                <TypistLoop interval={800}>
+                    {[
+                    'study',
+                    'listen to music',
+                    'chat with friends'
+                    ].map((text) => 
+                        <Typist 
+                            avgTypingDelay={60}  
+                            key={text} 
+                            startDelay={300}
+                        >
+                            &nbsp;{text}
+                        </Typist>
+                    )}
+                </TypistLoop>
+            </div>
             <a 
                 className="login-button" 
                 href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}

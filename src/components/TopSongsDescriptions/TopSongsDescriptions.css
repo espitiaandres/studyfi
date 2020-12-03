@@ -13,6 +13,16 @@
     text-decoration: none;
 }
 
+.tooltip:hover {
+    animation: fadeIn ease 0.7s;
+    -webkit-animation: fadeIn ease 0.7s;
+    -moz-animation: fadeIn ease 0.7s;
+    -o-animation: fadeIn ease 0.7s;
+    -ms-animation: fadeIn ease 0.7s;
+    background: black;
+    color: white;
+}
+
 .seasonStyling {
     background: #A92921;
 }

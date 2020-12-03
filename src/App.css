@@ -15,15 +15,15 @@ button {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: white; 
+  background: black;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey; 
+  background: white; 
 }

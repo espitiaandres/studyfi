@@ -38,3 +38,19 @@ input:focus, textarea:focus, select:focus{
 .seasonStylingAlt {
   background: #0A7533;
 }
+
+/* width */
+div::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+div::-webkit-scrollbar-track {
+  background: white;
+}
+ 
+/* Handle */
+div::-webkit-scrollbar-thumb {
+  background: grey; 
+}
+

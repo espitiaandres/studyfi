@@ -91,7 +91,7 @@ const Pomodoro = ({ user, userProfile }) => {
 
     const countdownCooldown = () => {
         remainingTime = cooldownSetTimeSeconds;
-        pomodoroText = season ? "2sp00ky4me" : "RestRestRestRestRest";
+        pomodoroText = "RestRestRestRestRest";
         remainingTime++;
         cooldownInterval = setInterval(() => {
             if (remainingTime > 0) {

@@ -13,7 +13,7 @@ Front End Source code:
 Back End Source code:
 - https://github.com/espitiaandres/studyfi-backend
 
-Live on: https://www.andres-espitia.com/studyfi
+Live on: https://andres-espitia.com/studyfi
 
 
 

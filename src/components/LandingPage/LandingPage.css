@@ -14,8 +14,8 @@
 
 .app-title {
     color: white;
-    font-size: 120px;
-    padding-bottom: 140px;
+    font-size: 100px;
+    padding-bottom: 40px;
 }
 
 .app-description {
@@ -60,13 +60,15 @@
     position: fixed;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 380px) {
     .main-wrapper-landing-page {
         height: 100vh;
         width: 100vw;
     }
 
-    /* .app-description {
-        padding: 120px 0px;
-    } */
+    .app-title {
+        color: white;
+        font-size: 100px;
+        padding-bottom: 140px;
+    }
 }

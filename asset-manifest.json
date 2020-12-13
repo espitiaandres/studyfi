@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/studyfi/static/css/main.f4059668.chunk.css",
+    "main.css": "/studyfi/static/css/main.04c67bcb.chunk.css",
     "main.js": "/studyfi/static/js/main.bbe4000c.chunk.js",
     "main.js.map": "/studyfi/static/js/main.bbe4000c.chunk.js.map",
     "runtime-main.js": "/studyfi/static/js/runtime-main.5f7e87f6.js",
@@ -9,10 +9,10 @@
     "static/js/2.a6c2da0d.chunk.js": "/studyfi/static/js/2.a6c2da0d.chunk.js",
     "static/js/2.a6c2da0d.chunk.js.map": "/studyfi/static/js/2.a6c2da0d.chunk.js.map",
     "index.html": "/studyfi/index.html",
-    "precache-manifest.d738c48e88d8efbccdd9a48b74f523e4.js": "/studyfi/precache-manifest.d738c48e88d8efbccdd9a48b74f523e4.js",
+    "precache-manifest.059005c8df9e6321f76049d3f148f2e7.js": "/studyfi/precache-manifest.059005c8df9e6321f76049d3f148f2e7.js",
     "service-worker.js": "/studyfi/service-worker.js",
     "static/css/2.2ce0d9b2.chunk.css.map": "/studyfi/static/css/2.2ce0d9b2.chunk.css.map",
-    "static/css/main.f4059668.chunk.css.map": "/studyfi/static/css/main.f4059668.chunk.css.map",
+    "static/css/main.04c67bcb.chunk.css.map": "/studyfi/static/css/main.04c67bcb.chunk.css.map",
     "static/js/2.a6c2da0d.chunk.js.LICENSE.txt": "/studyfi/static/js/2.a6c2da0d.chunk.js.LICENSE.txt",
     "static/media/NotFoundPage.css": "/studyfi/static/media/notFoundPageVaporwaveBackground.8eaff6c7.png",
     "static/media/sketchyFavicon.png": "/studyfi/static/media/sketchyFavicon.4ab11064.png",
@@ -24,7 +24,7 @@
     "static/js/runtime-main.5f7e87f6.js",
     "static/css/2.2ce0d9b2.chunk.css",
     "static/js/2.a6c2da0d.chunk.js",
-    "static/css/main.f4059668.chunk.css",
+    "static/css/main.04c67bcb.chunk.css",
     "static/js/main.bbe4000c.chunk.js"
   ]
 }

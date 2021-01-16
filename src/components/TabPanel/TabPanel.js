@@ -16,8 +16,8 @@ import './TabPanel.css';
 
 const TabPanel = ({ value, index, playlistsInfo, playlistsSongs, ...other }) => {
   const season = useSelector(state => state.season);
-  const color = season ? holidaysColors.christmas.color : "#1ED760";
-  const colorAlt = season ? holidaysColors.christmas.colorAlt : "#1ED760";
+  const color = season ? holidaysColors.valentinesDay.color : "#1ED760";
+  const colorAlt = season ? holidaysColors.valentinesDay.colorAlt : "#1ED760";
 
   const [acousticnessAvg, setAcousticnessAvg] = useState(0);
   const [danceabilityAvg, setDanceabilityAvg] = useState(0);

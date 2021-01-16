@@ -58,7 +58,7 @@ const Dashboard = (props) => {
                 </div>
                 <div className="dashboardItem">
                     <button className="seasonSelect" onClick={onSeasonSelect}>
-                        Christmas mode!
+                        Valentines Day mode!
                     </button>
                     <Player
                         item={item}

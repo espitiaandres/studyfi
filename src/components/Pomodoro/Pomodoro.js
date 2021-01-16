@@ -134,7 +134,7 @@ const Pomodoro = ({ user, userProfile }) => {
         setSecondsLeft(secondsRemaining);
     }
 
-    const colorSchema = holidaysColors.christmas;
+    const colorSchema = holidaysColors.valentinesDay;
     const seasonIconOuter = colorSchema.iconOuter; 
     const seasonIconInner = colorSchema.iconInner;
     const seasonIconTimer = colorSchema.iconTimer;

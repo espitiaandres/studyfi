@@ -11,7 +11,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import tokenReducer from '../reducers/token';
 import seasonReducer from '../reducers/season';
 
-const composeEhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const configureStore = () => {
     const store = createStore(
@@ -19,7 +19,7 @@ const configureStore = () => {
             token: tokenReducer,
             season: seasonReducer
         }),
-        composeEhancers(applyMiddleware(thunk))
+        composeEnhancers(applyMiddleware(thunk))
     );
 
     return store;

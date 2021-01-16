@@ -142,7 +142,7 @@ const Player = ({ item, isPlaying, progressms, repeatState, shuffleState, device
     googleSearchString = (item.artists[0].name + "+" + item.album.name).replace(" ", "+");
   }
 
-  const colorSchema = holidaysColors.christmas;  
+  const colorSchema = holidaysColors.valentinesDay;  
   const seasonColor = colorSchema.color;
   const seasonColorAlt = colorSchema.colorAlt;
   

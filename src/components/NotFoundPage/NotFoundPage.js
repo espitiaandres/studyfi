@@ -55,7 +55,7 @@ const NotFoundPage = () => {
                     onMouseEnter={onMouseEnter}
                 >
                     <div>
-                        <a href="https://www.andres-espitia.com/studyfi/">
+                        <a href="https://www.espitiaandres.com/studyfi/">
                             <img className="sketchy-spotify" src={sketchyFavicon} alt="spotify-logo"/>
                         </a>
                     </div>

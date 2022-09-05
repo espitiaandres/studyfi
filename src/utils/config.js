@@ -9,7 +9,7 @@
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "53bcecd410634483b5388541c159849d";
 // const redirectUri = "http://localhost:3000/";                    // dev redirectUri
-const redirectUri = "https://www.espitiaandres.com/studyfi/";      // prod redirectUri
+const redirectUri = "https://espitiaandres.com/studyfi/";      // prod redirectUri
 const scopes = [
     "user-top-read",
     "user-read-currently-playing",

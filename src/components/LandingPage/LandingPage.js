@@ -15,6 +15,8 @@ import './LandingPage.css';
 
 const currentYear = moment().format('YYYY');
 
+console.log(`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`)
+
 const LandingPage = () => {
     return (
         <div className="main-wrapper-landing-page">
@@ -44,7 +46,7 @@ const LandingPage = () => {
                 href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
                 target=""
             >
-                <p className="login-description">Login with Spotify</p>
+                <p className="login-description">Login into Spotify</p>
             </a>
             <div className="footer">
                 <div>{`© Studyfi ${currentYear}`}</div>

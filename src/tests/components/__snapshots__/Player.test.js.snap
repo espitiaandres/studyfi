@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should render Player component correctly 1`] = `ShallowWrapper {}`;
-
-exports[`should render Player component correctly with data 1`] = `ShallowWrapper {}`;
